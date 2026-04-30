@@ -1,0 +1,611 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const workshops = [
+  {
+    num: '03',
+    title: 'Spring Beginner Clinic',
+    date: 'March 2024',
+    location: 'Cary Recreation Center',
+    participants: 18,
+    skills: ['Grip & footwork', 'Basic serves', 'Net play fundamentals'],
+    highlight: 'Highest attendance yet — multiple siblings attended together.',
+    color: 'rgba(128,117,255,0.15)',
+    border: 'rgba(128,117,255,0.3)',
+  },
+  {
+    num: '02',
+    title: 'Fall Fundamentals Session',
+    date: 'November 2023',
+    location: 'Panther Creek High School',
+    participants: 22,
+    skills: ['Backhand technique', 'Smash drills', 'Rally conditioning'],
+    highlight: 'Largest session to date. Several participants from the inaugural session returned.',
+    color: 'rgba(255,140,66,0.12)',
+    border: 'rgba(255,140,66,0.28)',
+  },
+  {
+    num: '01',
+    title: 'Inaugural Session',
+    date: 'August 2023',
+    location: 'Cary, NC',
+    participants: 14,
+    skills: ['Racket handling', 'Court orientation', 'Basic clears'],
+    highlight: 'Where it all started. 14 beginners showed up — none had played before.',
+    color: 'rgba(52,211,153,0.12)',
+    border: 'rgba(52,211,153,0.28)',
+  },
+];
+
+const tournaments = [
+  {
+    name: 'Cary Open 2024',
+    date: 'April 2024',
+    type: 'Singles & Doubles',
+    raised: '$1,200',
+    players: 32,
+    desc: 'Open community tournament held at Cary Indoor Sports. All proceeds went toward purchasing rackets and shuttlecocks for future free workshops.',
+    color: 'rgba(128,117,255,0.12)',
+    border: 'rgba(128,117,255,0.28)',
+  },
+  {
+    name: 'Holiday Doubles Classic',
+    date: 'December 2023',
+    type: 'Doubles',
+    raised: '$800',
+    players: 20,
+    desc: 'A festive year-end doubles tournament that brought together youth and adult players. Funds used to cover venue costs for the Spring 2024 clinic.',
+    color: 'rgba(255,140,66,0.1)',
+    border: 'rgba(255,140,66,0.25)',
+  },
+];
+
+const scheduleItems = [
+  { label: 'Frequency', value: 'Every 6–8 weeks', icon: '📅' },
+  { label: 'Day', value: 'Typically weekends', icon: '🗓️' },
+  { label: 'Time', value: '10 AM – 12 PM', icon: '⏰' },
+  { label: 'Duration', value: '1–2 hours per session', icon: '⏱️' },
+  { label: 'Location', value: 'Cary, NC 27519', icon: '📍' },
+  { label: 'Notice', value: 'Sign up to get email alerts', icon: '🔔' },
+];
+---
+
+<Layout title="History & Schedule" description="Past Rookie Rackets workshops, fundraising tournaments, and our recurring event schedule in Cary, NC.">
+
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="page-hero-bg" aria-hidden="true">
+      <div class="ph-orb" style="width:700px;height:700px;top:-30%;right:-8%;background:radial-gradient(ellipse at center,rgba(128,117,255,0.22) 0%,rgba(128,117,255,0.05) 45%,transparent 70%);animation-delay:0s"></div>
+      <div class="ph-orb" style="width:420px;height:420px;bottom:-15%;left:-5%;background:radial-gradient(ellipse at center,rgba(255,140,66,0.16) 0%,transparent 65%);animation-delay:-6s"></div>
+      <div class="ph-grid"></div>
+    </div>
+    <div class="container page-hero-inner">
+      <span class="label reveal">Our Journey</span>
+      <h1 class="reveal d1">Sessions, tournaments,<br /><span class="grad">and everything since.</span></h1>
+      <p class="page-hero-lead reveal d2">
+        A look back at every workshop we've run, every tournament we've organized, and how the program has grown — plus when to expect the next session.
+      </p>
+      <div class="page-hero-actions reveal d3">
+        <a href="/contact" class="btn btn-primary">Join the Waitlist →</a>
+        <a href="#schedule" class="btn btn-ghost">View Schedule</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats bar -->
+  <div class="stats-bar">
+    <div class="container stats-bar-inner">
+      {[
+        { num: '3', label: 'Workshops run' },
+        { num: '54', label: 'Youth coached' },
+        { num: '2', label: 'Fundraising tournaments' },
+        { num: '$2,000+', label: 'Raised for equipment' },
+      ].map(s => (
+        <div class="sbar-item reveal">
+          <span class="sbar-num">{s.num}</span>
+          <span class="sbar-label">{s.label}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <!-- Past Workshops -->
+  <section class="workshops-section">
+    <div class="container">
+      <div class="reveal" style="margin-bottom:3rem">
+        <span class="label">Past Workshops</span>
+        <h2>Every session, documented</h2>
+        <p class="section-lead">From our very first 14-person gathering to our largest clinic yet — here's the full story.</p>
+      </div>
+
+      <div class="workshop-list">
+        {workshops.map((w, i) => (
+          <div class={`workshop-card reveal d${i + 1}`} style={`--wc:${w.color};--wb:${w.border}`}>
+            <div class="wcard-num">#{w.num}</div>
+            <div class="wcard-main">
+              <div class="wcard-header">
+                <div>
+                  <h3>{w.title}</h3>
+                  <div class="wcard-meta">
+                    <span>📅 {w.date}</span>
+                    <span>📍 {w.location}</span>
+                    <span>👥 {w.participants} participants</span>
+                  </div>
+                </div>
+                <div class="wcard-badge">{w.participants} youth</div>
+              </div>
+              <p class="wcard-highlight">"{w.highlight}"</p>
+              <div class="wcard-skills">
+                {w.skills.map(s => (
+                  <span class="skill-tag">{s}</span>
+                ))}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Fundraising Tournaments -->
+  <section class="tournaments-section">
+    <div class="container">
+      <div class="reveal" style="margin-bottom:3rem">
+        <span class="label label-accent">Fundraising</span>
+        <h2>Tournaments that fund the mission</h2>
+        <p class="section-lead">We run competitive badminton tournaments open to the community. All proceeds go directly toward keeping our youth workshops free.</p>
+      </div>
+
+      <div class="tournament-grid">
+        {tournaments.map((t, i) => (
+          <div class={`t-card reveal d${i + 1}`} style={`--tc:${t.color};--tb:${t.border}`}>
+            <div class="t-card-top">
+              <div>
+                <span class="t-type">{t.type}</span>
+                <h3>{t.name}</h3>
+                <span class="t-date">{t.date}</span>
+              </div>
+              <div class="t-raised">
+                <span class="t-raised-num">{t.raised}</span>
+                <span class="t-raised-label">raised</span>
+              </div>
+            </div>
+            <p class="t-desc">{t.desc}</p>
+            <div class="t-footer">
+              <div class="t-stat">
+                <span class="t-stat-num">{t.players}</span>
+                <span class="t-stat-label">players</span>
+              </div>
+              <div class="t-stat">
+                <span class="t-stat-num">100%</span>
+                <span class="t-stat-label">to mission</span>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Event Schedule -->
+  <section class="schedule-section" id="schedule">
+    <div class="container">
+      <div class="reveal" style="margin-bottom:3rem">
+        <span class="label">Recurring Schedule</span>
+        <h2>When we run sessions</h2>
+        <p class="section-lead">Sessions aren't on a fixed calendar yet — but here's our typical pattern. Sign up so you never miss one.</p>
+      </div>
+
+      <div class="schedule-layout">
+        <div class="schedule-grid">
+          {scheduleItems.map((item, i) => (
+            <div class={`sch-item reveal d${i + 1}`}>
+              <span class="sch-icon">{item.icon}</span>
+              <div>
+                <strong>{item.label}</strong>
+                <span>{item.value}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div class="timeline reveal">
+          <div class="tl-head">
+            <span class="label">Timeline</span>
+            <h3>How sessions unfold</h3>
+          </div>
+          <ol class="tl-list">
+            {[
+              { step: 'Announce', desc: 'Email sent to waitlist 1–2 weeks before.' },
+              { step: 'Warm-up', desc: 'Light footwork and dynamic stretching.' },
+              { step: 'Drills', desc: '45–60 min structured skill drills by level.' },
+              { step: 'Scrimmage', desc: 'Open play with coach feedback on the fly.' },
+              { step: 'Wrap-up', desc: 'Q&A, recap, next steps.' },
+            ].map((tl, i) => (
+              <li class="tl-item">
+                <div class="tl-dot">{i + 1}</div>
+                <div>
+                  <strong>{tl.step}</strong>
+                  <p>{tl.desc}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bottom CTA -->
+  <section class="bottom-cta">
+    <div class="container">
+      <div class="bottom-cta-card reveal scale-in">
+        <div class="bottom-cta-orb bottom-cta-orb-a" aria-hidden="true"></div>
+        <div class="bottom-cta-orb bottom-cta-orb-b" aria-hidden="true"></div>
+        <div class="bottom-cta-body">
+          <span class="label label-accent">Don't Miss the Next One</span>
+          <h2>Join the waitlist today</h2>
+          <p>We'll email you the moment the next session is announced. No spam — just badminton.</p>
+          <div class="bottom-cta-btns">
+            <a href="/contact" class="btn btn-accent">Sign Up for Updates →</a>
+            <a href="/events" class="btn btn-ghost">View Events Page</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  /* Stats bar */
+  .stats-bar {
+    background: var(--s1);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 2.25rem 0;
+  }
+
+  .stats-bar-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .sbar-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.2rem;
+    text-align: center;
+  }
+
+  .sbar-num {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 800;
+    line-height: 1;
+    background: linear-gradient(130deg, var(--primary-lt), var(--accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .sbar-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+  }
+
+  /* Shared section lead */
+  .section-lead {
+    color: var(--text-muted);
+    font-size: 1rem;
+    line-height: 1.75;
+    max-width: 540px;
+    margin-top: 0.75rem;
+  }
+
+  /* Past Workshops */
+  .workshops-section { background: var(--bg); border-top: 1px solid var(--border); }
+
+  .workshop-list { display: flex; flex-direction: column; gap: 1.25rem; }
+
+  .workshop-card {
+    background: var(--s1);
+    border: 1px solid var(--wb, var(--border));
+    border-radius: var(--r-xl);
+    padding: 2rem 2.25rem;
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    gap: 1.75rem;
+    align-items: start;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+  }
+
+  .workshop-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--wc, transparent);
+    pointer-events: none;
+  }
+
+  .workshop-card:hover { transform: translateX(6px); box-shadow: var(--sh); }
+
+  .wcard-num {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--text-subtle);
+    position: relative;
+    line-height: 1;
+    padding-top: 0.2rem;
+  }
+
+  .wcard-main { position: relative; }
+
+  .wcard-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 0.875rem;
+    flex-wrap: wrap;
+  }
+
+  .wcard-main h3 { font-size: 1.1rem; margin-bottom: 0.5rem; }
+
+  .wcard-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.25rem;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+
+  .wcard-badge {
+    background: rgba(128,117,255,0.15);
+    border: 1px solid rgba(128,117,255,0.25);
+    border-radius: 999px;
+    padding: 0.3rem 0.875rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--primary-lt);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .wcard-highlight {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    font-style: italic;
+    line-height: 1.7;
+    margin-bottom: 1rem;
+    border-left: 2px solid rgba(128,117,255,0.3);
+    padding-left: 0.875rem;
+  }
+
+  .wcard-skills { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+
+  .skill-tag {
+    font-size: 0.72rem;
+    font-weight: 600;
+    background: var(--s2);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 0.25rem 0.75rem;
+    color: var(--text-muted);
+  }
+
+  @media (max-width: 600px) {
+    .workshop-card { grid-template-columns: 1fr; gap: 0.75rem; }
+    .wcard-num { font-size: 1.1rem; }
+  }
+
+  /* Fundraising Tournaments */
+  .tournaments-section {
+    background: var(--s1);
+    border-top: 1px solid var(--border);
+  }
+
+  .tournament-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+
+  @media (max-width: 700px) { .tournament-grid { grid-template-columns: 1fr; } }
+
+  .t-card {
+    background: var(--s2);
+    border: 1px solid var(--tb, var(--border));
+    border-radius: var(--r-xl);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .t-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--tc, transparent);
+    pointer-events: none;
+  }
+
+  .t-card:hover { transform: translateY(-4px); box-shadow: var(--sh); }
+
+  .t-card-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+    position: relative;
+  }
+
+  .t-type {
+    display: block;
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-subtle);
+    margin-bottom: 0.4rem;
+  }
+
+  .t-card h3 { font-size: 1.15rem; margin-bottom: 0.35rem; }
+
+  .t-date { font-size: 0.8rem; color: var(--text-muted); }
+
+  .t-raised {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    flex-shrink: 0;
+  }
+
+  .t-raised-num {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    font-weight: 800;
+    line-height: 1;
+    background: linear-gradient(130deg, var(--accent-lt), var(--accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .t-raised-label { font-size: 0.7rem; color: var(--text-subtle); font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; }
+
+  .t-desc { font-size: 0.9rem; color: var(--text-muted); line-height: 1.75; position: relative; flex: 1; }
+
+  .t-footer {
+    display: flex;
+    gap: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+    position: relative;
+  }
+
+  .t-stat { display: flex; flex-direction: column; gap: 0.1rem; }
+
+  .t-stat-num {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: var(--text);
+    line-height: 1;
+  }
+
+  .t-stat-label { font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; }
+
+  /* Schedule */
+  .schedule-section { background: var(--bg); border-top: 1px solid var(--border); }
+
+  .schedule-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  @media (max-width: 820px) { .schedule-layout { grid-template-columns: 1fr; } }
+
+  .schedule-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.875rem;
+  }
+
+  @media (max-width: 500px) { .schedule-grid { grid-template-columns: 1fr; } }
+
+  .sch-item {
+    background: var(--s1);
+    border: 1px solid var(--border);
+    border-radius: var(--r-lg);
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+
+  .sch-item:hover { border-color: var(--border-md); transform: translateY(-2px); }
+
+  .sch-icon { font-size: 1.4rem; flex-shrink: 0; }
+
+  .sch-item strong {
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-subtle);
+    margin-bottom: 0.25rem;
+  }
+
+  .sch-item span { font-size: 0.9rem; color: var(--text); font-weight: 500; }
+
+  /* Timeline */
+  .timeline {
+    background: linear-gradient(140deg, var(--s2), var(--s3));
+    border: 1px solid rgba(128,117,255,0.18);
+    border-radius: var(--r-xl);
+    padding: 2rem;
+    box-shadow: var(--sh-glow-p);
+  }
+
+  .tl-head { margin-bottom: 1.75rem; }
+  .tl-head h3 { font-size: 1.1rem; margin-top: 0.5rem; }
+
+  .tl-list { list-style: none; display: flex; flex-direction: column; gap: 0; }
+
+  .tl-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding-bottom: 1.5rem;
+    position: relative;
+  }
+
+  .tl-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    left: 15px;
+    top: 32px;
+    bottom: 0;
+    width: 1px;
+    background: rgba(128,117,255,0.2);
+  }
+
+  .tl-dot {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    color: #fff;
+    font-size: 0.72rem;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 4px 12px rgba(128,117,255,0.35);
+  }
+
+  .tl-item strong { display: block; font-size: 0.875rem; font-weight: 700; color: var(--text); margin-bottom: 0.2rem; }
+  .tl-item p { font-size: 0.825rem; color: var(--text-muted); line-height: 1.65; margin: 0; }
+</style>

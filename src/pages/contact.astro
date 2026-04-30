@@ -1,0 +1,238 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Contact" description="Get in touch with Rookie Rackets or sign up for session notifications.">
+
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="page-hero-bg" aria-hidden="true">
+      <div class="ph-orb" style="width:650px;height:650px;top:-25%;right:-8%;background:radial-gradient(ellipse at center,rgba(128,117,255,0.22) 0%,rgba(128,117,255,0.05) 45%,transparent 70%);animation-delay:0s"></div>
+      <div class="ph-orb" style="width:380px;height:380px;bottom:-15%;left:5%;background:radial-gradient(ellipse at center,rgba(255,140,66,0.16) 0%,transparent 65%);animation-delay:-6s"></div>
+      <div class="ph-grid"></div>
+    </div>
+    <div class="container page-hero-inner">
+      <span class="label reveal">Get in Touch</span>
+      <h1 class="reveal d1">We'd love to<br /><span class="grad">hear from you.</span></h1>
+      <p class="page-hero-lead reveal d2">Questions, feedback, or ready to sign up? Reach out any time — we respond quickly.</p>
+    </div>
+  </section>
+
+  <!-- Contact section -->
+  <section class="contact-section">
+    <div class="container contact-grid">
+
+      <div class="contact-info reveal from-left">
+        <span class="label">Contact Info</span>
+        <h2>Reach us directly</h2>
+        <ul class="info-list">
+          <li>
+            <div class="info-icon">📧</div>
+            <div>
+              <strong>Email</strong>
+              <a href="mailto:teamrookierackets@gmail.com">teamrookierackets@gmail.com</a>
+            </div>
+          </li>
+          <li>
+            <div class="info-icon">📞</div>
+            <div>
+              <strong>Phone</strong>
+              <a href="tel:+14142462382">414-246-2382</a>
+            </div>
+          </li>
+          <li>
+            <div class="info-icon">📍</div>
+            <div>
+              <strong>Location</strong>
+              <span>Cary, North Carolina 27519</span>
+            </div>
+          </li>
+        </ul>
+
+        <!-- Quick trust signals -->
+        <div class="trust-row">
+          <div class="trust-item">
+            <span class="trust-icon">⚡</span>
+            <span>Quick response</span>
+          </div>
+          <div class="trust-item">
+            <span class="trust-icon">🔒</span>
+            <span>No spam, ever</span>
+          </div>
+          <div class="trust-item">
+            <span class="trust-icon">🏸</span>
+            <span>100% free</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="signup-card reveal">
+        <div class="signup-top">
+          <div class="signup-emoji-wrap">🏸</div>
+          <div>
+            <h2>Sign Up for Updates</h2>
+            <p>Be the first to know when new sessions open.</p>
+          </div>
+        </div>
+        <div class="signup-body">
+          <p>Fill out our Google Form and we'll notify you by email when new workshops are scheduled in Cary, NC. Spots fill fast — don't miss out.</p>
+          <a href="https://forms.google.com" class="btn btn-accent" target="_blank" rel="noopener">
+            Open Sign-Up Form →
+          </a>
+          <div class="signup-features">
+            <span>✓ Takes under 60 seconds</span>
+            <span>✓ We only email about sessions</span>
+            <span>✓ Unsubscribe any time</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Bottom CTA -->
+  <section class="bottom-cta">
+    <div class="container">
+      <div class="bottom-cta-card reveal scale-in">
+        <div class="bottom-cta-orb bottom-cta-orb-a" aria-hidden="true"></div>
+        <div class="bottom-cta-orb bottom-cta-orb-b" aria-hidden="true"></div>
+        <div class="bottom-cta-body">
+          <span class="label">Questions?</span>
+          <h2>We're happy to help</h2>
+          <p>Whether you're a parent, student, or just curious — email us or check our FAQ for quick answers.</p>
+          <div class="bottom-cta-btns">
+            <a href="mailto:teamrookierackets@gmail.com" class="btn btn-primary">Email Us →</a>
+            <a href="/faq" class="btn btn-ghost">View FAQ</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  /* Contact section */
+  .contact-section {
+    background: var(--s1);
+    border-top: 1px solid var(--border);
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  @media (max-width: 820px) { .contact-grid { grid-template-columns: 1fr; gap: 3rem; } }
+
+  .contact-info h2 { margin-bottom: 2rem; }
+
+  .info-list { list-style: none; display: flex; flex-direction: column; gap: 0.875rem; }
+
+  .info-list li {
+    background: var(--s2);
+    border: 1px solid var(--border);
+    border-radius: var(--r-lg);
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 1.25rem;
+    transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+  }
+
+  .info-list li:hover { border-color: var(--border-md); box-shadow: var(--sh); transform: translateX(5px); }
+
+  .info-icon { font-size: 1.5rem; flex-shrink: 0; }
+
+  .info-list strong {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-subtle);
+    margin-bottom: 0.3rem;
+  }
+
+  .info-list a, .info-list span { font-size: 0.95rem; color: var(--text); font-weight: 500; }
+  .info-list a:hover { color: var(--primary-lt); text-decoration: underline; }
+
+  /* Trust signals */
+  .trust-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .trust-item {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+
+  .trust-icon { font-size: 1rem; }
+
+  /* Signup card */
+  .signup-card {
+    background: linear-gradient(140deg, var(--s2), var(--s3));
+    border: 1px solid rgba(128,117,255,0.2);
+    border-radius: var(--r-xl);
+    overflow: hidden;
+    box-shadow: var(--sh-glow-p), var(--sh);
+  }
+
+  .signup-top {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 2rem 2.25rem;
+    border-bottom: 1px solid var(--border);
+    background: rgba(128,117,255,0.06);
+  }
+
+  .signup-emoji-wrap {
+    font-size: 2.5rem;
+    flex-shrink: 0;
+    width: 58px;
+    height: 58px;
+    background: rgba(128,117,255,0.15);
+    border: 1px solid rgba(128,117,255,0.25);
+    border-radius: var(--r);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .signup-top h2 { font-size: 1.3rem; margin-bottom: 0.25rem; }
+  .signup-top p { color: var(--text-muted); font-size: 0.875rem; }
+
+  .signup-body {
+    padding: 2rem 2.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .signup-body > p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.75; }
+
+  .signup-features {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    padding-top: 0.25rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .signup-features span {
+    font-size: 0.8rem;
+    color: var(--text-subtle);
+  }
+</style>

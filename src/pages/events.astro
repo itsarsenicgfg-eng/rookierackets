@@ -1,0 +1,209 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const details = [
+  { icon: '⏱', label: 'Duration', desc: 'Sessions typically run 1–2 hours.' },
+  { icon: '📍', label: 'Location', desc: 'Cary, NC 27519. Exact venue shared with registered participants.' },
+  { icon: '🏸', label: 'Equipment', desc: 'All equipment provided. Wear athletic shoes and comfortable clothes.' },
+  { icon: '👶', label: 'Age & Skill', desc: 'Open to youth of all ages and experience levels. Beginners especially welcome.' },
+  { icon: '💵', label: 'Cost', desc: 'Completely free. No registration fee, no hidden costs whatsoever.' },
+];
+---
+
+<Layout title="Events" description="Upcoming Rookie Rackets badminton workshops in Cary, NC — free for all youth.">
+
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="page-hero-bg" aria-hidden="true">
+      <div class="ph-orb" style="width:700px;height:700px;top:-30%;right:-5%;background:radial-gradient(ellipse at center,rgba(255,140,66,0.2) 0%,rgba(255,140,66,0.05) 45%,transparent 70%);animation-delay:0s"></div>
+      <div class="ph-orb" style="width:400px;height:400px;bottom:-15%;left:-5%;background:radial-gradient(ellipse at center,rgba(128,117,255,0.18) 0%,transparent 65%);animation-delay:-5s"></div>
+      <div class="ph-grid"></div>
+    </div>
+    <div class="container page-hero-inner">
+      <span class="label label-accent reveal">Cary, NC</span>
+      <h1 class="reveal d1">Upcoming<br /><span class="grad">Events</span></h1>
+      <p class="page-hero-lead reveal d2">Free badminton workshops open to all youth. All skill levels welcome — just bring yourself.</p>
+      <div class="page-hero-actions reveal d3">
+        <a href="/contact" class="btn btn-accent">Sign Up for Updates →</a>
+        <a href="#what-to-expect" class="btn btn-ghost">What to Expect</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Signup banner -->
+  <section class="notify-band">
+    <div class="container">
+      <div class="notify-inner reveal scale-in">
+        <div class="notify-orb notify-orb-a" aria-hidden="true"></div>
+        <div class="notify-orb notify-orb-b" aria-hidden="true"></div>
+        <div class="notify-content">
+          <span class="notify-emoji">🔔</span>
+          <div>
+            <h2>Stay in the loop</h2>
+            <p>We run workshops throughout the year. Sign up and we'll notify you the moment new sessions open — spots fill fast.</p>
+          </div>
+        </div>
+        <a href="/contact" class="btn btn-accent notify-cta">
+          Get Notified →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Schedule -->
+  <section class="schedule">
+    <div class="container">
+      <div class="reveal" style="margin-bottom:2.5rem">
+        <span class="label">Schedule</span>
+        <h2>Upcoming Sessions</h2>
+      </div>
+      <div class="empty reveal scale-in">
+        <div class="empty-icon">🏸</div>
+        <h3>No sessions scheduled yet</h3>
+        <p>Sign up below and we'll email you the moment a new session is announced. Don't miss out.</p>
+        <a href="/contact" class="btn btn-primary">Sign Up for Notifications</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Details -->
+  <section class="details" id="what-to-expect">
+    <div class="container">
+      <div class="reveal" style="margin-bottom:2.5rem">
+        <span class="label">What to Expect</span>
+        <h2>Everything you need to know</h2>
+      </div>
+      <div class="details-grid">
+        {details.map(({ icon, label, desc }, i) => (
+          <div class={`detail reveal d${i + 1}`}>
+            <div class="detail-icon">{icon}</div>
+            <div>
+              <strong>{label}</strong>
+              <p>{desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Bottom CTA -->
+  <section class="bottom-cta">
+    <div class="container">
+      <div class="bottom-cta-card reveal scale-in">
+        <div class="bottom-cta-orb bottom-cta-orb-a" aria-hidden="true"></div>
+        <div class="bottom-cta-orb bottom-cta-orb-b" aria-hidden="true"></div>
+        <div class="bottom-cta-body">
+          <span class="label">Ready to Play?</span>
+          <h2>Join the waitlist today</h2>
+          <p>Be the first to know when new sessions are announced. 100% free, no commitment.</p>
+          <div class="bottom-cta-btns">
+            <a href="/contact" class="btn btn-accent">Sign Up →</a>
+            <a href="/about" class="btn btn-ghost">About Us</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  /* Notify band */
+  .notify-band { background: var(--s1); border-top: 1px solid var(--border); padding: 4rem 0; }
+
+  .notify-inner {
+    background: linear-gradient(135deg, var(--s2) 0%, var(--s3) 60%, var(--s4) 100%);
+    border: 1px solid rgba(255,140,66,0.2);
+    border-radius: var(--r-xl);
+    padding: 2.5rem 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--sh-glow-a), var(--sh);
+  }
+
+  .notify-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(70px);
+    pointer-events: none;
+  }
+
+  .notify-orb-a { width: 300px; height: 300px; background: var(--accent); top: -150px; right: -80px; opacity: 0.1; }
+  .notify-orb-b { width: 200px; height: 200px; background: var(--primary); bottom: -100px; left: -50px; opacity: 0.08; }
+
+  .notify-content {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex: 1;
+    min-width: 260px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .notify-emoji { font-size: 2.5rem; flex-shrink: 0; }
+
+  .notify-content h2 { font-size: 1.4rem; margin-bottom: 0.4rem; }
+  .notify-content p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.7; max-width: 440px; }
+
+  .notify-cta { position: relative; z-index: 1; flex-shrink: 0; }
+
+  @media (max-width: 680px) {
+    .notify-inner { padding: 2rem 1.5rem; flex-direction: column; align-items: flex-start; }
+  }
+
+  /* Schedule */
+  .schedule { background: var(--bg); border-top: 1px solid var(--border); }
+
+  .empty {
+    background: var(--s1);
+    border: 2px dashed rgba(128,117,255,0.2);
+    border-radius: var(--r-xl);
+    padding: 5rem 2rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    transition: border-color 0.2s;
+  }
+
+  .empty:hover { border-color: rgba(128,117,255,0.35); }
+
+  .empty-icon { font-size: 3.5rem; }
+  .empty h3 { font-size: 1.2rem; }
+  .empty p { color: var(--text-muted); font-size: 0.95rem; max-width: 340px; line-height: 1.7; }
+
+  /* Details */
+  .details { background: var(--s1); border-top: 1px solid var(--border); }
+
+  .details-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+  }
+
+  .detail {
+    background: var(--s2);
+    border: 1px solid var(--border);
+    border-radius: var(--r-lg);
+    padding: 1.5rem 1.75rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 1.25rem;
+    transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+  }
+
+  .detail:hover { border-color: var(--border-md); box-shadow: var(--sh); transform: translateY(-3px); }
+
+  .detail-icon { font-size: 1.75rem; flex-shrink: 0; margin-top: 0.1rem; }
+
+  .detail strong { display: block; font-size: 0.95rem; font-weight: 700; color: var(--text); margin-bottom: 0.35rem; }
+  .detail p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.65; margin: 0; }
+</style>

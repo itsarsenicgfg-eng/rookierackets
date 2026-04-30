@@ -1,0 +1,249 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="About" description="Learn about Rookie Rackets — who we are, our mission, and the coaches behind the program.">
+
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="page-hero-bg" aria-hidden="true">
+      <div class="ph-orb" style="width:700px;height:700px;top:-30%;right:-8%;background:radial-gradient(ellipse at center,rgba(128,117,255,0.22) 0%,rgba(128,117,255,0.05) 45%,transparent 70%);animation-delay:0s"></div>
+      <div class="ph-orb" style="width:450px;height:450px;bottom:-15%;left:-5%;background:radial-gradient(ellipse at center,rgba(255,140,66,0.16) 0%,transparent 65%);animation-delay:-6s"></div>
+      <div class="ph-grid"></div>
+    </div>
+    <div class="container page-hero-inner">
+      <span class="label reveal">Our Story</span>
+      <h1 class="reveal d1">Every kid deserves<br /><span class="grad">a great coach.</span></h1>
+      <p class="page-hero-lead reveal d2">We're a youth badminton nonprofit in Cary, NC — built to make elite coaching accessible to everyone, for free.</p>
+      <div class="page-hero-actions reveal d3">
+        <a href="/events" class="btn btn-primary">View Events →</a>
+        <a href="/contact" class="btn btn-ghost">Sign Up</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mission -->
+  <section class="mission">
+    <div class="container two-col">
+      <div class="reveal from-left">
+        <span class="label">Mission</span>
+        <h2>Why we do this</h2>
+        <p>Rookie Rackets provides free, inclusive badminton workshops that give youth a chance to develop athletic skills, build confidence, and be part of a community — regardless of their background or prior experience.</p>
+        <p>We believe sport is one of the best teachers there is. On the court, kids learn discipline, resilience, and teamwork. Our job is to make that experience available to as many kids as possible.</p>
+        <a href="/events" class="btn btn-primary" style="margin-top:1.25rem">View Upcoming Events →</a>
+      </div>
+      <div class="stat-stack">
+        <div class="sbox reveal d1">
+          <span class="sbox-num counter" data-target="20" data-suffix="+">20+</span>
+          <span>Years combined professional training</span>
+        </div>
+        <div class="sbox sbox-lit reveal d2">
+          <span class="sbox-num counter" data-target="30" data-suffix="+">30+</span>
+          <span>Open tournaments won</span>
+        </div>
+        <div class="sbox reveal d3">
+          <span class="sbox-num counter" data-target="6" data-suffix="+">6+</span>
+          <span>Years coaching beginners</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Coaches -->
+  <section class="coaches">
+    <div class="container">
+      <div class="coaches-layout">
+        <div class="reveal from-left">
+          <span class="label">Credentials</span>
+          <h2>Coaching Background</h2>
+        </div>
+        <div class="coaches-body reveal">
+          <p>Our coaches bring serious competitive experience and a genuine love for teaching. We've trained under <strong>Coach Hendry</strong>, US National Head Coach (2023–2024), won $1,000+ in open competitions, and spent six years refining how to teach the game to absolute beginners.</p>
+          <p>That combination — elite training and beginner-first coaching — is what makes Rookie Rackets different.</p>
+          <div class="badge-row">
+            <span class="badge">🏆 US National Coach trained</span>
+            <span class="badge">🥇 $1,000+ tournament winnings</span>
+            <span class="badge">🏸 6+ yrs beginner coaching</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Values -->
+  <section class="values">
+    <div class="container">
+      <div class="reveal" style="margin-bottom:3rem">
+        <span class="label">Values</span>
+        <h2>What we stand for</h2>
+      </div>
+      <div class="val-grid">
+        <div class="val reveal d1">
+          <div class="val-icon">♿</div>
+          <h3>Accessibility</h3>
+          <p>Workshops are always free. Equipment provided. No one is turned away.</p>
+        </div>
+        <div class="val val-dark reveal d2">
+          <div class="val-icon">🌍</div>
+          <h3>Inclusion</h3>
+          <p>Every skill level is welcome. Beginners are our specialty.</p>
+        </div>
+        <div class="val reveal d3">
+          <div class="val-icon">⭐</div>
+          <h3>Excellence</h3>
+          <p>We bring the same focus to workshops that we bring to competition.</p>
+        </div>
+        <div class="val val-dark reveal d4">
+          <div class="val-icon">🤝</div>
+          <h3>Community</h3>
+          <p>Badminton is better together. We're building something lasting in Cary.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bottom CTA -->
+  <section class="bottom-cta">
+    <div class="container">
+      <div class="bottom-cta-card reveal scale-in">
+        <div class="bottom-cta-orb bottom-cta-orb-a" aria-hidden="true"></div>
+        <div class="bottom-cta-orb bottom-cta-orb-b" aria-hidden="true"></div>
+        <div class="bottom-cta-body">
+          <span class="label label-accent">Get Started Today</span>
+          <h2>Ready to pick up a racket?</h2>
+          <p>Sign up for notifications and be first to know when sessions open in Cary, NC. Spots fill fast.</p>
+          <div class="bottom-cta-btns">
+            <a href="/contact" class="btn btn-accent">Sign Up for Updates →</a>
+            <a href="/faq" class="btn btn-ghost">Read the FAQ</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  /* Mission */
+  .mission { background: var(--s1); border-top: 1px solid var(--border); }
+
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  @media (max-width: 820px) { .two-col { grid-template-columns: 1fr; gap: 3rem; } }
+
+  .mission h2 { margin-bottom: 1.5rem; }
+  .mission p { color: var(--text-muted); font-size: 1.025rem; line-height: 1.8; margin-bottom: 1rem; }
+  .mission strong { color: var(--text); }
+
+  .stat-stack { display: flex; flex-direction: column; gap: 1rem; }
+
+  .sbox {
+    background: var(--s2);
+    border: 1px solid var(--border);
+    border-radius: var(--r-lg);
+    padding: 1.5rem 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+  }
+
+  .sbox:hover { border-color: var(--border-md); box-shadow: var(--sh); transform: translateX(6px); }
+
+  .sbox-lit {
+    background: linear-gradient(135deg, var(--s3), var(--s4));
+    border-color: rgba(128,117,255,0.22);
+    box-shadow: var(--sh-glow-p);
+  }
+
+  .sbox-num {
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    font-weight: 800;
+    line-height: 1;
+    background: linear-gradient(130deg, var(--text), var(--text-muted));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .sbox-lit .sbox-num {
+    background: linear-gradient(130deg, var(--primary-lt), var(--accent));
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+
+  .sbox span:last-child { font-size: 0.875rem; color: var(--text-muted); }
+
+  /* Coaches */
+  .coaches { background: var(--bg); border-top: 1px solid var(--border); }
+
+  .coaches-layout {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  @media (max-width: 820px) { .coaches-layout { grid-template-columns: 1fr; gap: 2rem; } }
+
+  .coaches-layout h2 { font-size: 1.8rem; }
+  .coaches-body p { color: var(--text-muted); font-size: 1.025rem; line-height: 1.8; margin-bottom: 1rem; }
+
+  .badge-row { display: flex; flex-wrap: wrap; gap: 0.625rem; margin-top: 1.5rem; }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: var(--s2);
+    border: 1px solid var(--border-md);
+    border-radius: 999px;
+    padding: 0.45rem 1rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    transition: border-color 0.15s, color 0.15s, transform 0.15s;
+  }
+
+  .badge:hover { border-color: var(--primary); color: var(--text); transform: translateY(-1px); }
+
+  /* Values */
+  .values { background: var(--s1); border-top: 1px solid var(--border); }
+
+  .val-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+  }
+
+  @media (max-width: 900px) { .val-grid { grid-template-columns: repeat(2,1fr); } }
+  @media (max-width: 520px)  { .val-grid { grid-template-columns: 1fr; } }
+
+  .val {
+    background: var(--s2);
+    border: 1px solid var(--border);
+    border-radius: var(--r-lg);
+    padding: 2rem 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+  }
+
+  .val:hover { transform: translateY(-5px); box-shadow: var(--sh); border-color: var(--border-md); }
+
+  .val-dark {
+    background: linear-gradient(140deg, var(--s3), var(--s4));
+    border-color: rgba(128,117,255,0.18);
+  }
+
+  .val-icon { font-size: 1.75rem; }
+  .val h3 { font-size: 1.05rem; }
+  .val p { color: var(--text-muted); font-size: 0.925rem; line-height: 1.7; }
+</style>

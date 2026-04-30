@@ -1,0 +1,226 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const faqs = [
+  { q: 'Who can attend Rookie Rackets workshops?', a: 'Workshops are open to all youth regardless of age or skill level. Whether your child has never held a racket or has some experience, they are welcome.' },
+  { q: 'How much does it cost?', a: 'Nothing. Rookie Rackets workshops are completely free. We are a nonprofit and our goal is to remove every barrier to participation.' },
+  { q: 'Do participants need to bring their own equipment?', a: 'No. We provide all equipment including rackets and shuttlecocks. Participants should wear athletic shoes and comfortable clothes.' },
+  { q: 'Where are workshops held?', a: 'Workshops are held in Cary, NC (27519). The exact location is shared with registered participants before each session.' },
+  { q: 'How long is each workshop?', a: 'Sessions typically run between one and two hours.' },
+  { q: 'How do I find out about upcoming sessions?', a: 'Sign up via our contact page. We will notify you by email when new sessions are scheduled.' },
+  { q: 'How experienced are the coaches?', a: 'Our coaches have 20+ years of combined professional badminton training, including under US National Head Coach Hendry (2023–2024), and 6+ years coaching beginners.' },
+  { q: 'Is there a limit on how many times a child can attend?', a: 'No limit. Kids are welcome to attend as many sessions as they like.' },
+];
+---
+
+<Layout title="FAQ" description="Frequently asked questions about Rookie Rackets badminton workshops in Cary, NC.">
+
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="page-hero-bg" aria-hidden="true">
+      <div class="ph-orb" style="width:700px;height:700px;top:-30%;right:-5%;background:radial-gradient(ellipse at center,rgba(128,117,255,0.22) 0%,rgba(128,117,255,0.05) 45%,transparent 70%);animation-delay:0s"></div>
+      <div class="ph-orb" style="width:380px;height:380px;bottom:-15%;left:-5%;background:radial-gradient(ellipse at center,rgba(255,140,66,0.15) 0%,transparent 65%);animation-delay:-5s"></div>
+      <div class="ph-grid"></div>
+    </div>
+    <div class="container page-hero-inner">
+      <span class="label reveal">Questions & Answers</span>
+      <h1 class="reveal d1">Frequently Asked<br /><span class="grad">Questions</span></h1>
+      <p class="page-hero-lead reveal d2">Everything you need to know before your first session.</p>
+      <div class="page-hero-actions reveal d3">
+        <a href="/contact" class="btn btn-primary">Still have questions? →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ section -->
+  <section class="faq-section">
+    <div class="container faq-layout">
+
+      <aside class="sidebar">
+        <div class="sidebar-card reveal">
+          <h3>Still have questions?</h3>
+          <p>We're happy to help. Reach out any time.</p>
+          <a href="/contact" class="btn btn-primary">Contact Us →</a>
+        </div>
+        <div class="sidebar-card sidebar-lit reveal d2">
+          <div class="s-icon">🏸</div>
+          <h3>Ready to play?</h3>
+          <p>Sign up to get notified about upcoming sessions.</p>
+          <a href="/contact" class="btn btn-ghost">Sign Up</a>
+        </div>
+      </aside>
+
+      <dl class="faq-list" id="faq-list">
+        {faqs.map(({ q, a }, i) => (
+          <div class={`faq-item reveal d${Math.min(i + 1, 5)}`} data-faq>
+            <dt>
+              <span class="faq-n">{String(i + 1).padStart(2, '0')}</span>
+              <span class="faq-q">{q}</span>
+              <span class="faq-chevron" aria-hidden="true">›</span>
+            </dt>
+            <dd>{a}</dd>
+          </div>
+        ))}
+      </dl>
+
+    </div>
+  </section>
+
+  <!-- Bottom CTA -->
+  <section class="bottom-cta">
+    <div class="container">
+      <div class="bottom-cta-card reveal scale-in">
+        <div class="bottom-cta-orb bottom-cta-orb-a" aria-hidden="true"></div>
+        <div class="bottom-cta-orb bottom-cta-orb-b" aria-hidden="true"></div>
+        <div class="bottom-cta-body">
+          <span class="label label-accent">Get Started</span>
+          <h2>Ready to join us?</h2>
+          <p>Sign up for session notifications and be the first to know when new workshops open in Cary, NC.</p>
+          <div class="bottom-cta-btns">
+            <a href="/contact" class="btn btn-accent">Sign Up for Updates →</a>
+            <a href="/events" class="btn btn-ghost">View Events</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<script>
+  // Accordion behavior for FAQ items
+  document.querySelectorAll('[data-faq]').forEach(item => {
+    const dt = item.querySelector('dt');
+    const dd = item.querySelector('dd') as HTMLElement | null;
+    if (!dt || !dd) return;
+
+    dd.style.display = 'none';
+    dt.style.cursor = 'pointer';
+
+    dt.addEventListener('click', () => {
+      const open = item.classList.contains('faq-open');
+      document.querySelectorAll('[data-faq]').forEach(el => {
+        el.classList.remove('faq-open');
+        const d = el.querySelector('dd') as HTMLElement | null;
+        if (d) d.style.display = 'none';
+      });
+      if (!open) {
+        item.classList.add('faq-open');
+        dd.style.display = 'block';
+      }
+    });
+  });
+</script>
+
+<style>
+  /* FAQ section */
+  .faq-section {
+    background: var(--s1);
+    border-top: 1px solid var(--border);
+  }
+
+  .faq-layout {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  @media (max-width: 900px) {
+    .faq-layout { grid-template-columns: 1fr; }
+    .sidebar { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  }
+
+  @media (max-width: 550px) { .sidebar { grid-template-columns: 1fr; } }
+
+  .sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    position: sticky;
+    top: 5.5rem;
+  }
+
+  .sidebar-card {
+    background: var(--s2);
+    border: 1px solid var(--border);
+    border-radius: var(--r-lg);
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .sidebar-lit {
+    background: linear-gradient(140deg, var(--s3), var(--s4));
+    border-color: rgba(128,117,255,0.2);
+    box-shadow: var(--sh-glow-p);
+  }
+
+  .sidebar-card h3 { font-size: 1rem; }
+  .sidebar-card p { font-size: 0.875rem; color: var(--text-muted); line-height: 1.65; }
+  .s-icon { font-size: 2rem; margin-bottom: 0.25rem; }
+
+  /* FAQ list */
+  .faq-list { display: flex; flex-direction: column; gap: 0.625rem; }
+
+  .faq-item {
+    background: var(--s2);
+    border: 1px solid var(--border);
+    border-radius: var(--r-lg);
+    overflow: hidden;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+
+  .faq-item:hover { border-color: rgba(128,117,255,0.25); }
+
+  .faq-item.faq-open {
+    border-color: rgba(128,117,255,0.3);
+    box-shadow: var(--sh-glow-p);
+  }
+
+  dt {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.975rem;
+    color: var(--text);
+    padding: 1.5rem 1.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.875rem;
+    letter-spacing: -0.01em;
+    user-select: none;
+  }
+
+  .faq-q { flex: 1; }
+
+  .faq-n {
+    font-size: 0.68rem;
+    font-weight: 700;
+    color: var(--primary-lt);
+    background: var(--primary-dim);
+    border: 1px solid rgba(128,117,255,0.2);
+    padding: 0.2rem 0.55rem;
+    border-radius: 999px;
+    flex-shrink: 0;
+    letter-spacing: 0.04em;
+    font-family: var(--font-body);
+  }
+
+  .faq-chevron {
+    font-size: 1.25rem;
+    color: var(--text-subtle);
+    transition: transform 0.25s cubic-bezier(0.16,1,0.3,1);
+    flex-shrink: 0;
+    line-height: 1;
+  }
+
+  .faq-open .faq-chevron { transform: rotate(90deg); color: var(--primary-lt); }
+
+  dd {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.8;
+    padding: 0 1.75rem 1.5rem calc(1.5rem + 0.875rem + 0.875rem);
+  }
+</style>
