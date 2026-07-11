@@ -2,19 +2,20 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="Contact" description="Get in touch with Rookie Rackets or sign up for session notifications.">
+<Layout title="Contact" description="Sign up for Rookie Rackets session notifications or get in touch with us directly.">
 
   <!-- Page Hero -->
   <section class="page-hero">
     <div class="page-hero-bg" aria-hidden="true">
-      <div class="ph-orb" style="width:650px;height:650px;top:-25%;right:-8%;background:radial-gradient(ellipse at center,rgba(128,117,255,0.22) 0%,rgba(128,117,255,0.05) 45%,transparent 70%);animation-delay:0s"></div>
-      <div class="ph-orb" style="width:380px;height:380px;bottom:-15%;left:5%;background:radial-gradient(ellipse at center,rgba(255,140,66,0.16) 0%,transparent 65%);animation-delay:-6s"></div>
+      <div class="ph-photo" style="background-image:url('/images/IMG_7505.jpeg')"></div>
+      <div class="ph-orb" style="width:650px;height:650px;top:-25%;right:-8%;background:radial-gradient(ellipse at center,rgba(107,95,232,0.14) 0%,rgba(107,95,232,0.04) 45%,transparent 70%);animation-delay:0s"></div>
+      <div class="ph-orb" style="width:380px;height:380px;bottom:-15%;left:5%;background:radial-gradient(ellipse at center,rgba(240,120,48,0.12) 0%,transparent 65%);animation-delay:-6s"></div>
       <div class="ph-grid"></div>
     </div>
     <div class="container page-hero-inner">
-      <span class="label reveal">Get in Touch</span>
-      <h1 class="reveal d1">We'd love to<br /><span class="grad">hear from you.</span></h1>
-      <p class="page-hero-lead reveal d2">Questions, feedback, or ready to sign up? Reach out any time — we respond quickly.</p>
+      <span class="label reveal">Sign Up</span>
+      <h1 class="reveal d1">Get notified when<br /><span class="grad">spots open up.</span></h1>
+      <p class="page-hero-lead reveal d2">Fill out the form and we'll reach out when new sessions are announced. Free, no commitment.</p>
     </div>
   </section>
 
@@ -22,25 +23,25 @@ import Layout from '../layouts/Layout.astro';
   <section class="contact-section">
     <div class="container contact-grid">
 
+      <!-- Left: contact info -->
       <div class="contact-info reveal from-left">
-        <span class="label">Contact Info</span>
         <h2>Reach us directly</h2>
         <ul class="info-list">
-          <li>
+          <li class="info-email">
             <div class="info-icon">📧</div>
             <div>
               <strong>Email</strong>
               <a href="mailto:teamrookierackets@gmail.com">teamrookierackets@gmail.com</a>
             </div>
           </li>
-          <li>
+          <li class="info-phone">
             <div class="info-icon">📞</div>
             <div>
               <strong>Phone</strong>
               <a href="tel:+14142462382">414-246-2382</a>
             </div>
           </li>
-          <li>
+          <li class="info-location">
             <div class="info-icon">📍</div>
             <div>
               <strong>Location</strong>
@@ -49,12 +50,7 @@ import Layout from '../layouts/Layout.astro';
           </li>
         </ul>
 
-        <!-- Quick trust signals -->
         <div class="trust-row">
-          <div class="trust-item">
-            <span class="trust-icon">⚡</span>
-            <span>Quick response</span>
-          </div>
           <div class="trust-item">
             <span class="trust-icon">🔒</span>
             <span>No spam, ever</span>
@@ -66,25 +62,118 @@ import Layout from '../layouts/Layout.astro';
         </div>
       </div>
 
+      <!-- Right: sign-up form -->
       <div class="signup-card reveal">
         <div class="signup-top">
           <div class="signup-emoji-wrap">🏸</div>
           <div>
             <h2>Sign Up for Updates</h2>
-            <p>Be the first to know when new sessions open.</p>
+            <p>Takes under 60 seconds. We'll only email about sessions.</p>
           </div>
         </div>
-        <div class="signup-body">
-          <p>Fill out our Google Form and we'll notify you by email when new workshops are scheduled in Cary, NC. Spots fill fast — don't miss out.</p>
-          <a href="https://forms.google.com" class="btn btn-accent" target="_blank" rel="noopener">
-            Open Sign-Up Form →
-          </a>
-          <div class="signup-features">
-            <span>✓ Takes under 60 seconds</span>
-            <span>✓ We only email about sessions</span>
-            <span>✓ Unsubscribe any time</span>
-          </div>
+
+        <!-- Success state (hidden by default) -->
+        <div class="form-success" id="form-success" aria-live="polite">
+          <div class="success-icon">✅</div>
+          <h3>You're on the list!</h3>
+          <p>Thanks for signing up. We'll be in touch as soon as new sessions are announced in Cary, NC.</p>
+          <button class="btn btn-ghost" id="reset-btn" type="button">Submit another response</button>
         </div>
+
+        <!-- The form -->
+        <form
+          id="signup-form"
+          class="signup-form"
+          novalidate
+        >
+          <!-- Web3Forms hidden fields -->
+          <!-- ⚠️ Replace YOUR_ACCESS_KEY with your key from web3forms.com -->
+          <input type="hidden" name="access_key" value="4dadfc44-7e4a-44e7-b323-e98832336206" />
+          <input type="hidden" name="subject" value="New Rookie Rackets Sign-Up" />
+          <input type="hidden" name="from_name" value="Rookie Rackets Website" />
+          <input type="hidden" name="redirect" value="false" />
+          <!-- Honeypot anti-spam -->
+          <input type="checkbox" name="botcheck" style="display:none" />
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="parent-name">Parent / Guardian Name <span class="req">*</span></label>
+              <input type="text" id="parent-name" name="Parent Name" required placeholder="Jane Smith" />
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Number <span class="req">*</span></label>
+              <input type="tel" id="phone" name="Phone Number" required placeholder="(919) 555-0123" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email Address <span class="req">*</span></label>
+            <input type="email" id="email" name="Email Address" required placeholder="jane@example.com" />
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="child-name">Child's Name <span class="req">*</span></label>
+              <input type="text" id="child-name" name="Child's Name" required placeholder="Alex Smith" />
+            </div>
+            <div class="form-group">
+              <label for="grade">Grade <span class="opt">(optional)</span></label>
+              <select id="grade" name="Grade">
+                <option value="">Select grade…</option>
+                <option>Kindergarten</option>
+                <option>1st Grade</option>
+                <option>2nd Grade</option>
+                <option>3rd Grade</option>
+                <option>4th Grade</option>
+                <option>5th Grade</option>
+                <option>6th Grade</option>
+                <option>7th Grade</option>
+                <option>8th Grade</option>
+                <option>9th Grade</option>
+                <option>10th Grade</option>
+                <option>11th Grade</option>
+                <option>12th Grade</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="school">School <span class="req">*</span></label>
+            <input type="text" id="school" name="School" required placeholder="Carpenter Elementary" />
+          </div>
+
+          <div class="form-group">
+            <label for="workshops">Which workshops is your child interested in? <span class="opt">(optional)</span></label>
+            <select id="workshops" name="Workshop Interest">
+              <option value="">Select a workshop type…</option>
+              <option>Beginner Fundamentals</option>
+              <option>Intermediate Skills</option>
+              <option>Advanced Training</option>
+              <option>Open Play / Practice</option>
+              <option>Not sure yet</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="how-heard">How did you hear about us? <span class="opt">(optional)</span></label>
+            <input type="text" id="how-heard" name="How Heard" placeholder="Friend, social media, school, etc." />
+          </div>
+
+          <div class="form-group">
+            <label for="comments">Questions or comments <span class="opt">(optional)</span></label>
+            <textarea id="comments" name="Questions and Comments" rows="3" placeholder="Anything you'd like us to know…"></textarea>
+          </div>
+
+          <!-- Error message -->
+          <div class="form-error" id="form-error" aria-live="polite"></div>
+
+          <button type="submit" class="btn btn-accent submit-btn" id="submit-btn">
+            <span id="btn-text">Sign Me Up →</span>
+            <span id="btn-loading" style="display:none">Sending…</span>
+          </button>
+
+          <p class="form-note">Your information stays private. We only use it to notify you about Rookie Rackets sessions.</p>
+        </form>
       </div>
 
     </div>
@@ -98,11 +187,10 @@ import Layout from '../layouts/Layout.astro';
         <div class="bottom-cta-orb bottom-cta-orb-b" aria-hidden="true"></div>
         <div class="bottom-cta-body">
           <span class="label">Questions?</span>
-          <h2>We're happy to help</h2>
-          <p>Whether you're a parent, student, or just curious — email us or check our FAQ for quick answers.</p>
+          <h2>Email us directly.</h2>
+          <p>Questions, ideas, or just want to know more? Don't hesitate to reach out — we'd love to hear from you.</p>
           <div class="bottom-cta-btns">
             <a href="mailto:teamrookierackets@gmail.com" class="btn btn-primary">Email Us →</a>
-            <a href="/faq" class="btn btn-ghost">View FAQ</a>
           </div>
         </div>
       </div>
@@ -112,7 +200,7 @@ import Layout from '../layouts/Layout.astro';
 </Layout>
 
 <style>
-  /* Contact section */
+  /* ── Contact layout ──────────────────────────── */
   .contact-section {
     background: var(--s1);
     border-top: 1px solid var(--border);
@@ -120,31 +208,69 @@ import Layout from '../layouts/Layout.astro';
 
   .contact-grid {
     display: grid;
-    grid-template-columns: 1fr 1.4fr;
-    gap: 5rem;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 4rem;
     align-items: start;
   }
 
-  @media (max-width: 820px) { .contact-grid { grid-template-columns: 1fr; gap: 3rem; } }
+  @media (max-width: 860px) { .contact-grid { grid-template-columns: 1fr; gap: 3rem; } }
 
+  /* ── Contact info ────────────────────────────── */
   .contact-info h2 { margin-bottom: 2rem; }
 
   .info-list { list-style: none; display: flex; flex-direction: column; gap: 0.875rem; }
 
   .info-list li {
-    background: var(--s2);
-    border: 1px solid var(--border);
     border-radius: var(--r-lg);
     padding: 1.25rem 1.5rem;
     display: flex;
     align-items: flex-start;
     gap: 1.25rem;
-    transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+    transition: box-shadow 0.2s, transform 0.2s;
   }
 
-  .info-list li:hover { border-color: var(--border-md); box-shadow: var(--sh); transform: translateX(5px); }
+  .info-list li:hover { box-shadow: var(--sh); transform: translateX(5px); }
 
-  .info-icon { font-size: 1.5rem; flex-shrink: 0; }
+  /* Email tab — orange */
+  .info-email {
+    background: linear-gradient(135deg, rgba(240,120,48,0.1), rgba(240,120,48,0.04));
+    border: 1px solid rgba(240,120,48,0.3);
+  }
+  .info-email .info-icon { background: rgba(240,120,48,0.15); border-color: rgba(240,120,48,0.25); }
+  .info-email strong { color: #c45c18; }
+  .info-email a { color: #c45c18; }
+  .info-email a:hover { color: var(--accent); }
+
+  /* Phone tab — purple */
+  .info-phone {
+    background: linear-gradient(135deg, rgba(117,104,240,0.1), rgba(117,104,240,0.04));
+    border: 1px solid rgba(117,104,240,0.3);
+  }
+  .info-phone .info-icon { background: rgba(117,104,240,0.15); border-color: rgba(117,104,240,0.25); }
+  .info-phone strong { color: var(--primary-dk); }
+  .info-phone a { color: var(--primary-dk); }
+  .info-phone a:hover { color: var(--primary); }
+
+  /* Location tab — green */
+  .info-location {
+    background: linear-gradient(135deg, rgba(52,199,120,0.1), rgba(52,199,120,0.04));
+    border: 1px solid rgba(52,199,120,0.3);
+  }
+  .info-location .info-icon { background: rgba(52,199,120,0.15); border-color: rgba(52,199,120,0.25); }
+  .info-location strong { color: #1e7a4a; }
+  .info-location span { color: #1e7a4a; }
+
+  .info-icon {
+    font-size: 1.4rem;
+    flex-shrink: 0;
+    width: 46px;
+    height: 46px;
+    border-radius: var(--r);
+    border: 1px solid transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
   .info-list strong {
     display: block;
@@ -152,14 +278,11 @@ import Layout from '../layouts/Layout.astro';
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    color: var(--text-subtle);
     margin-bottom: 0.3rem;
   }
 
-  .info-list a, .info-list span { font-size: 0.95rem; color: var(--text); font-weight: 500; }
-  .info-list a:hover { color: var(--primary-lt); text-decoration: underline; }
+  .info-list a, .info-list span { font-size: 0.95rem; font-weight: 600; }
 
-  /* Trust signals */
   .trust-row {
     display: flex;
     flex-wrap: wrap;
@@ -180,59 +303,240 @@ import Layout from '../layouts/Layout.astro';
 
   .trust-icon { font-size: 1rem; }
 
-  /* Signup card */
+  /* ── Signup card ─────────────────────────────── */
   .signup-card {
-    background: linear-gradient(140deg, var(--s2), var(--s3));
-    border: 1px solid rgba(128,117,255,0.2);
+    background: #ffffff;
+    border: 1px solid rgba(117,104,240,0.2);
     border-radius: var(--r-xl);
     overflow: hidden;
-    box-shadow: var(--sh-glow-p), var(--sh);
+    box-shadow: var(--sh-glow-p), var(--sh-lg);
   }
 
   .signup-top {
     display: flex;
     align-items: center;
     gap: 1.25rem;
-    padding: 2rem 2.25rem;
-    border-bottom: 1px solid var(--border);
-    background: rgba(128,117,255,0.06);
+    padding: 1.75rem 2.25rem;
+    border-bottom: 1px solid rgba(117,104,240,0.12);
+    background: linear-gradient(135deg, #7568f0 0%, #9a8fff 50%, #f07830 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .signup-top::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.14), transparent);
+    pointer-events: none;
   }
 
   .signup-emoji-wrap {
-    font-size: 2.5rem;
+    font-size: 1.8rem;
     flex-shrink: 0;
-    width: 58px;
-    height: 58px;
-    background: rgba(128,117,255,0.15);
-    border: 1px solid rgba(128,117,255,0.25);
+    width: 52px;
+    height: 52px;
+    background: rgba(255,255,255,0.2);
+    border: 1px solid rgba(255,255,255,0.3);
     border-radius: var(--r);
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
+    z-index: 1;
   }
 
-  .signup-top h2 { font-size: 1.3rem; margin-bottom: 0.25rem; }
-  .signup-top p { color: var(--text-muted); font-size: 0.875rem; }
+  .signup-top h2 { font-size: 1.15rem; margin-bottom: 0.2rem; color: #fff; position: relative; z-index: 1; }
+  .signup-top p { color: rgba(255,255,255,0.8); font-size: 0.84rem; position: relative; z-index: 1; }
 
-  .signup-body {
+  /* ── Form ────────────────────────────────────── */
+  .signup-form {
     padding: 2rem 2.25rem;
     display: flex;
     flex-direction: column;
-    gap: 1.25rem;
+    gap: 1.1rem;
+    background: linear-gradient(180deg, rgba(117,104,240,0.03) 0%, transparent 30%);
   }
 
-  .signup-body > p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.75; }
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
 
-  .signup-features {
+  @media (max-width: 560px) { .form-row { grid-template-columns: 1fr; } }
+
+  .form-group {
     display: flex;
     flex-direction: column;
     gap: 0.4rem;
-    padding-top: 0.25rem;
-    border-top: 1px solid var(--border);
   }
 
-  .signup-features span {
+  .form-group label {
     font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+
+  .req { color: var(--accent); font-size: 0.85rem; }
+  .opt { font-weight: 400; color: var(--text-subtle); font-size: 0.75rem; }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    background: #fff;
+    border: 1.5px solid rgba(117,104,240,0.18);
+    border-radius: var(--r);
+    padding: 0.65rem 0.875rem;
+    font-size: 0.9rem;
+    color: var(--text);
+    font-family: var(--font-body);
+    transition: border-color 0.15s, box-shadow 0.15s, background 0.15s;
+    width: 100%;
+  }
+
+  .form-group input::placeholder,
+  .form-group textarea::placeholder { color: var(--text-subtle); }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(117,104,240,0.18);
+    background: rgba(117,104,240,0.02);
+  }
+
+  .form-group textarea { resize: vertical; min-height: 80px; }
+
+  .form-group select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%238880b0' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 0.75rem center; padding-right: 2.25rem; }
+
+  .form-error {
+    font-size: 0.84rem;
+    color: #dc2626;
+    display: none;
+    padding: 0.6rem 0.875rem;
+    background: rgba(220,38,38,0.06);
+    border: 1px solid rgba(220,38,38,0.2);
+    border-radius: var(--r-sm);
+  }
+
+  .form-error.visible { display: block; }
+
+  .submit-btn {
+    width: 100%;
+    justify-content: center;
+    font-size: 0.975rem;
+    padding: 0.95rem;
+    background: linear-gradient(135deg, var(--accent), #ff9048);
+    box-shadow: 0 6px 24px rgba(240,120,48,0.35);
+    border-radius: var(--r);
+  }
+  .submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 32px rgba(240,120,48,0.45);
+    text-decoration: none;
+  }
+  .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+  .form-note {
+    font-size: 0.75rem;
     color: var(--text-subtle);
+    text-align: center;
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  /* ── Success state ───────────────────────────── */
+  .form-success {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.75rem;
+    padding: 3rem 2.25rem;
+  }
+
+  .form-success.visible { display: flex; }
+
+  .success-icon { font-size: 3rem; }
+
+  .form-success h3 { font-size: 1.25rem; margin: 0; }
+  .form-success p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.75; max-width: 340px; }
+
+  @media (max-width: 500px) {
+    .signup-form { padding: 1.5rem; }
+    .signup-top { padding: 1.5rem; }
   }
 </style>
+
+<script>
+  function initForm() {
+    const form = document.getElementById('signup-form') as HTMLFormElement | null;
+    const successDiv = document.getElementById('form-success');
+    const errorDiv = document.getElementById('form-error');
+    const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement | null;
+    const btnText = document.getElementById('btn-text');
+    const btnLoading = document.getElementById('btn-loading');
+    const resetBtn = document.getElementById('reset-btn');
+
+    if (!form) return;
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      // Basic required field check
+      const required = form.querySelectorAll('[required]') as NodeListOf<HTMLInputElement>;
+      let valid = true;
+      required.forEach(field => {
+        if (!field.value.trim()) { field.style.borderColor = '#dc2626'; valid = false; }
+        else { field.style.borderColor = ''; }
+      });
+
+      if (!valid) {
+        if (errorDiv) { errorDiv.textContent = 'Please fill in all required fields.'; errorDiv.classList.add('visible'); }
+        return;
+      }
+
+      if (errorDiv) errorDiv.classList.remove('visible');
+
+      // Show loading state
+      if (submitBtn) submitBtn.disabled = true;
+      if (btnText) btnText.style.display = 'none';
+      if (btnLoading) btnLoading.style.display = 'inline';
+
+      try {
+        const data = new FormData(form);
+        const res = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          body: data,
+        });
+        const json = await res.json();
+
+        if (json.success) {
+          form.style.display = 'none';
+          if (successDiv) successDiv.classList.add('visible');
+        } else {
+          throw new Error(json.message || 'Submission failed');
+        }
+      } catch (err: unknown) {
+        const msg = err instanceof Error ? err.message : 'Something went wrong. Please email us directly.';
+        if (errorDiv) { errorDiv.textContent = msg; errorDiv.classList.add('visible'); }
+        if (submitBtn) submitBtn.disabled = false;
+        if (btnText) btnText.style.display = 'inline';
+        if (btnLoading) btnLoading.style.display = 'none';
+      }
+    });
+
+    resetBtn?.addEventListener('click', () => {
+      form.reset();
+      form.style.display = '';
+      if (successDiv) successDiv.classList.remove('visible');
+    });
+  }
+
+  document.addEventListener('astro:page-load', initForm);
+</script>

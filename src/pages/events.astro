@@ -5,27 +5,28 @@ const details = [
   { icon: '⏱', label: 'Duration', desc: 'Sessions typically run 1–2 hours.' },
   { icon: '📍', label: 'Location', desc: 'Cary, NC 27519. Exact venue shared with registered participants.' },
   { icon: '🏸', label: 'Equipment', desc: 'All equipment provided. Wear athletic shoes and comfortable clothes.' },
-  { icon: '👶', label: 'Age & Skill', desc: 'Open to youth of all ages and experience levels. Beginners especially welcome.' },
-  { icon: '💵', label: 'Cost', desc: 'Completely free. No registration fee, no hidden costs whatsoever.' },
+  { icon: '🧑', label: 'Age & Skill', desc: 'Open to all ages and experience levels. Beginners especially welcome.' },
 ];
 ---
 
-<Layout title="Events" description="Upcoming Rookie Rackets badminton workshops in Cary, NC — free for all youth.">
+<Layout title="Events" description="Upcoming Rookie Rackets badminton workshops in NC — free for all ages.">
 
   <!-- Page Hero -->
   <section class="page-hero">
     <div class="page-hero-bg" aria-hidden="true">
-      <div class="ph-orb" style="width:700px;height:700px;top:-30%;right:-5%;background:radial-gradient(ellipse at center,rgba(255,140,66,0.2) 0%,rgba(255,140,66,0.05) 45%,transparent 70%);animation-delay:0s"></div>
-      <div class="ph-orb" style="width:400px;height:400px;bottom:-15%;left:-5%;background:radial-gradient(ellipse at center,rgba(128,117,255,0.18) 0%,transparent 65%);animation-delay:-5s"></div>
+      <div class="ph-photo" style="background-image:url('/images/IMG_8788.jpeg')"></div>
+      <div class="ph-orb" style="width:700px;height:700px;top:-30%;right:-5%;background:radial-gradient(ellipse at center,rgba(240,120,48,0.15) 0%,rgba(240,120,48,0.04) 45%,transparent 70%);animation-delay:0s"></div>
+      <div class="ph-orb" style="width:400px;height:400px;bottom:-15%;left:-5%;background:radial-gradient(ellipse at center,rgba(107,95,232,0.12) 0%,transparent 65%);animation-delay:-5s"></div>
       <div class="ph-grid"></div>
     </div>
     <div class="container page-hero-inner">
-      <span class="label label-accent reveal">Cary, NC</span>
+      <span class="label label-accent reveal">NC Workshops</span>
       <h1 class="reveal d1">Upcoming<br /><span class="grad">Events</span></h1>
-      <p class="page-hero-lead reveal d2">Free badminton workshops open to all youth. All skill levels welcome — just bring yourself.</p>
+      <p class="page-hero-lead reveal d2">Free badminton workshops open to all ages. No experience or equipment needed.</p>
       <div class="page-hero-actions reveal d3">
         <a href="/contact" class="btn btn-accent">Sign Up for Updates →</a>
         <a href="#what-to-expect" class="btn btn-ghost">What to Expect</a>
+        <a href="/history" class="btn btn-ghost">View Past Events →</a>
       </div>
     </div>
   </section>
@@ -40,7 +41,7 @@ const details = [
           <span class="notify-emoji">🔔</span>
           <div>
             <h2>Stay in the loop</h2>
-            <p>We run workshops throughout the year. Sign up and we'll notify you the moment new sessions open — spots fill fast.</p>
+            <p>We run workshops throughout the year. Sign up and we'll email you when new sessions open.</p>
           </div>
         </div>
         <a href="/contact" class="btn btn-accent notify-cta">
@@ -51,17 +52,142 @@ const details = [
   </section>
 
   <!-- Schedule -->
-  <section class="schedule">
+  <section class="schedule" id="schedule">
     <div class="container">
       <div class="reveal" style="margin-bottom:2.5rem">
-        <span class="label">Schedule</span>
         <h2>Upcoming Sessions</h2>
       </div>
-      <div class="empty reveal scale-in">
-        <div class="empty-icon">🏸</div>
-        <h3>No sessions scheduled yet</h3>
-        <p>Sign up below and we'll email you the moment a new session is announced. Don't miss out.</p>
-        <a href="/contact" class="btn btn-primary">Sign Up for Notifications</a>
+
+      <!-- Mini Calendar -->
+      <div class="cal-outer reveal d1">
+        <div class="cal-nav">
+          <button class="cal-btn" id="cal-prev" aria-label="Previous month">&#8249;</button>
+          <span class="cal-month-label" id="cal-month-label">June 2026</span>
+          <button class="cal-btn" id="cal-next" aria-label="Next month">&#8250;</button>
+        </div>
+        <div class="cal-weekdays">
+          <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span>
+        </div>
+        <div class="cal-days" id="cal-days"></div>
+        <div class="cal-event-chips" id="cal-event-chips"></div>
+        <p class="cal-legend">Click an event chip to jump to details below.</p>
+      </div>
+
+      <!-- Side-by-side event tiles -->
+      <div class="event-tiles">
+
+        <div class="event-tile reveal d1" id="tile-boys-club">
+          <div class="tile-photo" style="background-image:url('/images/IMG_8788.jpeg')" aria-hidden="true"></div>
+          <div class="event-tile-body">
+            <div class="tile-top">
+              <div class="tile-logo tile-logo-bcr">BCR</div>
+              <span class="tile-badge tile-badge-green">Next Up</span>
+            </div>
+            <h3>Boys Club of Raleigh</h3>
+            <div class="tile-meta">
+              <span>📅 Date TBD</span>
+              <span>⏰ 4:00 – 5:00 PM</span>
+              <span>📍 Boys Club of Raleigh</span>
+            </div>
+            <p class="tile-desc">An intro session at the Boys Club of Raleigh. Drop in and give badminton a try.</p>
+            <div class="tile-pills">
+              <span class="event-pill">✓ Free</span>
+              <span class="event-pill">✓ Equipment provided</span>
+            </div>
+            <a href="/contact" class="btn btn-accent tile-cta">Sign Up for Updates →</a>
+          </div>
+        </div>
+
+        <div class="event-tile reveal d2" id="tile-wrts">
+          <div class="tile-photo" style="background-image:url('/images/IMG_8788.jpeg')" aria-hidden="true"></div>
+          <div class="event-tile-body">
+            <div class="tile-top">
+              <div class="tile-logo tile-logo-wrts">WR</div>
+              <span class="tile-badge tile-badge-green">Next Up</span>
+            </div>
+            <h3>Grand Opening — We Rock the Spectrum</h3>
+            <div class="tile-meta">
+              <span>📅 June 29, 2026</span>
+              <span>⏰ Time TBD</span>
+              <span>📍 Durham, NC</span>
+            </div>
+            <p class="tile-desc">Celebrate the grand opening of We Rock the Spectrum Durham with an intro badminton session for all ages.</p>
+            <div class="tile-pills">
+              <span class="event-pill">✓ Free</span>
+              <span class="event-pill">✓ Equipment provided</span>
+            </div>
+            <a href="/contact" class="btn btn-accent tile-cta">Sign Up for Updates →</a>
+          </div>
+        </div>
+
+        <div class="event-tile reveal d3" id="tile-passmore">
+          <div class="tile-photo" style="background-image:url('/images/workshop-session.png')" aria-hidden="true"></div>
+          <div class="event-tile-body">
+            <div class="tile-top">
+              <div class="tile-logo tile-logo-psc">PSC</div>
+              <span class="tile-badge">Upcoming</span>
+            </div>
+            <h3>Family Workshop — Passmore Senior Center</h3>
+            <div class="tile-meta">
+              <span>📅 July 29, 2026</span>
+              <span>⏰ 3:00 – 5:00 PM</span>
+              <span>📍 Passmore Senior Center</span>
+            </div>
+            <p class="tile-desc">A family badminton workshop at Passmore Senior Center. Bring the whole family; beginners of all ages welcome.</p>
+            <div class="tile-pills">
+              <span class="event-pill">✓ Free</span>
+              <span class="event-pill">✓ All ages</span>
+            </div>
+            <a href="/contact" class="btn btn-primary tile-cta">Get Notified →</a>
+          </div>
+        </div>
+
+        <div class="event-tile reveal d4" id="tile-vibha">
+          <div class="tile-photo" style="background-image:url('/images/Screenshot%202026-06-18%20180200.png')" aria-hidden="true"></div>
+          <div class="event-tile-body">
+            <div class="tile-top">
+              <div class="tile-logo tile-logo-vibha">V</div>
+              <span class="tile-badge">Upcoming</span>
+            </div>
+            <h3>Summer Camp — Vibha Partnership</h3>
+            <div class="tile-meta">
+              <span>📅 Summer 2026</span>
+              <span>⏰ 3 hrs/day</span>
+              <span>📍 Location TBD</span>
+            </div>
+            <p class="tile-desc">A full week of 3-hour sessions in partnership with Vibha. We'll focus on full game strategy, advanced drills, and competitive scrimmages. Location to be announced.</p>
+            <div class="tile-pills">
+              <span class="event-pill">✓ Free</span>
+              <span class="event-pill">✓ 12–15 spots</span>
+            </div>
+            <a href="/contact" class="btn btn-primary tile-cta">Get Notified →</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Photo Strip -->
+  <section class="photo-strip">
+    <div class="container">
+      <div class="strip-header reveal">
+        <h2>From our sessions</h2>
+        <p>A look at what happens when everyone shows up ready to play.</p>
+      </div>
+      <div class="strip-grid">
+        <div class="strip-cell strip-tall reveal d1">
+          <img src="/images/IMG_8787.jpeg" alt="Coach demonstrating at the net" loading="lazy" />
+        </div>
+        <div class="strip-cell reveal d2">
+          <img src="/images/workshop-session.png" alt="Group session at Carpenter Elementary" loading="lazy" />
+        </div>
+        <div class="strip-cell reveal d3">
+          <img src="/images/IMG_0519.jpeg" alt="Tournament registration desk" loading="lazy" />
+        </div>
+        <div class="strip-cell reveal d4">
+          <img src="/images/Screenshot%202026-06-18%20180309.png" alt="Community outreach at a local event" loading="lazy" />
+        </div>
       </div>
     </div>
   </section>
@@ -70,7 +196,6 @@ const details = [
   <section class="details" id="what-to-expect">
     <div class="container">
       <div class="reveal" style="margin-bottom:2.5rem">
-        <span class="label">What to Expect</span>
         <h2>Everything you need to know</h2>
       </div>
       <div class="details-grid">
@@ -96,7 +221,7 @@ const details = [
         <div class="bottom-cta-body">
           <span class="label">Ready to Play?</span>
           <h2>Join the waitlist today</h2>
-          <p>Be the first to know when new sessions are announced. 100% free, no commitment.</p>
+          <p>We'll email you when new sessions are announced. Free, no commitment.</p>
           <div class="bottom-cta-btns">
             <a href="/contact" class="btn btn-accent">Sign Up →</a>
             <a href="/about" class="btn btn-ghost">About Us</a>
@@ -109,14 +234,14 @@ const details = [
 </Layout>
 
 <style>
-  /* Notify band */
-  .notify-band { background: var(--s1); border-top: 1px solid var(--border); padding: 4rem 0; }
+  /* ── Notify band ─────────────────────────────── */
+  .notify-band { background: var(--s1); border-top: 1px solid var(--border); padding: 1.75rem 0; }
 
   .notify-inner {
     background: linear-gradient(135deg, var(--s2) 0%, var(--s3) 60%, var(--s4) 100%);
-    border: 1px solid rgba(255,140,66,0.2);
+    border: 1px solid rgba(240,120,48,0.2);
     border-radius: var(--r-xl);
-    padding: 2.5rem 3rem;
+    padding: 1.25rem 2rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -147,45 +272,347 @@ const details = [
     z-index: 1;
   }
 
-  .notify-emoji { font-size: 2.5rem; flex-shrink: 0; }
+  .notify-emoji { font-size: 2rem; flex-shrink: 0; }
 
-  .notify-content h2 { font-size: 1.4rem; margin-bottom: 0.4rem; }
-  .notify-content p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.7; max-width: 440px; }
+  .notify-content h2 { font-size: 1rem; margin-bottom: 0.2rem; }
+  .notify-content p { color: var(--text-muted); font-size: 0.88rem; line-height: 1.7; max-width: 440px; }
 
   .notify-cta { position: relative; z-index: 1; flex-shrink: 0; }
 
   @media (max-width: 680px) {
-    .notify-inner { padding: 2rem 1.5rem; flex-direction: column; align-items: flex-start; }
+    .notify-inner { padding: 1.5rem; flex-direction: column; align-items: flex-start; }
   }
 
-  /* Schedule */
+  /* ── Schedule ────────────────────────────────── */
   .schedule { background: var(--bg); border-top: 1px solid var(--border); }
 
-  .empty {
-    background: var(--s1);
-    border: 2px dashed rgba(128,117,255,0.2);
+  /* Calendar */
+  .cal-outer {
+    background: var(--s2);
+    border: 1px solid var(--border);
     border-radius: var(--r-xl);
-    padding: 5rem 2rem;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-    transition: border-color 0.2s;
+    padding: 1.75rem 2rem;
+    margin-bottom: 2rem;
+    max-width: 520px;
   }
 
-  .empty:hover { border-color: rgba(128,117,255,0.35); }
+  .cal-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.25rem;
+  }
 
-  .empty-icon { font-size: 3.5rem; }
-  .empty h3 { font-size: 1.2rem; }
-  .empty p { color: var(--text-muted); font-size: 0.95rem; max-width: 340px; line-height: 1.7; }
+  .cal-month-label {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text);
+  }
 
-  /* Details */
+  .cal-btn {
+    background: var(--s3);
+    border: 1px solid var(--border);
+    border-radius: var(--r-sm);
+    width: 32px; height: 32px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.15s, color 0.15s;
+  }
+  .cal-btn:hover { background: var(--s4); color: var(--text); }
+
+  .cal-weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 2px;
+    margin-bottom: 4px;
+  }
+  .cal-weekdays span {
+    text-align: center;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--text-subtle);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 0.3rem 0;
+  }
+
+  .cal-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 2px;
+  }
+
+  .cal-day {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.82rem;
+    border-radius: var(--r-sm);
+    color: var(--text-muted);
+    position: relative;
+    transition: background 0.15s;
+  }
+
+  .cal-day.today {
+    background: rgba(107,95,232,0.1);
+    color: var(--primary);
+    font-weight: 700;
+  }
+
+  .cal-day.has-event {
+    cursor: pointer;
+    font-weight: 700;
+    color: var(--text);
+    background: rgba(240,120,48,0.1);
+  }
+  .cal-day.has-event:hover { background: rgba(240,120,48,0.22); }
+
+  .cal-day.has-event::after {
+    content: '';
+    position: absolute;
+    bottom: 3px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  .cal-day.empty { opacity: 0; pointer-events: none; }
+
+  .cal-event-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+
+  .cal-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: rgba(240,120,48,0.1);
+    border: 1px solid rgba(240,120,48,0.25);
+    border-radius: 999px;
+    padding: 0.3rem 0.8rem;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--accent);
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s;
+  }
+  .cal-chip:hover { background: rgba(240,120,48,0.18); border-color: rgba(240,120,48,0.4); }
+  .cal-chip .chip-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+
+  .cal-legend {
+    font-size: 0.75rem;
+    color: var(--text-subtle);
+    margin-top: 0.75rem;
+    margin-bottom: 0;
+  }
+
+  /* Tile photo banner */
+  .tile-photo {
+    height: 160px;
+    background-size: cover;
+    background-position: center;
+    flex-shrink: 0;
+    filter: brightness(0.88) saturate(0.9);
+    transition: filter 0.3s;
+  }
+
+  .event-tile:hover .tile-photo { filter: brightness(0.95) saturate(1.05); }
+
+  /* Event tiles */
+  .event-tiles {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+  }
+
+  @media (max-width: 700px) {
+    .event-tiles { grid-template-columns: 1fr; }
+  }
+
+  .event-tile {
+    background: var(--s2);
+    border: 1px solid var(--border);
+    border-radius: var(--r-xl);
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    cursor: default;
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+    scroll-margin-top: 100px;
+  }
+
+  .event-tile-body {
+    padding: 1.75rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    flex: 1;
+  }
+
+  .event-tile:hover { transform: translateY(-4px); box-shadow: var(--sh); border-color: var(--border-md); }
+
+  #tile-boys-club {
+    border-color: rgba(52,211,153,0.28);
+    box-shadow: 0 0 0 1px rgba(52,211,153,0.1), var(--sh);
+  }
+
+  #tile-boys-club .event-tile-body {
+    background: linear-gradient(140deg, var(--s2), var(--s3));
+  }
+
+  .tile-top {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .tile-logo {
+    width: 48px; height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+    color: #fff;
+    flex-shrink: 0;
+  }
+
+  .tile-logo-bcr { background: linear-gradient(135deg, #e67e22, #d35400); }
+  .tile-logo-wrts { background: linear-gradient(135deg, #7568f0, #9b59b6); font-size: 0.7rem; }
+  .tile-logo-psc { background: linear-gradient(135deg, #27ae60, #1e8449); font-size: 0.7rem; }
+  .tile-logo-vibha { background: linear-gradient(135deg, #6b5fe8, #5a4fd8); font-size: 1rem; }
+
+  .tile-badge {
+    display: inline-block;
+    background: rgba(107,95,232,0.12);
+    border: 1px solid rgba(107,95,232,0.22);
+    border-radius: 999px;
+    padding: 0.25rem 0.7rem;
+    font-size: 0.69rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--primary);
+  }
+
+  .tile-badge-green {
+    background: rgba(52,211,153,0.12);
+    border-color: rgba(52,211,153,0.28);
+    color: #16a37a;
+  }
+
+  .event-tile h3 { font-size: 1.1rem; margin: 0; }
+
+  .tile-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem 1rem;
+    font-size: 0.81rem;
+    color: var(--text-muted);
+  }
+
+  .tile-desc { color: var(--text-muted); font-size: 0.9rem; line-height: 1.7; margin: 0; }
+
+  .tile-pills { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+
+  .event-pill {
+    font-size: 0.76rem;
+    font-weight: 600;
+    background: var(--s1);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 0.22rem 0.65rem;
+    color: var(--text-muted);
+  }
+
+  .tile-cta { align-self: flex-start; margin-top: auto; }
+
+  .event-tile.tile-highlighted {
+    border-color: rgba(117,104,240,0.55) !important;
+    box-shadow: 0 0 0 3px rgba(117,104,240,0.18), 0 0 40px rgba(117,104,240,0.22), var(--sh) !important;
+    transform: translateY(-4px) !important;
+    animation: tileFlash 0.6s ease-out;
+  }
+
+  @keyframes tileFlash {
+    0%   { box-shadow: 0 0 0 6px rgba(117,104,240,0.4), 0 0 60px rgba(117,104,240,0.35); }
+    100% { box-shadow: 0 0 0 3px rgba(117,104,240,0.18), 0 0 40px rgba(117,104,240,0.22), var(--sh); }
+  }
+
+  @media (max-width: 500px) {
+    .event-tile-body { padding: 1.25rem 1.5rem; }
+    .cal-outer { padding: 1.25rem; }
+  }
+
+  /* ── Photo Strip ─────────────────────────────── */
+  .photo-strip {
+    background: var(--s1);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .strip-header {
+    margin-bottom: 2rem;
+  }
+
+  .strip-header h2 { margin-bottom: 0.5rem; }
+  .strip-header p { color: var(--text-muted); font-size: 1rem; line-height: 1.7; }
+
+  .strip-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 260px;
+    gap: 0.875rem;
+  }
+
+  .strip-tall { grid-row: span 1; }
+
+  .strip-cell {
+    border-radius: var(--r-lg);
+    overflow: hidden;
+    background: var(--s2);
+    position: relative;
+  }
+
+  .strip-cell img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s cubic-bezier(0.16,1,0.3,1), filter 0.3s;
+    filter: brightness(0.95) saturate(0.9);
+  }
+
+  .strip-cell:hover img {
+    transform: scale(1.06);
+    filter: brightness(1) saturate(1.1);
+  }
+
+  @media (max-width: 860px) {
+    .strip-grid { grid-template-columns: 1fr 1fr; grid-template-rows: 200px 200px; }
+  }
+
+  @media (max-width: 500px) {
+    .strip-grid { grid-template-columns: 1fr; grid-template-rows: repeat(4, 180px); }
+  }
+
+  /* ── Details ─────────────────────────────────── */
   .details { background: var(--s1); border-top: 1px solid var(--border); }
 
   .details-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 1rem;
   }
 
@@ -207,3 +634,122 @@ const details = [
   .detail strong { display: block; font-size: 0.95rem; font-weight: 700; color: var(--text); margin-bottom: 0.35rem; }
   .detail p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.65; margin: 0; }
 </style>
+
+<script>
+  // Calendar state
+  const events = [
+    { id: 'tile-boys-club', label: 'Boys Club of Raleigh', month: null, day: null, tbd: true },
+    { id: 'tile-wrts', label: 'We Rock the Spectrum', month: 5, day: 29, tbd: false },
+    { id: 'tile-passmore', label: 'Family Workshop — Passmore', month: 6, day: 29, tbd: false },
+    { id: 'tile-vibha', label: 'Vibha Summer Camp', month: 7, day: null, tbd: true },
+  ];
+
+  let viewYear = 2026;
+  let viewMonth = 5; // 0-indexed: 5 = June
+
+  function renderCalendar() {
+    const label = document.getElementById('cal-month-label');
+    const grid = document.getElementById('cal-days');
+    const chips = document.getElementById('cal-event-chips');
+    if (!label || !grid || !chips) return;
+
+    const monthNames = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+    label.textContent = `${monthNames[viewMonth]} ${viewYear}`;
+
+    // Build day grid
+    const firstDay = new Date(viewYear, viewMonth, 1).getDay();
+    const daysInMonth = new Date(viewYear, viewMonth + 1, 0).getDate();
+    const today = new Date();
+
+    grid.innerHTML = '';
+
+    // Empty cells before first day
+    for (let i = 0; i < firstDay; i++) {
+      const el = document.createElement('div');
+      el.className = 'cal-day empty';
+      el.textContent = '';
+      grid.appendChild(el);
+    }
+
+    // Day cells
+    for (let d = 1; d <= daysInMonth; d++) {
+      const el = document.createElement('div');
+      el.className = 'cal-day';
+      el.textContent = String(d);
+
+      // Highlight today
+      if (today.getFullYear() === viewYear && today.getMonth() === viewMonth && today.getDate() === d) {
+        el.classList.add('today');
+      }
+
+      // Mark event days (if specific day known)
+      const dayEvents = events.filter(e => e.month === viewMonth && e.day === d && !e.tbd);
+      if (dayEvents.length) {
+        el.classList.add('has-event');
+        el.addEventListener('click', () => {
+          const tile = document.getElementById(dayEvents[0].id);
+          if (tile) tile.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      }
+
+      grid.appendChild(el);
+    }
+
+    // Event chips for this month (TBD events or month-matched)
+    chips.innerHTML = '';
+    const monthEvents = events.filter(e => {
+      if (e.tbd && e.month === null) return true; // show always
+      if (e.month === viewMonth) return true;
+      return false;
+    });
+
+    monthEvents.forEach(ev => {
+      const chip = document.createElement('button');
+      chip.className = 'cal-chip';
+      chip.innerHTML = `<span class="chip-dot"></span>${ev.label}${ev.tbd ? ' — TBD' : ''}`;
+      chip.addEventListener('click', () => {
+        const tile = document.getElementById(ev.id);
+        if (tile) tile.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+      chips.appendChild(chip);
+    });
+  }
+
+  function initCalendar() {
+    renderCalendar();
+
+    const prev = document.getElementById('cal-prev');
+    const next = document.getElementById('cal-next');
+
+    prev?.addEventListener('click', () => {
+      viewMonth--;
+      if (viewMonth < 0) { viewMonth = 11; viewYear--; }
+      renderCalendar();
+    });
+
+    next?.addEventListener('click', () => {
+      viewMonth++;
+      if (viewMonth > 11) { viewMonth = 0; viewYear++; }
+      renderCalendar();
+    });
+  }
+
+  // Run on load and after Astro page transitions
+  document.addEventListener('astro:page-load', initCalendar);
+
+  function initHighlight() {
+    const hash = window.location.hash;
+    if (!hash) return;
+    const tile = document.querySelector(hash);
+    if (!tile || !tile.classList.contains('event-tile')) return;
+
+    // Small delay so the page has painted and the reveal animation won't interfere
+    setTimeout(() => {
+      tile.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      tile.classList.add('tile-highlighted');
+      setTimeout(() => tile.classList.remove('tile-highlighted'), 2400);
+    }, 350);
+  }
+
+  document.addEventListener('astro:page-load', initHighlight);
+</script>

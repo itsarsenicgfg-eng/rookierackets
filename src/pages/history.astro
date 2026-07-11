@@ -3,67 +3,54 @@ import Layout from '../layouts/Layout.astro';
 
 const workshops = [
   {
-    num: '03',
-    title: 'Spring Beginner Clinic',
-    date: 'March 2024',
-    location: 'Cary Recreation Center',
-    participants: 18,
-    skills: ['Grip & footwork', 'Basic serves', 'Net play fundamentals'],
-    highlight: 'Highest attendance yet — multiple siblings attended together.',
-    color: 'rgba(128,117,255,0.15)',
-    border: 'rgba(128,117,255,0.3)',
-  },
-  {
+    id: 'workshop-tmsa',
     num: '02',
-    title: 'Fall Fundamentals Session',
-    date: 'November 2023',
-    location: 'Panther Creek High School',
-    participants: 22,
-    skills: ['Backhand technique', 'Smash drills', 'Rally conditioning'],
-    highlight: 'Largest session to date. Several participants from the inaugural session returned.',
+    title: 'TMSA Elementary Workshop',
+    date: 'Mar – Apr 2026',
+    location: 'TMSA Elementary',
+    participants: 12,
+    sessions: '5 weeks · 1 hr/session',
+    skills: ['Overhead clears', 'Net play & drops', 'Footwork patterns'],
+    highlight: 'Grew to 12 players across multiple grade levels. Our most diverse group to date.',
+    upcoming: false,
     color: 'rgba(255,140,66,0.12)',
     border: 'rgba(255,140,66,0.28)',
   },
   {
+    id: 'workshop-carpenter',
     num: '01',
-    title: 'Inaugural Session',
-    date: 'August 2023',
-    location: 'Cary, NC',
-    participants: 14,
-    skills: ['Racket handling', 'Court orientation', 'Basic clears'],
-    highlight: 'Where it all started. 14 beginners showed up — none had played before.',
-    color: 'rgba(52,211,153,0.12)',
-    border: 'rgba(52,211,153,0.28)',
+    title: 'Carpenter Elementary Workshop',
+    date: 'Sep – Oct 2025',
+    location: 'Carpenter Elementary',
+    participants: 10,
+    sessions: '5 weeks · 1 hr/session',
+    skills: ['Racket grip & stance', 'Basic serve & rally', 'Court movement'],
+    highlight: 'Where it started. 10 beginners showed up and none had ever picked up a racket before.',
+    upcoming: false,
+    color: 'rgba(128,117,255,0.15)',
+    border: 'rgba(128,117,255,0.3)',
   },
 ];
 
 const tournaments = [
   {
-    name: 'Cary Open 2024',
-    date: 'April 2024',
+    name: 'Community Smash',
+    date: 'February 21, 2026',
     type: 'Singles & Doubles',
-    raised: '$1,200',
-    players: 32,
-    desc: 'Open community tournament held at Cary Indoor Sports. All proceeds went toward purchasing rackets and shuttlecocks for future free workshops.',
+    partner: 'ShuttleZone',
+    venue: 'Peak Sports Morrisville',
+    raised: '$4,500+',
+    players: 200,
+    desc: 'A community tournament at Peak Sports Morrisville, run in partnership with ShuttleZone. Players of all levels competed in singles and doubles, bringing together over 200 participants from across the Cary and Morrisville area.',
     color: 'rgba(128,117,255,0.12)',
     border: 'rgba(128,117,255,0.28)',
-  },
-  {
-    name: 'Holiday Doubles Classic',
-    date: 'December 2023',
-    type: 'Doubles',
-    raised: '$800',
-    players: 20,
-    desc: 'A festive year-end doubles tournament that brought together youth and adult players. Funds used to cover venue costs for the Spring 2024 clinic.',
-    color: 'rgba(255,140,66,0.1)',
-    border: 'rgba(255,140,66,0.25)',
   },
 ];
 
 const scheduleItems = [
   { label: 'Frequency', value: 'Every 6–8 weeks', icon: '📅' },
   { label: 'Day', value: 'Typically weekends', icon: '🗓️' },
-  { label: 'Time', value: '10 AM – 12 PM', icon: '⏰' },
+  { label: 'Time', value: 'Timing varies', icon: '⏰' },
   { label: 'Duration', value: '1–2 hours per session', icon: '⏱️' },
   { label: 'Location', value: 'Cary, NC 27519', icon: '📍' },
   { label: 'Notice', value: 'Sign up to get email alerts', icon: '🔔' },
@@ -75,6 +62,7 @@ const scheduleItems = [
   <!-- Page Hero -->
   <section class="page-hero">
     <div class="page-hero-bg" aria-hidden="true">
+      <div class="ph-photo" style="background-image:url('/images/workshop-session.png')"></div>
       <div class="ph-orb" style="width:700px;height:700px;top:-30%;right:-8%;background:radial-gradient(ellipse at center,rgba(128,117,255,0.22) 0%,rgba(128,117,255,0.05) 45%,transparent 70%);animation-delay:0s"></div>
       <div class="ph-orb" style="width:420px;height:420px;bottom:-15%;left:-5%;background:radial-gradient(ellipse at center,rgba(255,140,66,0.16) 0%,transparent 65%);animation-delay:-6s"></div>
       <div class="ph-grid"></div>
@@ -83,7 +71,7 @@ const scheduleItems = [
       <span class="label reveal">Our Journey</span>
       <h1 class="reveal d1">Sessions, tournaments,<br /><span class="grad">and everything since.</span></h1>
       <p class="page-hero-lead reveal d2">
-        A look back at every workshop we've run, every tournament we've organized, and how the program has grown — plus when to expect the next session.
+        Two workshops, one tournament, and a program that keeps growing. Plus when to expect the next session.
       </p>
       <div class="page-hero-actions reveal d3">
         <a href="/contact" class="btn btn-primary">Join the Waitlist →</a>
@@ -96,10 +84,10 @@ const scheduleItems = [
   <div class="stats-bar">
     <div class="container stats-bar-inner">
       {[
-        { num: '3', label: 'Workshops run' },
-        { num: '54', label: 'Youth coached' },
-        { num: '2', label: 'Fundraising tournaments' },
-        { num: '$2,000+', label: 'Raised for equipment' },
+        { num: '2', label: 'Workshops run' },
+        { num: '30+', label: 'Players coached' },
+        { num: '1', label: 'Fundraising tournament' },
+        { num: '$4,500+', label: 'Dollars raised' },
       ].map(s => (
         <div class="sbar-item reveal">
           <span class="sbar-num">{s.num}</span>
@@ -113,14 +101,13 @@ const scheduleItems = [
   <section class="workshops-section">
     <div class="container">
       <div class="reveal" style="margin-bottom:3rem">
-        <span class="label">Past Workshops</span>
         <h2>Every session, documented</h2>
-        <p class="section-lead">From our very first 14-person gathering to our largest clinic yet — here's the full story.</p>
+        <p class="section-lead">10 beginners at Carpenter Elementary, 12 at TMSA Elementary. Both documented below.</p>
       </div>
 
       <div class="workshop-list">
         {workshops.map((w, i) => (
-          <div class={`workshop-card reveal d${i + 1}`} style={`--wc:${w.color};--wb:${w.border}`}>
+          <div id={w.id} class={`workshop-card reveal d${i + 1}`} style={`--wc:${w.color};--wb:${w.border}`}>
             <div class="wcard-num">#{w.num}</div>
             <div class="wcard-main">
               <div class="wcard-header">
@@ -129,10 +116,14 @@ const scheduleItems = [
                   <div class="wcard-meta">
                     <span>📅 {w.date}</span>
                     <span>📍 {w.location}</span>
+                    <span>⏱ {w.sessions}</span>
                     <span>👥 {w.participants} participants</span>
                   </div>
                 </div>
-                <div class="wcard-badge">{w.participants} youth</div>
+                {w.upcoming
+                  ? <div class="wcard-badge wcard-badge-upcoming">Upcoming</div>
+                  : <div class="wcard-badge">{w.participants} players</div>
+                }
               </div>
               <p class="wcard-highlight">"{w.highlight}"</p>
               <div class="wcard-skills">
@@ -151,9 +142,8 @@ const scheduleItems = [
   <section class="tournaments-section">
     <div class="container">
       <div class="reveal" style="margin-bottom:3rem">
-        <span class="label label-accent">Fundraising</span>
         <h2>Tournaments that fund the mission</h2>
-        <p class="section-lead">We run competitive badminton tournaments open to the community. All proceeds go directly toward keeping our youth workshops free.</p>
+        <p class="section-lead">We run competitive badminton tournaments open to the community. All proceeds keep the workshops free.</p>
       </div>
 
       <div class="tournament-grid">
@@ -163,7 +153,11 @@ const scheduleItems = [
               <div>
                 <span class="t-type">{t.type}</span>
                 <h3>{t.name}</h3>
-                <span class="t-date">{t.date}</span>
+                <div class="t-meta">
+                  <span>📅 {t.date}</span>
+                  <span>📍 {t.venue}</span>
+                  <span>🤝 w/ {t.partner}</span>
+                </div>
               </div>
               <div class="t-raised">
                 <span class="t-raised-num">{t.raised}</span>
@@ -174,7 +168,7 @@ const scheduleItems = [
             <div class="t-footer">
               <div class="t-stat">
                 <span class="t-stat-num">{t.players}</span>
-                <span class="t-stat-label">players</span>
+                <span class="t-stat-label">participants</span>
               </div>
               <div class="t-stat">
                 <span class="t-stat-num">100%</span>
@@ -191,9 +185,8 @@ const scheduleItems = [
   <section class="schedule-section" id="schedule">
     <div class="container">
       <div class="reveal" style="margin-bottom:3rem">
-        <span class="label">Recurring Schedule</span>
         <h2>When we run sessions</h2>
-        <p class="section-lead">Sessions aren't on a fixed calendar yet — but here's our typical pattern. Sign up so you never miss one.</p>
+        <p class="section-lead">Sessions aren't on a fixed calendar yet. Sign up and we'll email you when the next one opens.</p>
       </div>
 
       <div class="schedule-layout">
@@ -211,7 +204,6 @@ const scheduleItems = [
 
         <div class="timeline reveal">
           <div class="tl-head">
-            <span class="label">Timeline</span>
             <h3>How sessions unfold</h3>
           </div>
           <ol class="tl-list">
@@ -245,7 +237,7 @@ const scheduleItems = [
         <div class="bottom-cta-body">
           <span class="label label-accent">Don't Miss the Next One</span>
           <h2>Join the waitlist today</h2>
-          <p>We'll email you the moment the next session is announced. No spam — just badminton.</p>
+          <p>We'll email you when the next session is announced. No spam.</p>
           <div class="bottom-cta-btns">
             <a href="/contact" class="btn btn-accent">Sign Up for Updates →</a>
             <a href="/events" class="btn btn-ghost">View Events Page</a>
@@ -256,6 +248,23 @@ const scheduleItems = [
   </section>
 
 </Layout>
+
+<script>
+  function initHistoryHighlight() {
+    const hash = window.location.hash;
+    if (!hash) return;
+    const card = document.querySelector(hash);
+    if (!card || !card.classList.contains('workshop-card')) return;
+
+    setTimeout(() => {
+      card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      card.classList.add('card-highlighted');
+      setTimeout(() => card.classList.remove('card-highlighted'), 2400);
+    }, 350);
+  }
+
+  document.addEventListener('astro:page-load', initHistoryHighlight);
+</script>
 
 <style>
   /* Stats bar */
@@ -274,6 +283,15 @@ const scheduleItems = [
     flex-wrap: wrap;
   }
 
+  @media (max-width: 560px) {
+    .stats-bar-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem 1rem;
+      justify-items: center;
+    }
+  }
+
   .sbar-item {
     display: flex;
     flex-direction: column;
@@ -287,10 +305,7 @@ const scheduleItems = [
     font-size: 2rem;
     font-weight: 800;
     line-height: 1;
-    background: linear-gradient(130deg, var(--primary-lt), var(--accent));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--primary);
   }
 
   .sbar-label {
@@ -339,6 +354,18 @@ const scheduleItems = [
 
   .workshop-card:hover { transform: translateX(6px); box-shadow: var(--sh); }
 
+  .workshop-card.card-highlighted {
+    border-color: rgba(117,104,240,0.55) !important;
+    box-shadow: 0 0 0 3px rgba(117,104,240,0.18), 0 0 40px rgba(117,104,240,0.22), var(--sh) !important;
+    transform: translateX(6px) !important;
+    animation: cardFlash 0.6s ease-out;
+  }
+
+  @keyframes cardFlash {
+    0%   { box-shadow: 0 0 0 6px rgba(117,104,240,0.4), 0 0 60px rgba(117,104,240,0.35); }
+    100% { box-shadow: 0 0 0 3px rgba(117,104,240,0.18), 0 0 40px rgba(117,104,240,0.22), var(--sh); }
+  }
+
   .wcard-num {
     font-family: var(--font-display);
     font-size: 1.5rem;
@@ -382,14 +409,22 @@ const scheduleItems = [
     flex-shrink: 0;
   }
 
+  .wcard-badge-upcoming {
+    background: rgba(52,211,153,0.15);
+    border-color: rgba(52,211,153,0.3);
+    color: #34d399;
+  }
+
   .wcard-highlight {
     font-size: 0.9rem;
     color: var(--text-muted);
     font-style: italic;
     line-height: 1.7;
     margin-bottom: 1rem;
-    border-left: 2px solid rgba(128,117,255,0.3);
-    padding-left: 0.875rem;
+    background: rgba(128,117,255,0.07);
+    border: 1px solid rgba(128,117,255,0.18);
+    border-radius: var(--r-sm);
+    padding: 0.7rem 1rem;
   }
 
   .wcard-skills { display: flex; flex-wrap: wrap; gap: 0.5rem; }
@@ -417,11 +452,10 @@ const scheduleItems = [
 
   .tournament-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
     gap: 1.25rem;
+    max-width: 720px;
   }
-
-  @media (max-width: 700px) { .tournament-grid { grid-template-columns: 1fr; } }
 
   .t-card {
     background: var(--s2);
@@ -466,7 +500,14 @@ const scheduleItems = [
 
   .t-card h3 { font-size: 1.15rem; margin-bottom: 0.35rem; }
 
-  .t-date { font-size: 0.8rem; color: var(--text-muted); }
+  .t-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 1rem;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-top: 0.35rem;
+  }
 
   .t-raised {
     display: flex;
@@ -480,10 +521,7 @@ const scheduleItems = [
     font-size: 1.6rem;
     font-weight: 800;
     line-height: 1;
-    background: linear-gradient(130deg, var(--accent-lt), var(--accent));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--accent);
   }
 
   .t-raised-label { font-size: 0.7rem; color: var(--text-subtle); font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; }
@@ -567,7 +605,7 @@ const scheduleItems = [
   }
 
   .tl-head { margin-bottom: 1.75rem; }
-  .tl-head h3 { font-size: 1.1rem; margin-top: 0.5rem; }
+  .tl-head h3 { font-size: 1.1rem; }
 
   .tl-list { list-style: none; display: flex; flex-direction: column; gap: 0; }
 

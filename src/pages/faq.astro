@@ -2,7 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 
 const faqs = [
-  { q: 'Who can attend Rookie Rackets workshops?', a: 'Workshops are open to all youth regardless of age or skill level. Whether your child has never held a racket or has some experience, they are welcome.' },
+  { q: 'Who can attend Rookie Rackets workshops?', a: 'Workshops are open to everyone regardless of age or skill level. Whether your child has never held a racket or has some experience, all are welcome.' },
   { q: 'How much does it cost?', a: 'Nothing. Rookie Rackets workshops are completely free. We are a nonprofit and our goal is to remove every barrier to participation.' },
   { q: 'Do participants need to bring their own equipment?', a: 'No. We provide all equipment including rackets and shuttlecocks. Participants should wear athletic shoes and comfortable clothes.' },
   { q: 'Where are workshops held?', a: 'Workshops are held in Cary, NC (27519). The exact location is shared with registered participants before each session.' },
@@ -18,6 +18,7 @@ const faqs = [
   <!-- Page Hero -->
   <section class="page-hero">
     <div class="page-hero-bg" aria-hidden="true">
+      <div class="ph-photo" style="background-image:url('/images/TMSA-1.JPG')"></div>
       <div class="ph-orb" style="width:700px;height:700px;top:-30%;right:-5%;background:radial-gradient(ellipse at center,rgba(128,117,255,0.22) 0%,rgba(128,117,255,0.05) 45%,transparent 70%);animation-delay:0s"></div>
       <div class="ph-orb" style="width:380px;height:380px;bottom:-15%;left:-5%;background:radial-gradient(ellipse at center,rgba(255,140,66,0.15) 0%,transparent 65%);animation-delay:-5s"></div>
       <div class="ph-grid"></div>
@@ -26,9 +27,6 @@ const faqs = [
       <span class="label reveal">Questions & Answers</span>
       <h1 class="reveal d1">Frequently Asked<br /><span class="grad">Questions</span></h1>
       <p class="page-hero-lead reveal d2">Everything you need to know before your first session.</p>
-      <div class="page-hero-actions reveal d3">
-        <a href="/contact" class="btn btn-primary">Still have questions? →</a>
-      </div>
     </div>
   </section>
 
@@ -40,7 +38,7 @@ const faqs = [
         <div class="sidebar-card reveal">
           <h3>Still have questions?</h3>
           <p>We're happy to help. Reach out any time.</p>
-          <a href="/contact" class="btn btn-primary">Contact Us →</a>
+          <a href="/contact" class="btn btn-gradient">Contact Us →</a>
         </div>
         <div class="sidebar-card sidebar-lit reveal d2">
           <div class="s-icon">🏸</div>
@@ -66,50 +64,35 @@ const faqs = [
     </div>
   </section>
 
-  <!-- Bottom CTA -->
-  <section class="bottom-cta">
-    <div class="container">
-      <div class="bottom-cta-card reveal scale-in">
-        <div class="bottom-cta-orb bottom-cta-orb-a" aria-hidden="true"></div>
-        <div class="bottom-cta-orb bottom-cta-orb-b" aria-hidden="true"></div>
-        <div class="bottom-cta-body">
-          <span class="label label-accent">Get Started</span>
-          <h2>Ready to join us?</h2>
-          <p>Sign up for session notifications and be the first to know when new workshops open in Cary, NC.</p>
-          <div class="bottom-cta-btns">
-            <a href="/contact" class="btn btn-accent">Sign Up for Updates →</a>
-            <a href="/events" class="btn btn-ghost">View Events</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
 </Layout>
 
 <script>
-  // Accordion behavior for FAQ items
-  document.querySelectorAll('[data-faq]').forEach(item => {
-    const dt = item.querySelector('dt');
-    const dd = item.querySelector('dd') as HTMLElement | null;
-    if (!dt || !dd) return;
+  function initFaq() {
+    document.querySelectorAll('[data-faq]').forEach(item => {
+      const dt = item.querySelector('dt');
+      const dd = item.querySelector('dd') as HTMLElement | null;
+      if (!dt || !dd) return;
 
-    dd.style.display = 'none';
-    dt.style.cursor = 'pointer';
+      dd.style.display = 'none';
+      dt.style.cursor = 'pointer';
 
-    dt.addEventListener('click', () => {
-      const open = item.classList.contains('faq-open');
-      document.querySelectorAll('[data-faq]').forEach(el => {
-        el.classList.remove('faq-open');
-        const d = el.querySelector('dd') as HTMLElement | null;
-        if (d) d.style.display = 'none';
+      dt.addEventListener('click', () => {
+        const open = item.classList.contains('faq-open');
+        document.querySelectorAll('[data-faq]').forEach(el => {
+          el.classList.remove('faq-open');
+          const d = el.querySelector('dd') as HTMLElement | null;
+          if (d) d.style.display = 'none';
+        });
+        if (!open) {
+          item.classList.add('faq-open');
+          dd.style.display = 'block';
+        }
       });
-      if (!open) {
-        item.classList.add('faq-open');
-        dd.style.display = 'block';
-      }
     });
-  });
+  }
+
+  document.addEventListener('astro:page-load', initFaq);
 </script>
 
 <style>
@@ -152,14 +135,28 @@ const faqs = [
   }
 
   .sidebar-lit {
-    background: linear-gradient(140deg, var(--s3), var(--s4));
-    border-color: rgba(128,117,255,0.2);
+    background: linear-gradient(140deg, rgba(117,104,240,0.09) 0%, rgba(240,120,48,0.05) 100%), var(--s2);
+    border-color: rgba(117,104,240,0.2);
     box-shadow: var(--sh-glow-p);
   }
 
   .sidebar-card h3 { font-size: 1rem; }
   .sidebar-card p { font-size: 0.875rem; color: var(--text-muted); line-height: 1.65; }
   .s-icon { font-size: 2rem; margin-bottom: 0.25rem; }
+
+  .btn-gradient {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    color: #fff;
+    font-weight: 600;
+    text-decoration: none;
+    box-shadow: 0 4px 16px rgba(117,104,240,0.3);
+  }
+  .btn-gradient:hover {
+    background: linear-gradient(135deg, var(--primary-dk) 0%, #e06820 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 24px rgba(117,104,240,0.38);
+    text-decoration: none;
+  }
 
   /* FAQ list */
   .faq-list { display: flex; flex-direction: column; gap: 0.625rem; }
@@ -169,13 +166,17 @@ const faqs = [
     border: 1px solid var(--border);
     border-radius: var(--r-lg);
     overflow: hidden;
-    transition: border-color 0.2s, box-shadow 0.2s;
+    transition: border-color 0.2s, box-shadow 0.2s, background 0.25s;
   }
 
-  .faq-item:hover { border-color: rgba(128,117,255,0.25); }
+  .faq-item:hover {
+    border-color: rgba(117,104,240,0.22);
+    background: linear-gradient(160deg, rgba(117,104,240,0.05) 0%, var(--s2) 70%);
+  }
 
   .faq-item.faq-open {
-    border-color: rgba(128,117,255,0.3);
+    border-color: rgba(117,104,240,0.28);
+    background: linear-gradient(160deg, rgba(117,104,240,0.08) 0%, var(--s2) 60%);
     box-shadow: var(--sh-glow-p);
   }
 
@@ -197,9 +198,9 @@ const faqs = [
   .faq-n {
     font-size: 0.68rem;
     font-weight: 700;
-    color: var(--primary-lt);
-    background: var(--primary-dim);
-    border: 1px solid rgba(128,117,255,0.2);
+    color: #fff;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    border: none;
     padding: 0.2rem 0.55rem;
     border-radius: 999px;
     flex-shrink: 0;
@@ -210,12 +211,12 @@ const faqs = [
   .faq-chevron {
     font-size: 1.25rem;
     color: var(--text-subtle);
-    transition: transform 0.25s cubic-bezier(0.16,1,0.3,1);
+    transition: transform 0.25s cubic-bezier(0.16,1,0.3,1), color 0.2s;
     flex-shrink: 0;
     line-height: 1;
   }
 
-  .faq-open .faq-chevron { transform: rotate(90deg); color: var(--primary-lt); }
+  .faq-open .faq-chevron { transform: rotate(90deg); color: var(--primary); }
 
   dd {
     color: var(--text-muted);

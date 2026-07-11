@@ -5,32 +5,28 @@ import HeroSection from '../components/HeroSection';
 
 <Layout
   title="Home"
-  description="Rookie Rackets — free, inclusive badminton workshops for youth in Cary, NC. Where birdies take flight."
+  description="Rookie Rackets — free, inclusive badminton workshops for all ages in NC. Where birdies take flight."
 >
 
-  <!-- ╔══════════════════════════════════════╗ -->
-  <!--   HERO (React component)               -->
-  <!-- ╚══════════════════════════════════════╝ -->
+  <!-- HERO -->
   <HeroSection client:load />
 
-  <!-- ╔══════════════════════════════════════╗ -->
-  <!--   TICKER                                -->
-  <!-- ╚══════════════════════════════════════╝ -->
+  <!-- TICKER -->
   <div class="ticker-wrap">
     <div class="ticker-track">
       {Array(2).fill(null).map(() => (
         <span class="ticker-inner">
           <span class="ti">🏸 Free Workshops</span>
           <span class="td">·</span>
-          <span class="ti">Youth of All Ages</span>
+          <span class="ti">All Ages Welcome</span>
           <span class="td">·</span>
-          <span class="ti">Cary, NC</span>
+          <span class="ti">NC</span>
           <span class="td">·</span>
           <span class="ti">No Equipment Needed</span>
           <span class="td">·</span>
-          <span class="ti">Trained by US National Coach</span>
+          <span class="ti">Expert Coaching</span>
           <span class="td">·</span>
-          <span class="ti">30+ Tournaments Won</span>
+          <span class="ti">60+ Tournaments Won</span>
           <span class="td">·</span>
           <span class="ti">Beginners Welcome</span>
           <span class="td">·</span>
@@ -39,28 +35,26 @@ import HeroSection from '../components/HeroSection';
     </div>
   </div>
 
-  <!-- ╔══════════════════════════════════════╗ -->
-  <!--   STATS                                 -->
-  <!-- ╚══════════════════════════════════════╝ -->
+  <!-- STATS -->
   <section class="stats-section">
     <div class="container">
       <div class="stats-grid">
-        <div class="stat-card reveal d1">
+        <div class="stat-card stat-card-purple reveal d1">
           <span class="stat-num counter" data-target="20" data-suffix="+">20+</span>
           <span class="stat-label">Years combined training</span>
           <div class="stat-bar"><div class="stat-fill" style="width:80%"></div></div>
         </div>
-        <div class="stat-card stat-card-lit reveal d2">
-          <span class="stat-num counter" data-target="30" data-suffix="+">30+</span>
+        <div class="stat-card stat-card-orange reveal d2">
+          <span class="stat-num counter" data-target="60" data-suffix="+">60+</span>
           <span class="stat-label">Tournaments won</span>
           <div class="stat-bar"><div class="stat-fill" style="width:90%"></div></div>
         </div>
-        <div class="stat-card reveal d3">
+        <div class="stat-card stat-card-green reveal d3">
           <span class="stat-num counter" data-target="6" data-suffix="+">6+</span>
           <span class="stat-label">Years coaching beginners</span>
           <div class="stat-bar"><div class="stat-fill" style="width:60%"></div></div>
         </div>
-        <div class="stat-card reveal d4">
+        <div class="stat-card stat-card-blue reveal d4">
           <span class="stat-num">100%</span>
           <span class="stat-label">Free for all participants</span>
           <div class="stat-bar"><div class="stat-fill" style="width:100%"></div></div>
@@ -69,123 +63,144 @@ import HeroSection from '../components/HeroSection';
     </div>
   </section>
 
-  <!-- ╔══════════════════════════════════════╗ -->
-  <!--   WHAT WE DO                            -->
-  <!-- ╚══════════════════════════════════════╝ -->
+  <!-- WHAT WE DO -->
   <section id="what-we-do" class="wwd">
     <div class="container">
       <div class="section-intro reveal">
-        <span class="label">What We Do</span>
-        <h2>More than a workshop.<br />A community.</h2>
-        <p>Free badminton sessions for youth of all skill levels. Show up, play, and grow — no experience or equipment needed.</p>
+        <h2>Coaching for all ages<br />in NC.</h2>
+        <p>Structured badminton sessions for beginners and beyond, led by competitively trained coaches.</p>
       </div>
 
       <div class="wwd-grid">
         <div class="wwd-card reveal d1">
-          <div class="wwd-icon" style="--c:#8075ff;--cd:rgba(128,117,255,0.12)">🏸</div>
+          <div class="wwd-photo" style="background-image:url('/images/workshop-coaching.jpg')"></div>
+          <div class="wwd-icon" style="--c:#8075ff;--cd:rgba(128,117,255,0.15)">🏸</div>
           <h3>Skill Development</h3>
           <p>Structured coaching from players trained under US National Head Coach Hendry (2023–2024).</p>
           <span class="wwd-tag">Beginner → Advanced</span>
         </div>
         <div class="wwd-card wwd-card-primary reveal d2">
-          <div class="wwd-icon" style="--c:#ff8c42;--cd:rgba(255,140,66,0.12)">🤝</div>
+          <div class="wwd-photo" style="background-image:url('/images/IMG_7485.jpeg')"></div>
+          <div class="wwd-icon" style="--c:#ff8c42;--cd:rgba(255,140,66,0.15)">🤝</div>
           <h3>Inclusive Community</h3>
-          <p>Open to all youth regardless of experience. A welcoming space where everyone belongs from day one.</p>
+          <p>Open to all regardless of experience. A welcoming space where everyone belongs from day one.</p>
           <span class="wwd-tag">All Ages Welcome</span>
         </div>
-        <div class="wwd-card reveal d3">
-          <div class="wwd-icon" style="--c:#34d399;--cd:rgba(52,211,153,0.12)">🆓</div>
+        <div class="wwd-card wwd-card-green reveal d3">
+          <div class="wwd-photo" style="background-image:url('/images/IMG_8790.jpeg')"></div>
+          <div class="wwd-icon" style="--c:#34d399;--cd:rgba(52,211,153,0.15)">🆓</div>
           <h3>Always Free</h3>
-          <p>No fees. No hidden costs. Equipment is provided. The only thing you need to bring is yourself.</p>
+          <p>No fees. No hidden costs. Equipment is provided.</p>
           <span class="wwd-tag">Equipment Included</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ╔══════════════════════════════════════╗ -->
-  <!--   PHOTO GALLERY                         -->
-  <!-- ╚══════════════════════════════════════╝ -->
+  <!-- GALLERY -->
   <section class="gallery">
     <div class="container">
       <div class="section-intro reveal" style="text-align:center;align-items:center">
-        <span class="label">On The Court</span>
         <h2>Badminton in action</h2>
+        <p>Snapshots from our workshops and community events.</p>
       </div>
       <div class="photo-grid">
         <div class="photo-cell photo-tall reveal d1">
-          <img src="/images/badminton-1.jpg" alt="Badminton player mid-swing" loading="lazy" />
+          <img src="/images/workshop-coaching.jpg" alt="Coach instructing players at Carpenter Elementary" loading="lazy" />
           <div class="photo-overlay"></div>
+          <div class="photo-label">Carpenter Elementary</div>
         </div>
         <div class="photo-cell reveal d2">
-          <img src="/images/badminton-2.jpg" alt="Badminton shuttlecock in flight" loading="lazy" />
+          <img src="/images/TMSA-1.JPG" alt="Players practicing badminton at TMSA Elementary" loading="lazy" />
           <div class="photo-overlay"></div>
+          <div class="photo-label">TMSA Elementary</div>
         </div>
         <div class="photo-cell reveal d3">
-          <img src="/images/badminton-3.jpg" alt="Badminton racket and court" loading="lazy" />
+          <img src="/images/TMSA-3.JPG" alt="Coach and student at the net at TMSA Elementary" loading="lazy" />
           <div class="photo-overlay"></div>
+          <div class="photo-label">TMSA Elementary</div>
         </div>
         <div class="photo-cell photo-wide reveal d4">
-          <img src="/images/badminton-4.jpg" alt="Badminton doubles match" loading="lazy" />
+          <img src="/images/workshop-session.png" alt="Group session at Carpenter Elementary" loading="lazy" />
           <div class="photo-overlay"></div>
+          <div class="photo-label">Carpenter Elementary</div>
+        </div>
+        <div class="photo-cell reveal d2">
+          <img src="/images/workshop-team.jpg" alt="Rookie Rackets coaching team" loading="lazy" />
+          <div class="photo-overlay"></div>
+          <div class="photo-label">Our Team</div>
+        </div>
+        <div class="photo-cell photo-wide reveal d3">
+          <img src="/images/IMG_8788.jpeg" alt="Players rallying across the net at TMSA Elementary" loading="lazy" />
+          <div class="photo-overlay"></div>
+          <div class="photo-label">TMSA Elementary</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ╔══════════════════════════════════════╗ -->
-  <!--   TESTIMONIALS                          -->
-  <!-- ╚══════════════════════════════════════╝ -->
+  <!-- TESTIMONIALS -->
   <section class="testi">
     <div class="container">
       <div class="section-intro reveal" style="text-align:center;align-items:center">
-        <span class="label">Testimonials</span>
         <h2>What people are saying</h2>
       </div>
 
       <div class="testi-grid">
-        <blockquote class="tq reveal d1">
+        <blockquote class="tq tq-purple reveal d1">
           <div class="tq-quote">"</div>
           <p>The coaches have an amazing ability to connect with children and make learning fun. My daughter can't stop talking about it.</p>
-          <footer class="tq-footer">
-            <div class="tq-av">ST</div>
+          <div class="tq-footer">
+            <div class="tq-av" style="background:linear-gradient(135deg,#7568f0,#a89fff)">ST</div>
             <div>
               <cite>Sarah Thompson</cite>
               <span>Parent</span>
             </div>
-          </footer>
+          </div>
         </blockquote>
 
         <blockquote class="tq tq-hero reveal d2">
           <div class="tq-quote">"</div>
           <p>The quality of coaching, the organization, and the confidence my son has built are incredible. Highly recommend to anyone.</p>
-          <footer class="tq-footer">
-            <div class="tq-av">PN</div>
+          <div class="tq-footer">
+            <div class="tq-av" style="background:linear-gradient(135deg,#f07830,#ff8c42)">PN</div>
             <div>
               <cite>Priya Nair</cite>
               <span>Parent</span>
             </div>
-          </footer>
+          </div>
         </blockquote>
 
-        <blockquote class="tq reveal d3">
+        <blockquote class="tq tq-teal reveal d3">
           <div class="tq-quote">"</div>
           <p>I was impressed by their maturity, organization, and professionalism. They teach beginners remarkably effectively.</p>
-          <footer class="tq-footer">
-            <div class="tq-av">KC</div>
+          <div class="tq-footer">
+            <div class="tq-av" style="background:linear-gradient(135deg,#34c778,#34d399)">KC</div>
             <div>
               <cite>Kim Collins</cite>
               <span>Principal, Carpenter Elementary</span>
             </div>
-          </footer>
+          </div>
         </blockquote>
       </div>
     </div>
   </section>
 
-  <!-- ╔══════════════════════════════════════╗ -->
-  <!--   CTA                                   -->
-  <!-- ╚══════════════════════════════════════╝ -->
+  <!-- PARTNERS NETWORK -->
+  <section class="partners">
+    <div class="container">
+      <div class="reveal" style="text-align:center;margin-bottom:2.5rem">
+        <h2>Our <span class="grad">growing</span> network</h2>
+        <p class="partners-sub">We work with schools and community organizations across the Triangle to bring badminton to kids who'd never otherwise try it.</p>
+      </div>
+      <div class="network-wrap reveal">
+        <canvas id="partner-network" aria-label="Partner network visualization"></canvas>
+        <div class="net-toast" id="net-toast" role="status" aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
   <section class="cta-wrap">
     <div class="container">
       <div class="cta-card reveal scale-in">
@@ -194,7 +209,7 @@ import HeroSection from '../components/HeroSection';
         <div class="cta-body">
           <span class="label label-accent">Get Started Today</span>
           <h2>Ready to pick up a racket?</h2>
-          <p>Sign up for notifications and be first to know when sessions open in Cary, NC. Spots fill fast.</p>
+          <p>Sign up and we'll email you when sessions open in NC.</p>
           <div class="cta-btns">
             <a href="/contact" class="btn btn-accent">Sign Up for Updates →</a>
             <a href="/faq" class="btn btn-ghost">Read the FAQ</a>
@@ -210,10 +225,10 @@ import HeroSection from '../components/HeroSection';
   /* ── Ticker ───────────────────────────────────────────── */
   .ticker-wrap {
     overflow: hidden;
-    background: var(--s1);
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-    padding: 0.875rem 0;
+    background: linear-gradient(90deg, var(--primary-dk), #5a3bcc, var(--primary-dk));
+    border-top: 1px solid rgba(128,117,255,0.25);
+    border-bottom: 1px solid rgba(128,117,255,0.25);
+    padding: 0.75rem 0;
     mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
   }
 
@@ -230,16 +245,16 @@ import HeroSection from '../components/HeroSection';
   .ticker-inner { display: inline-flex; align-items: center; }
 
   .ti {
-    font-size: 0.8rem;
-    font-weight: 600;
+    font-size: 0.78rem;
+    font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.07em;
-    color: var(--text-muted);
+    letter-spacing: 0.08em;
+    color: rgba(240,236,255,0.9);
     padding: 0 1.5rem;
   }
 
   .td {
-    color: var(--primary);
+    color: rgba(255,140,66,0.85);
     font-size: 0.9rem;
     font-weight: 700;
     flex-shrink: 0;
@@ -251,7 +266,7 @@ import HeroSection from '../components/HeroSection';
   }
 
   /* ── Stats ───────────────────────────────────────────── */
-  .stats-section { background: var(--s1); border-bottom: 1px solid var(--border); }
+  .stats-section { background: var(--bg); border-bottom: 1px solid var(--border); }
 
   .stats-grid {
     display: grid;
@@ -260,44 +275,62 @@ import HeroSection from '../components/HeroSection';
   }
 
   .stat-card {
-    background: var(--s2);
-    border: 1px solid var(--border);
     border-radius: var(--r-lg);
     padding: 2rem 1.75rem;
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
-    transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+    transition: transform 0.2s, box-shadow 0.2s;
+    position: relative;
+    overflow: hidden;
   }
 
-  .stat-card:hover {
-    border-color: var(--border-md);
-    box-shadow: var(--sh);
-    transform: translateY(-3px);
+  .stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
   }
 
-  .stat-card-lit {
-    background: linear-gradient(135deg, var(--s3), var(--s4));
-    border-color: rgba(128,117,255,0.2);
-    box-shadow: var(--sh-glow-p);
+  .stat-card:hover { transform: translateY(-4px); box-shadow: var(--sh); }
+
+  .stat-card-purple {
+    background: linear-gradient(145deg, rgba(117,104,240,0.12), rgba(117,104,240,0.04));
+    border: 1px solid rgba(117,104,240,0.22);
   }
+  .stat-card-purple::before { background: linear-gradient(90deg, #7568f0, #a89fff); }
+  .stat-card-purple .stat-num { color: #7568f0; }
+  .stat-card-purple .stat-fill { background: #7568f0; }
+
+  .stat-card-orange {
+    background: linear-gradient(145deg, rgba(240,120,48,0.12), rgba(240,120,48,0.04));
+    border: 1px solid rgba(240,120,48,0.22);
+  }
+  .stat-card-orange::before { background: linear-gradient(90deg, #f07830, #ff8c42); }
+  .stat-card-orange .stat-num { color: #d45a18; }
+  .stat-card-orange .stat-fill { background: #f07830; }
+
+  .stat-card-green {
+    background: linear-gradient(145deg, rgba(52,199,120,0.12), rgba(52,199,120,0.04));
+    border: 1px solid rgba(52,199,120,0.22);
+  }
+  .stat-card-green::before { background: linear-gradient(90deg, #34c778, #34d399); }
+  .stat-card-green .stat-num { color: #1e9955; }
+  .stat-card-green .stat-fill { background: #34c778; }
+
+  .stat-card-blue {
+    background: linear-gradient(145deg, rgba(90,159,232,0.12), rgba(90,159,232,0.04));
+    border: 1px solid rgba(90,159,232,0.22);
+  }
+  .stat-card-blue::before { background: linear-gradient(90deg, #5a9fe8, #7bbcff); }
+  .stat-card-blue .stat-num { color: #3878c0; }
+  .stat-card-blue .stat-fill { background: #5a9fe8; }
 
   .stat-num {
     font-family: var(--font-display);
     font-size: 2.75rem;
     font-weight: 800;
-    color: var(--text);
     line-height: 1;
-    background: linear-gradient(130deg, var(--text), var(--text-muted));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  .stat-card-lit .stat-num {
-    background: linear-gradient(130deg, var(--primary-lt), var(--accent));
-    -webkit-background-clip: text;
-    background-clip: text;
   }
 
   .stat-label {
@@ -309,14 +342,13 @@ import HeroSection from '../components/HeroSection';
   .stat-bar {
     margin-top: 0.75rem;
     height: 3px;
-    background: rgba(255,255,255,0.06);
+    background: rgba(117,104,240,0.12);
     border-radius: 2px;
     overflow: hidden;
   }
 
   .stat-fill {
     height: 100%;
-    background: linear-gradient(90deg, var(--primary), var(--accent));
     border-radius: 2px;
     transform: scaleX(0);
     transform-origin: left;
@@ -324,9 +356,7 @@ import HeroSection from '../components/HeroSection';
     transition: transform 1.2s cubic-bezier(0.16,1,0.3,1) 0.5s;
   }
 
-  /* stat-fill is inside .stat-card which is a .reveal — trigger on parent */
   .stat-card.in-view .stat-fill { transform: scaleX(1); }
-  /* Fallback: also trigger when any ancestor has in-view */
   .in-view .stat-fill { transform: scaleX(1); }
 
   @media (max-width: 900px) { .stats-grid { grid-template-columns: repeat(2,1fr); } }
@@ -349,53 +379,62 @@ import HeroSection from '../components/HeroSection';
   .wwd-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 1px;
-    background: var(--border);
-    border-radius: var(--r-xl);
-    overflow: hidden;
-    border: 1px solid var(--border);
+    gap: 1.25rem;
   }
 
   .wwd-card {
     background: var(--s1);
-    padding: 2.5rem 2rem;
+    border: 1px solid var(--border);
+    border-radius: var(--r-xl);
+    overflow: hidden;
     display: flex;
     flex-direction: column;
-    gap: 0.875rem;
-    transition: background 0.2s;
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
   }
 
-  .wwd-card:hover { background: var(--s2); }
+  .wwd-card:hover { transform: translateY(-5px); box-shadow: var(--sh-lg); border-color: var(--border-md); }
 
   .wwd-card-primary {
     background: linear-gradient(160deg, var(--s2), var(--s3));
-    position: relative;
-    overflow: hidden;
+    border-color: rgba(255,140,66,0.25);
+    box-shadow: var(--sh-glow-a);
   }
 
-  .wwd-card-primary::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, var(--primary), var(--accent));
+  .wwd-card-green {
+    background: linear-gradient(160deg, rgba(52,199,120,0.08), rgba(52,199,120,0.02));
+    border-color: rgba(52,199,120,0.2);
   }
+
+  .wwd-photo {
+    height: 140px;
+    background-size: cover;
+    background-position: center;
+    flex-shrink: 0;
+    filter: brightness(0.9) saturate(0.9);
+    transition: filter 0.3s;
+  }
+
+  .wwd-card:hover .wwd-photo { filter: brightness(1) saturate(1.1); }
+
+  .wwd-card > *:not(.wwd-photo) { padding: 0 1.75rem; }
+  .wwd-card > .wwd-icon { margin-top: 1.5rem; }
+  .wwd-card > .wwd-tag { padding-bottom: 1.75rem; }
 
   .wwd-icon {
     width: 52px; height: 52px;
     border-radius: var(--r);
     background: var(--cd);
-    border: 1px solid rgba(255,255,255,0.06);
+    border: 1px solid rgba(117,104,240,0.1);
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 1.5rem;
-    margin-bottom: 0.25rem;
+    margin-bottom: 0.75rem;
     box-shadow: 0 4px 16px var(--cd);
   }
 
-  .wwd-card h3 { font-size: 1.1rem; }
-  .wwd-card p { color: var(--text-muted); font-size: 0.925rem; line-height: 1.7; flex: 1; }
+  .wwd-card h3 { font-size: 1.1rem; padding-bottom: 0; margin-bottom: 0.5rem; }
+  .wwd-card p { color: var(--text-muted); font-size: 0.925rem; line-height: 1.7; flex: 1; margin-bottom: 0.75rem; }
 
   .wwd-tag {
     display: inline-block;
@@ -406,10 +445,91 @@ import HeroSection from '../components/HeroSection';
     color: var(--text-subtle);
     border-top: 1px solid var(--border);
     padding-top: 1rem;
-    margin-top: 0.25rem;
+    margin-top: auto;
   }
 
-  @media (max-width: 768px) { .wwd-grid { grid-template-columns: 1fr; border-radius: var(--r-lg); } }
+  @media (max-width: 900px) { .wwd-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 600px) { .wwd-grid { grid-template-columns: 1fr; } }
+
+  /* ── Gallery ─────────────────────────────────────────── */
+  .gallery {
+    background: var(--bg);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .gallery .section-intro p { color: var(--text-muted); margin-top: 0.5rem; }
+
+  .photo-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 240px 240px 220px;
+    gap: 0.875rem;
+    margin-top: 2.5rem;
+  }
+
+  .photo-tall { grid-row: span 2; }
+  .photo-wide { grid-column: span 2; }
+
+  .photo-cell {
+    position: relative;
+    border-radius: var(--r-lg);
+    overflow: hidden;
+    background: var(--s2);
+  }
+
+  .photo-cell img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.16,1,0.3,1), filter 0.4s;
+    filter: brightness(0.95) saturate(0.95);
+  }
+
+  .photo-cell:hover img {
+    transform: scale(1.06);
+    filter: brightness(1) saturate(1.15);
+  }
+
+  .photo-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent 40%, rgba(8,8,15,0.65));
+    pointer-events: none;
+    transition: opacity 0.3s;
+  }
+
+  .photo-cell:hover .photo-overlay { opacity: 0.5; }
+
+  .photo-label {
+    position: absolute;
+    bottom: 0.875rem;
+    left: 0.875rem;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: rgba(255,255,255,0.9);
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 999px;
+    padding: 0.25rem 0.75rem;
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  .photo-label-placeholder { opacity: 0.6; }
+
+  @media (max-width: 768px) {
+    .photo-grid { grid-template-columns: 1fr 1fr; grid-template-rows: none; grid-auto-rows: 200px; }
+    .photo-tall { grid-row: span 1; }
+    .photo-wide { grid-column: span 1; }
+  }
+  @media (max-width: 480px) {
+    .photo-grid { grid-template-columns: 1fr; grid-template-rows: none; grid-auto-rows: 200px; }
+    .photo-tall, .photo-wide { grid-row: span 1; grid-column: span 1; }
+  }
 
   /* ── Testimonials ─────────────────────────────────────── */
   .testi {
@@ -436,16 +556,18 @@ import HeroSection from '../components/HeroSection';
     transition: border-color 0.2s, box-shadow 0.2s, transform 0.25s;
   }
 
-  .tq:hover {
-    border-color: var(--border-md);
-    box-shadow: var(--sh);
-    transform: translateY(-4px);
+  .tq:hover { border-color: var(--border-md); box-shadow: var(--sh); transform: translateY(-4px); }
+
+  .tq-purple {
+    background: linear-gradient(160deg, rgba(117,104,240,0.08) 0%, rgba(168,159,255,0.04) 100%);
+    border-color: rgba(117,104,240,0.2);
   }
+  .tq-purple .tq-quote { color: #7568f0; }
 
   .tq-hero {
-    background: linear-gradient(160deg, var(--s3) 0%, var(--s4) 100%);
-    border-color: rgba(128,117,255,0.2);
-    box-shadow: var(--sh-glow-p);
+    background: linear-gradient(160deg, rgba(240,120,48,0.09) 0%, rgba(255,140,66,0.04) 100%);
+    border-color: rgba(240,120,48,0.25);
+    box-shadow: var(--sh-glow-a);
   }
 
   .tq-quote {
@@ -453,7 +575,7 @@ import HeroSection from '../components/HeroSection';
     font-size: 3.5rem;
     line-height: 0.5;
     color: var(--primary);
-    opacity: 0.4;
+    opacity: 0.45;
     font-weight: 700;
   }
 
@@ -471,7 +593,6 @@ import HeroSection from '../components/HeroSection';
   .tq-av {
     width: 38px; height: 38px;
     border-radius: 50%;
-    background: linear-gradient(135deg, var(--primary), var(--accent));
     color: #fff;
     font-size: 0.72rem;
     font-weight: 700;
@@ -481,81 +602,73 @@ import HeroSection from '../components/HeroSection';
     flex-shrink: 0;
   }
 
-  cite {
-    display: block;
-    font-style: normal;
-    font-weight: 700;
-    font-size: 0.875rem;
-    color: var(--text);
-  }
+  cite { display: block; font-style: normal; font-weight: 700; font-size: 0.875rem; color: var(--text); }
+  .tq-footer span { font-size: 0.75rem; color: var(--text-muted); }
 
-  .tq-footer span {
-    font-size: 0.75rem;
+  .tq-teal {
+    background: linear-gradient(160deg, rgba(56,182,255,0.09) 0%, rgba(59,130,246,0.04) 100%);
+    border-color: rgba(59,130,246,0.22);
+  }
+  .tq-teal .tq-quote { color: #3878c0; }
+
+  .tq-official {
+    background: linear-gradient(160deg, rgba(30,122,74,0.1) 0%, rgba(52,199,120,0.06) 100%);
+    border-color: rgba(52,199,120,0.3);
+  }
+  .tq-official .tq-quote { color: #1e7a4a; }
+
+  @media (max-width: 700px) { .testi-grid { grid-template-columns: 1fr; } }
+
+  /* ── Partners Network ────────────────────────────────── */
+  .partners { background: var(--s1); border-top: 1px solid var(--border); }
+
+  .partners-sub {
     color: var(--text-muted);
+    font-size: 0.975rem;
+    max-width: 480px;
+    margin: 0.5rem auto 0;
+    line-height: 1.75;
   }
 
-  @media (max-width: 900px) { .testi-grid { grid-template-columns: 1fr; } }
-
-  /* ── Gallery ─────────────────────────────────────────── */
-  .gallery {
-    background: var(--s1);
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-  }
-
-  .photo-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 260px 260px;
-    gap: 0.875rem;
-    margin-top: 2.5rem;
-  }
-
-  .photo-tall { grid-row: span 2; }
-  .photo-wide { grid-column: span 2; }
-
-  .photo-cell {
+  .network-wrap {
     position: relative;
-    border-radius: var(--r-lg);
-    overflow: hidden;
-    background: var(--s2);
-  }
-
-  .photo-cell img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.6s cubic-bezier(0.16,1,0.3,1), filter 0.4s;
-    filter: brightness(0.85) saturate(0.9);
+    max-width: 960px;
+    margin: 0 auto;
+    border-radius: var(--r-xl);
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: #f7f5ef;
+    box-shadow: var(--sh);
   }
 
-  .photo-cell:hover img {
-    transform: scale(1.06);
-    filter: brightness(1) saturate(1.1);
-  }
-
-  .photo-overlay {
+  .net-toast {
     position: absolute;
-    inset: 0;
-    background: linear-gradient(to bottom, transparent 40%, rgba(8,8,15,0.6));
+    top: 1rem;
+    left: 50%;
+    transform: translateX(-50%) translateY(-8px);
+    background: rgba(26,26,26,0.92);
+    color: #fff;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 0.6rem 1.1rem;
+    border-radius: 999px;
+    box-shadow: var(--sh);
+    max-width: calc(100% - 2rem);
+    text-align: center;
+    opacity: 0;
     pointer-events: none;
-    transition: opacity 0.3s;
+    transition: opacity 0.25s ease, transform 0.3s cubic-bezier(0.16,1,0.3,1);
+    z-index: 5;
   }
 
-  .photo-cell:hover .photo-overlay { opacity: 0.5; }
+  .net-toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 
-  @media (max-width: 768px) {
-    .photo-grid {
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: 200px 200px 200px;
-    }
-    .photo-tall { grid-row: span 1; }
-    .photo-wide { grid-column: span 2; }
-  }
-
-  @media (max-width: 480px) {
-    .photo-grid { grid-template-columns: 1fr; grid-template-rows: repeat(4, 220px); }
-    .photo-tall, .photo-wide { grid-row: span 1; grid-column: span 1; }
+  #partner-network {
+    display: block;
+    width: 100%;
+    height: 520px;
+    cursor: default;
   }
 
   /* ── CTA ─────────────────────────────────────────────── */
@@ -579,19 +692,8 @@ import HeroSection from '../components/HeroSection';
     pointer-events: none;
   }
 
-  .cta-orb-a {
-    width: 400px; height: 400px;
-    background: var(--primary);
-    top: -200px; right: -100px;
-    opacity: 0.12;
-  }
-
-  .cta-orb-b {
-    width: 300px; height: 300px;
-    background: var(--accent);
-    bottom: -150px; left: -50px;
-    opacity: 0.1;
-  }
+  .cta-orb-a { width: 400px; height: 400px; background: var(--primary); top: -200px; right: -100px; opacity: 0.14; }
+  .cta-orb-b { width: 300px; height: 300px; background: var(--accent); bottom: -150px; left: -50px; opacity: 0.12; }
 
   .cta-body {
     position: relative;
@@ -603,13 +705,7 @@ import HeroSection from '../components/HeroSection';
   }
 
   .cta-body h2 { font-size: clamp(1.75rem, 3vw, 2.75rem); }
-
-  .cta-body p {
-    color: var(--text-muted);
-    font-size: 1.05rem;
-    max-width: 480px;
-    line-height: 1.75;
-  }
+  .cta-body p { color: var(--text-muted); font-size: 1.05rem; max-width: 480px; line-height: 1.75; }
 
   .cta-btns {
     display: flex;
@@ -619,7 +715,209 @@ import HeroSection from '../components/HeroSection';
     margin-top: 0.75rem;
   }
 
-  @media (max-width: 600px) {
-    .cta-card { padding: 3rem 1.5rem; }
-  }
+  @media (max-width: 600px) { .cta-card { padding: 3rem 1.5rem; } }
+
+  /* ── Section background color boosts (override global #fafafa) ── */
+  .stats-section { background: linear-gradient(135deg, rgba(117,104,240,0.06) 0%, rgba(240,120,48,0.04) 100%) !important; }
+  .wwd          { background: linear-gradient(160deg, rgba(240,120,48,0.05) 0%, #fff 60%) !important; }
+  .gallery      { background: #fff !important; }
+  .testi        { background: linear-gradient(160deg, rgba(59,130,246,0.06) 0%, rgba(52,199,120,0.04) 60%, #fff 100%) !important; }
+  .partners     { background: linear-gradient(160deg, rgba(117,104,240,0.05) 0%, rgba(240,120,48,0.03) 100%), #fff !important; }
+  .cta-wrap     { background: #fff !important; }
 </style>
+
+<script>
+(function () {
+  // Organic positions as % of canvas, radii in px, larger = more prominent
+  const NODES = [
+    { label: 'Carpenter\nElementary',   xp: 0.36, yp: 0.60, r: 72,  link: '/history#workshop-carpenter' },
+    { label: 'TMSA\nApex',              xp: 0.17, yp: 0.43, r: 56,  link: '/history#workshop-tmsa' },
+    { label: 'Vibha\nFoundation',       xp: 0.53, yp: 0.27, r: 46,  link: '/events#tile-vibha' },
+    { label: 'Anuraag\nFoundation',     xp: 0.73, yp: 0.40, r: 56,  link: null },
+    { label: 'Boys Club\nof Raleigh',   xp: 0.86, yp: 0.58, r: 48,  link: '/events#tile-boys-club' },
+    { label: 'We Rock\nthe Spectrum',   xp: 0.62, yp: 0.65, r: 36,  link: '/events#tile-wrts' },
+    { label: 'Passmore\nSenior Center', xp: 0.25, yp: 0.72, r: 40,  link: '/events#tile-passmore' },
+  ];
+
+  const MAX_R = 72, MIN_R = 30;
+
+  function initNetwork() {
+    const canvas = document.getElementById('partner-network') as HTMLCanvasElement | null;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    let W = 0, H = 0;
+    let meshPts: {x:number,y:number}[] = [];
+    let meshEdges: [number,number][] = [];
+    let nodes: any[] = [];
+    let hovered = -1;
+    let t = 0;
+
+    function buildMesh() {
+      meshPts = [];
+      // Irregular grid with jitter
+      const cols = 11, rows = 7;
+      const jx = W / cols * 0.55, jy = H / rows * 0.55;
+      for (let r = 0; r <= rows; r++) {
+        for (let c = 0; c <= cols; c++) {
+          const x = (c / cols) * W + (Math.random() - 0.5) * jx * 2;
+          const y = (r / rows) * H + (Math.random() - 0.5) * jy * 2;
+          meshPts.push({ x: Math.max(0, Math.min(W, x)), y: Math.max(0, Math.min(H, y)) });
+        }
+      }
+      // Connect nearby points
+      meshEdges = [];
+      const thresh = Math.max(W, H) * 0.17;
+      for (let i = 0; i < meshPts.length; i++) {
+        for (let j = i + 1; j < meshPts.length; j++) {
+          const dx = meshPts[i].x - meshPts[j].x, dy = meshPts[i].y - meshPts[j].y;
+          if (Math.sqrt(dx*dx + dy*dy) < thresh) meshEdges.push([i, j]);
+        }
+      }
+    }
+
+    function buildNodes() {
+      nodes = NODES.map((n, i) => ({
+        ...n,
+        ox: n.xp * W, oy: n.yp * H,
+        x: n.xp * W,  y: n.yp * H,
+        phase: i * 1.1,
+      }));
+    }
+
+    function resize() {
+      W = canvas.offsetWidth;
+      H = canvas.offsetHeight;
+      canvas.width = W * devicePixelRatio;
+      canvas.height = H * devicePixelRatio;
+      ctx.scale(devicePixelRatio, devicePixelRatio);
+      buildMesh();
+      buildNodes();
+    }
+
+    resize();
+
+    canvas.addEventListener('mousemove', (e) => {
+      const rect = canvas.getBoundingClientRect();
+      const mx = e.clientX - rect.left, my = e.clientY - rect.top;
+      hovered = -1;
+      nodes.forEach((n, i) => {
+        const dx = mx - n.x, dy = my - n.y;
+        if (Math.sqrt(dx*dx + dy*dy) < n.r + 6) hovered = i;
+      });
+      canvas.style.cursor = hovered >= 0 ? 'pointer' : 'default';
+    });
+    canvas.addEventListener('mouseleave', () => { hovered = -1; });
+
+    const toast = document.getElementById('net-toast');
+    let toastTimer: ReturnType<typeof setTimeout>;
+
+    canvas.addEventListener('click', (e) => {
+      const rect = canvas.getBoundingClientRect();
+      const mx = e.clientX - rect.left, my = e.clientY - rect.top;
+      for (const n of nodes) {
+        const dx = mx - n.x, dy = my - n.y;
+        if (Math.sqrt(dx * dx + dy * dy) < n.r + 6) {
+          if (n.link) {
+            window.location.href = n.link;
+          } else if (toast) {
+            const name = n.label.replace('\n', ' ');
+            toast.textContent = `No session scheduled for ${name} yet — check back soon!`;
+            toast.classList.add('show');
+            clearTimeout(toastTimer);
+            toastTimer = setTimeout(() => toast.classList.remove('show'), 3200);
+          }
+          break;
+        }
+      }
+    });
+
+    function draw() {
+      // Stop the loop once this canvas leaves the DOM (Astro view-transition
+      // navigation swaps it out); otherwise orphaned RAF loops accumulate.
+      if (!canvas.isConnected) { ro.disconnect(); return; }
+      ctx.clearRect(0, 0, W, H);
+      t += 0.007;
+
+      // Subtle node drift
+      nodes.forEach(n => {
+        n.x = n.ox + Math.sin(t + n.phase) * 4;
+        n.y = n.oy + Math.cos(t * 0.65 + n.phase) * 3;
+      });
+
+      // Mesh lines
+      ctx.lineWidth = 0.8;
+      meshEdges.forEach(([a, b]) => {
+        ctx.beginPath();
+        ctx.moveTo(meshPts[a].x, meshPts[a].y);
+        ctx.lineTo(meshPts[b].x, meshPts[b].y);
+        ctx.strokeStyle = 'rgba(0,0,0,0.07)';
+        ctx.stroke();
+      });
+
+      // Mesh dots
+      meshPts.forEach(p => {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, 2, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(0,0,0,0.13)';
+        ctx.fill();
+      });
+
+      // Bubbles (back to front by size descending so smaller are on top)
+      const sorted = [...nodes.entries()].sort((a, b) => b[1].r - a[1].r);
+      sorted.forEach(([i, n]) => {
+        const isHl = hovered === i;
+        const scale = isHl ? 1.06 : 1;
+        const r = n.r * scale;
+
+        // Alpha: larger bubbles are more saturated/opaque
+        const frac = (n.r - MIN_R) / (MAX_R - MIN_R);
+        const alpha = 0.38 + frac * 0.62;
+
+        // Hover glow
+        if (isHl) {
+          const g = ctx.createRadialGradient(n.x, n.y, r * 0.5, n.x, n.y, r * 2);
+          g.addColorStop(0, 'rgba(232,98,42,0.18)');
+          g.addColorStop(1, 'rgba(232,98,42,0)');
+          ctx.beginPath();
+          ctx.arc(n.x, n.y, r * 2, 0, Math.PI * 2);
+          ctx.fillStyle = g;
+          ctx.fill();
+        }
+
+        // Bubble fill
+        ctx.beginPath();
+        ctx.arc(n.x, n.y, r, 0, Math.PI * 2);
+        const fill = ctx.createRadialGradient(n.x - r * 0.25, n.y - r * 0.3, r * 0.05, n.x + r * 0.1, n.y + r * 0.1, r);
+        fill.addColorStop(0, `rgba(245,118,65,${alpha})`);
+        fill.addColorStop(1, `rgba(215,78,28,${alpha})`);
+        ctx.fillStyle = fill;
+        ctx.fill();
+
+        // Label inside bubble
+        const lines = n.label.split('\n');
+        const fs = Math.max(10, Math.round(r * 0.27));
+        const lh = fs * 1.35;
+        ctx.fillStyle = alpha > 0.55 ? '#ffffff' : 'rgba(255,255,255,0.85)';
+        ctx.font = `600 ${fs}px Inter, system-ui, sans-serif`;
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        const totalH = (lines.length - 1) * lh;
+        lines.forEach((line, li) => {
+          ctx.fillText(line, n.x, n.y - totalH / 2 + li * lh);
+        });
+      });
+
+      requestAnimationFrame(draw);
+    }
+
+    const ro = new ResizeObserver(resize);
+    ro.observe(canvas);
+
+    draw();
+  }
+
+  document.addEventListener('astro:page-load', initNetwork);
+})();
+</script>

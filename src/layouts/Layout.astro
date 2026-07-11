@@ -6,7 +6,7 @@ interface Props {
   description?: string;
 }
 
-const { title, description = 'Rookie Rackets — free, inclusive badminton workshops for youth in Cary, NC.' } = Astro.props;
+const { title, description = 'Rookie Rackets — free, inclusive badminton workshops for all ages in NC.' } = Astro.props;
 const path = Astro.url.pathname;
 ---
 
@@ -16,20 +16,34 @@ const path = Astro.url.pathname;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={`${title} | Rookie Rackets`} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content="/images/IMG_7427.jpeg" />
+    <meta property="og:site_name" content="Rookie Rackets" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={`${title} | Rookie Rackets`} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content="/images/IMG_7427.jpeg" />
+
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <title>{title} | Rookie Rackets</title>
     <ViewTransitions />
+    <script>document.documentElement.classList.add('js');</script>
   </head>
   <body>
 
     <header id="site-header">
       <nav class="nav-inner">
-        <a href="/" class="logo">
-          <span class="logo-shuttle">🏸</span>
-          <span>Rookie Rackets</span>
+        <a href="/" class="logo" aria-label="Rookie Rackets — home">
+          <img src="/images/logo-trim.png" alt="Rookie Rackets" class="logo-img" />
         </a>
 
         <ul class="nav-links">
@@ -60,6 +74,25 @@ const path = Astro.url.pathname;
       </div>
     </header>
 
+    <!-- Parallax decorators -->
+    <div class="deco-layer" aria-hidden="true">
+      <div class="deco" data-speed="0.18" data-rotate="28" style="right:1.5%;top:18vh;width:110px;color:var(--primary)">
+        <svg viewBox="0 0 80 160" fill="none" xmlns="http://www.w3.org/2000/svg"><ellipse cx="40" cy="55" rx="36" ry="50" stroke="currentColor" stroke-width="2.5"/><line x1="8" y1="34" x2="72" y2="34" stroke="currentColor" stroke-width="1" opacity="0.6"/><line x1="5" y1="47" x2="75" y2="47" stroke="currentColor" stroke-width="1" opacity="0.6"/><line x1="5" y1="60" x2="75" y2="60" stroke="currentColor" stroke-width="1" opacity="0.6"/><line x1="5" y1="73" x2="75" y2="73" stroke="currentColor" stroke-width="1" opacity="0.6"/><line x1="8" y1="86" x2="72" y2="86" stroke="currentColor" stroke-width="1" opacity="0.6"/><line x1="20" y1="7" x2="20" y2="103" stroke="currentColor" stroke-width="1" opacity="0.6"/><line x1="32" y1="5" x2="32" y2="105" stroke="currentColor" stroke-width="1" opacity="0.6"/><line x1="44" y1="5" x2="44" y2="105" stroke="currentColor" stroke-width="1" opacity="0.6"/><line x1="56" y1="5" x2="56" y2="105" stroke="currentColor" stroke-width="1" opacity="0.6"/><line x1="68" y1="7" x2="68" y2="103" stroke="currentColor" stroke-width="1" opacity="0.6"/><path d="M28 100 L40 112 L52 100" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round"/><line x1="40" y1="112" x2="40" y2="156" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/></svg>
+      </div>
+      <div class="deco" data-speed="-0.14" data-rotate="-18" style="left:2%;top:35vh;width:60px;color:var(--accent)">
+        <svg viewBox="0 0 60 90" fill="none" xmlns="http://www.w3.org/2000/svg"><ellipse cx="30" cy="74" rx="10" ry="7" stroke="currentColor" stroke-width="2.2"/><line x1="30" y1="67" x2="8" y2="12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><line x1="30" y1="67" x2="18" y2="9" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><line x1="30" y1="67" x2="30" y2="8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><line x1="30" y1="67" x2="42" y2="9" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><line x1="30" y1="67" x2="52" y2="12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M7 26 Q30 34 53 26" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linecap="round"/><path d="M5 44 Q30 52 55 44" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linecap="round"/></svg>
+      </div>
+      <div class="deco" data-speed="0.09" data-rotate="-22" style="right:3.5%;top:62vh;width:78px;color:var(--accent)">
+        <svg viewBox="0 0 80 160" fill="none" xmlns="http://www.w3.org/2000/svg"><ellipse cx="40" cy="55" rx="36" ry="50" stroke="currentColor" stroke-width="2.5"/><line x1="8" y1="34" x2="72" y2="34" stroke="currentColor" stroke-width="1" opacity="0.6"/><line x1="5" y1="47" x2="75" y2="47" stroke="currentColor" stroke-width="1" opacity="0.6"/><line x1="5" y1="60" x2="75" y2="60" stroke="currentColor" stroke-width="1" opacity="0.6"/><line x1="5" y1="73" x2="75" y2="73" stroke="currentColor" stroke-width="1" opacity="0.6"/><line x1="8" y1="86" x2="72" y2="86" stroke="currentColor" stroke-width="1" opacity="0.6"/><line x1="20" y1="7" x2="20" y2="103" stroke="currentColor" stroke-width="1" opacity="0.6"/><line x1="32" y1="5" x2="32" y2="105" stroke="currentColor" stroke-width="1" opacity="0.6"/><line x1="44" y1="5" x2="44" y2="105" stroke="currentColor" stroke-width="1" opacity="0.6"/><line x1="56" y1="5" x2="56" y2="105" stroke="currentColor" stroke-width="1" opacity="0.6"/><line x1="68" y1="7" x2="68" y2="103" stroke="currentColor" stroke-width="1" opacity="0.6"/><path d="M28 100 L40 112 L52 100" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round"/><line x1="40" y1="112" x2="40" y2="156" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/></svg>
+      </div>
+      <div class="deco" data-speed="-0.2" data-rotate="12" style="left:1%;top:75vh;width:52px;color:var(--primary)">
+        <svg viewBox="0 0 60 90" fill="none" xmlns="http://www.w3.org/2000/svg"><ellipse cx="30" cy="74" rx="10" ry="7" stroke="currentColor" stroke-width="2.2"/><line x1="30" y1="67" x2="8" y2="12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><line x1="30" y1="67" x2="18" y2="9" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><line x1="30" y1="67" x2="30" y2="8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><line x1="30" y1="67" x2="42" y2="9" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><line x1="30" y1="67" x2="52" y2="12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M7 26 Q30 34 53 26" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linecap="round"/><path d="M5 44 Q30 52 55 44" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linecap="round"/></svg>
+      </div>
+      <div class="deco" data-speed="0.25" data-rotate="50" style="right:0%;top:85vh;width:55px;color:var(--primary)">
+        <svg viewBox="0 0 80 160" fill="none" xmlns="http://www.w3.org/2000/svg"><ellipse cx="40" cy="55" rx="36" ry="50" stroke="currentColor" stroke-width="2.5"/><line x1="8" y1="34" x2="72" y2="34" stroke="currentColor" stroke-width="1" opacity="0.6"/><line x1="5" y1="47" x2="75" y2="47" stroke="currentColor" stroke-width="1" opacity="0.6"/><line x1="5" y1="60" x2="75" y2="60" stroke="currentColor" stroke-width="1" opacity="0.6"/><line x1="5" y1="73" x2="75" y2="73" stroke="currentColor" stroke-width="1" opacity="0.6"/><line x1="8" y1="86" x2="72" y2="86" stroke="currentColor" stroke-width="1" opacity="0.6"/><line x1="20" y1="7" x2="20" y2="103" stroke="currentColor" stroke-width="1" opacity="0.6"/><line x1="32" y1="5" x2="32" y2="105" stroke="currentColor" stroke-width="1" opacity="0.6"/><line x1="44" y1="5" x2="44" y2="105" stroke="currentColor" stroke-width="1" opacity="0.6"/><line x1="56" y1="5" x2="56" y2="105" stroke="currentColor" stroke-width="1" opacity="0.6"/><line x1="68" y1="7" x2="68" y2="103" stroke="currentColor" stroke-width="1" opacity="0.6"/><path d="M28 100 L40 112 L52 100" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round"/><line x1="40" y1="112" x2="40" y2="156" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/></svg>
+      </div>
+    </div>
+
     <main>
       <slot />
     </main>
@@ -67,8 +100,18 @@ const path = Astro.url.pathname;
     <footer>
       <div class="footer-grid">
         <div class="footer-brand">
-          <span class="footer-logo">🏸 Rookie Rackets</span>
-          <p>Free, inclusive badminton workshops for youth in Cary, NC. Building skills, confidence, and community.</p>
+          <span class="footer-logo">
+            <img src="/images/logo.png" alt="Rookie Rackets" class="footer-logo-img" />
+          </span>
+          <p>Free, inclusive badminton workshops for all ages in NC. Building skills, confidence, and community.</p>
+          <div class="footer-social">
+            <a href="https://www.instagram.com/rookie_rackets" target="_blank" rel="noopener" aria-label="Instagram" class="social-link">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <a href="mailto:teamrookierackets@gmail.com" aria-label="Email" class="social-link">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </a>
+          </div>
         </div>
         <div class="footer-col">
           <h4>Pages</h4>
@@ -88,6 +131,9 @@ const path = Astro.url.pathname;
       </div>
       <div class="footer-bottom">
         <p>&copy; {new Date().getFullYear()} Rookie Rackets &bull; All rights reserved</p>
+        <button class="scroll-top" id="scroll-top" aria-label="Scroll to top">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+        </button>
       </div>
     </footer>
 
@@ -95,33 +141,7 @@ const path = Astro.url.pathname;
 </html>
 
 <script>
-  // ── Nav scroll shrink ─────────────────────────────────
-  const header = document.getElementById('site-header');
-  window.addEventListener('scroll', () => {
-    header?.classList.toggle('scrolled', window.scrollY > 40);
-  }, { passive: true });
-
-  // ── Hamburger menu ────────────────────────────────────
-  const toggle = document.getElementById('menu-toggle');
-  const mobileMenu = document.getElementById('mobile-menu');
-
-  toggle?.addEventListener('click', () => {
-    const open = toggle.getAttribute('aria-expanded') === 'true';
-    toggle.setAttribute('aria-expanded', String(!open));
-    toggle.classList.toggle('open', !open);
-    mobileMenu?.classList.toggle('open', !open);
-  });
-
-  // Close menu on link click
-  mobileMenu?.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      toggle?.setAttribute('aria-expanded', 'false');
-      toggle?.classList.remove('open');
-      mobileMenu.classList.remove('open');
-    });
-  });
-
-  // ── Scroll reveal ─────────────────────────────────────
+  // ── Observers (created once, reused across navigations) ──
   const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -131,15 +151,11 @@ const path = Astro.url.pathname;
     });
   }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
 
-  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
-
-  // ── Counter animation ─────────────────────────────────
   function runCounter(el: Element) {
     const target = parseInt((el as HTMLElement).dataset.target ?? '0');
     const suffix = (el as HTMLElement).dataset.suffix ?? '';
     const duration = 1800;
     const start = performance.now();
-
     const tick = (now: number) => {
       const p = Math.min((now - start) / duration, 1);
       const eased = 1 - Math.pow(1 - p, 4);
@@ -158,36 +174,95 @@ const path = Astro.url.pathname;
     });
   }, { threshold: 0.5 });
 
-  document.querySelectorAll('.counter').forEach(el => counterObserver.observe(el));
+  // ── Per-page init (re-runs after every View Transition) ──
+  function init() {
+    // Nav scroll shrink
+    const header = document.getElementById('site-header');
+    const onScroll = () => {
+      header?.classList.toggle('scrolled', window.scrollY > 40);
+      document.getElementById('scroll-top')?.classList.toggle('visible', window.scrollY > 400);
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    // Hamburger menu
+    const toggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    toggle?.addEventListener('click', () => {
+      const open = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!open));
+      toggle.classList.toggle('open', !open);
+      mobileMenu?.classList.toggle('open', !open);
+    });
+
+    mobileMenu?.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        toggle?.setAttribute('aria-expanded', 'false');
+        toggle?.classList.remove('open');
+        mobileMenu.classList.remove('open');
+      });
+    });
+
+    // Scroll-to-top
+    document.getElementById('scroll-top')?.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Observe reveal + counter elements on the new page
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+    document.querySelectorAll('.counter').forEach(el => counterObserver.observe(el));
+
+    // Parallax decorators
+    const decos = document.querySelectorAll<HTMLElement>('.deco');
+    let rafId = 0;
+    const runParallax = () => {
+      const y = window.scrollY;
+      decos.forEach(el => {
+        const speed = parseFloat(el.dataset.speed ?? '0');
+        const rot = el.dataset.rotate ?? '0';
+        el.style.transform = `translateY(${y * speed}px) rotate(${rot}deg)`;
+      });
+    };
+    const onParallaxScroll = () => {
+      cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(runParallax);
+    };
+    window.addEventListener('scroll', onParallaxScroll, { passive: true });
+    runParallax();
+  }
+
+  // Runs on first load and after every client-side navigation
+  document.addEventListener('astro:page-load', init);
 </script>
 
 <style is:global>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    /* Palette */
-    --bg:        #08080f;
-    --s1:        #0d0d1a;
-    --s2:        #131324;
-    --s3:        #18182e;
-    --s4:        #1e1e38;
-    --border:    rgba(255,255,255,0.09);
-    --border-md: rgba(255,255,255,0.16);
+    /* Palette — light theme */
+    /* Surfaces: subtle lavender-tinted neutrals (no dead gray) */
+    --bg:        #faf9fe;
+    --s1:        #f8f7fd;
+    --s2:        #f3f2fb;
+    --s3:        #e8e6f5;
+    --s4:        #dbd7ef;
+    --border:    rgba(100,90,200,0.1);
+    --border-md: rgba(100,90,200,0.18);
 
-    --primary:      #8075ff;
-    --primary-lt:   #a89fff;
-    --primary-dk:   #5b52cc;
-    --primary-dim:  rgba(128,117,255,0.12);
-    --primary-glow: rgba(128,117,255,0.3);
+    --primary:      #7568f0;
+    --primary-lt:   #9589ff;
+    --primary-dk:   #5548cc;
+    --primary-dim:  rgba(117,104,240,0.12);
+    --primary-glow: rgba(117,104,240,0.22);
 
-    --accent:       #ff8c42;
-    --accent-lt:    #ffb07c;
-    --accent-dim:   rgba(255,140,66,0.12);
-    --accent-glow:  rgba(255,140,66,0.25);
+    --accent:       #f07830;
+    --accent-lt:    #ff9048;
+    --accent-dim:   rgba(240,120,48,0.12);
+    --accent-glow:  rgba(240,120,48,0.18);
 
-    --text:         #f0ecff;
-    --text-muted:   #b0adce;
-    --text-subtle:  #7a779b;
+    --text:         #1a1a1a;
+    --text-muted:   #1a1a1a;
+    --text-subtle:  #333333;
 
     /* Typography */
     --font-display: 'Syne', system-ui, sans-serif;
@@ -201,11 +276,11 @@ const path = Astro.url.pathname;
     --max:  1120px;
 
     /* Shadows */
-    --sh-sm: 0 2px 8px rgba(0,0,0,0.3);
-    --sh:    0 8px 32px rgba(0,0,0,0.35);
-    --sh-lg: 0 20px 60px rgba(0,0,0,0.5);
-    --sh-glow-p: 0 0 40px rgba(128,117,255,0.2);
-    --sh-glow-a: 0 0 40px rgba(255,140,66,0.18);
+    --sh-sm: 0 2px 8px rgba(0,0,0,0.08);
+    --sh:    0 8px 32px rgba(0,0,0,0.12);
+    --sh-lg: 0 20px 60px rgba(0,0,0,0.16);
+    --sh-glow-p: 0 0 40px rgba(117,104,240,0.18);
+    --sh-glow-a: 0 0 40px rgba(240,120,48,0.14);
   }
 
   html {
@@ -217,46 +292,48 @@ const path = Astro.url.pathname;
     -moz-osx-font-smoothing: grayscale;
   }
 
-  body { min-height: 100vh; display: flex; flex-direction: column; line-height: 1.6; }
+  /* All sections white by default; footer and per-page overrides apply their own */
+  section { background: #ffffff !important; }
+
+
+  body { min-height: 100vh; display: flex; flex-direction: column; line-height: 1.6; font-weight: 400; }
   main { flex: 1; }
 
-  a { color: var(--primary-lt); text-decoration: none; }
+  a { color: var(--primary); text-decoration: none; }
   a:hover { text-decoration: underline; }
   img { max-width: 100%; height: auto; display: block; }
 
   h1, h2, h3, h4 { font-family: var(--font-display); color: var(--text); letter-spacing: -0.02em; line-height: 1.1; }
-  h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 800; }
-  h2 { font-size: clamp(1.75rem, 3.5vw, 2.75rem); font-weight: 700; }
-  h3 { font-size: 1.15rem; font-weight: 700; }
+  h1 { font-size: clamp(2rem, 5vw, 3.75rem); font-weight: 800; }
+  h2 { font-size: clamp(1.5rem, 3vw, 2.25rem); font-weight: 700; }
+  h3 { font-size: 1.05rem; font-weight: 700; }
 
   /* ── Header ──────────────────────────────────────────── */
   header {
     position: sticky;
     top: 0;
     z-index: 200;
-    background: rgba(8,8,15,0.7);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+    background: rgba(255,255,255,0.96);
     border-bottom: 1px solid transparent;
     transition: border-color 0.3s, background 0.3s, padding 0.3s;
   }
 
   header.scrolled {
-    background: rgba(8,8,15,0.92);
+    background: rgba(255,255,255,0.995);
     border-color: var(--border);
   }
 
   .nav-inner {
     max-width: var(--max);
     margin: 0 auto;
-    padding: 1.1rem 1.5rem;
+    padding: 0.15rem 1.5rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
     transition: padding 0.3s;
   }
 
-  header.scrolled .nav-inner { padding-top: 0.75rem; padding-bottom: 0.75rem; }
+  header.scrolled .nav-inner { padding-top: 0.1rem; padding-bottom: 0.1rem; }
 
   .logo {
     display: flex;
@@ -270,8 +347,39 @@ const path = Astro.url.pathname;
     letter-spacing: -0.01em;
   }
 
-  .logo:hover { text-decoration: none; opacity: 0.85; }
-  .logo-shuttle { font-size: 1.25rem; }
+  .logo:hover { text-decoration: none; }
+  .logo { -webkit-tap-highlight-color: transparent; }
+
+  .logo-img {
+    width: auto;
+    height: 104px;
+    object-fit: contain;
+    flex-shrink: 0;
+    mix-blend-mode: multiply;
+  }
+
+  .logo-text {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 1.15rem;
+    color: var(--text);
+    letter-spacing: -0.02em;
+    white-space: nowrap;
+  }
+
+  .footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+  }
+
+  .footer-logo-img {
+    width: 72px;
+    height: 72px;
+    object-fit: contain;
+    flex-shrink: 0;
+    mix-blend-mode: multiply;
+  }
 
   .nav-links {
     list-style: none;
@@ -289,8 +397,8 @@ const path = Astro.url.pathname;
     transition: color 0.15s, background 0.15s;
   }
 
-  .nav-links a:hover { color: var(--text); background: rgba(255,255,255,0.05); text-decoration: none; }
-  .nav-links a.active { color: var(--text); background: rgba(255,255,255,0.07); }
+  .nav-links a:hover { color: var(--text); background: rgba(117,104,240,0.09); text-decoration: none; }
+  .nav-links a.active { color: var(--text); background: rgba(117,104,240,0.13); }
 
   .nav-cta {
     background: var(--primary) !important;
@@ -313,9 +421,9 @@ const path = Astro.url.pathname;
     flex-direction: column;
     justify-content: center;
     gap: 5px;
-    width: 36px;
-    height: 36px;
-    padding: 6px;
+    width: 44px;
+    height: 44px;
+    padding: 11px;
     background: none;
     border: 1px solid var(--border-md);
     border-radius: var(--r-sm);
@@ -366,7 +474,7 @@ const path = Astro.url.pathname;
     transition: color 0.15s, background 0.15s;
   }
 
-  .mobile-menu a:hover { color: var(--text); background: rgba(255,255,255,0.05); text-decoration: none; }
+  .mobile-menu a:hover { color: var(--text); background: rgba(117,104,240,0.09); text-decoration: none; }
 
   .mobile-cta {
     color: var(--primary-lt) !important;
@@ -381,7 +489,7 @@ const path = Astro.url.pathname;
 
   /* ── Footer ──────────────────────────────────────────── */
   footer {
-    background: var(--s1);
+    background: #f5f5f5;
     border-top: 1px solid var(--border);
   }
 
@@ -431,16 +539,89 @@ const path = Astro.url.pathname;
 
   .footer-col a:hover { color: var(--text); text-decoration: none; }
 
+  .footer-social {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1.25rem;
+  }
+
+  .social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: var(--r-sm);
+    border: 1px solid var(--border-md);
+    color: var(--text-muted);
+    transition: color 0.15s, background 0.15s, border-color 0.15s, transform 0.15s;
+  }
+
+  .social-link:hover {
+    color: var(--text);
+    background: rgba(117,104,240,0.1);
+    border-color: rgba(100,90,200,0.3);
+    transform: translateY(-2px);
+    text-decoration: none;
+  }
+
   .footer-bottom {
     border-top: 1px solid var(--border);
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
     padding: 1.25rem;
     font-size: 0.8rem;
     color: var(--text-subtle);
+    position: relative;
+  }
+
+  .scroll-top {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: var(--r-sm);
+    border: 1px solid var(--border-md);
+    background: var(--s2);
+    color: var(--text-muted);
+    cursor: pointer;
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 0.2s, transform 0.2s, background 0.15s, color 0.15s;
+    pointer-events: none;
+  }
+
+  .scroll-top.visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  .scroll-top:hover {
+    background: rgba(117,104,240,0.1);
+    color: var(--text);
   }
 
   @media (max-width: 768px) {
     .footer-grid { grid-template-columns: 1fr; gap: 2.5rem; padding: 2.5rem 1.5rem 2rem; }
+  }
+
+  /* ── Mobile globals ──────────────────────────────────── */
+  @media (max-width: 600px) {
+    section { padding: 2.75rem 0; }
+
+    .logo-img {
+      width: auto;
+      height: 70px;
+    }
+
+    .logo-text { font-size: 1rem; }
+
+    h1 { font-size: clamp(2rem, 8vw, 2.5rem); }
+    h2 { font-size: clamp(1.5rem, 6vw, 1.9rem); }
   }
 
   /* ── Utilities ───────────────────────────────────────── */
@@ -450,7 +631,25 @@ const path = Astro.url.pathname;
     padding: 0 1.5rem;
   }
 
-  section { padding: 6rem 0; }
+  section { padding: 4rem 0; }
+
+  /* ── Parallax decorators ─────────────────────────────── */
+  .deco-layer {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+  }
+
+  .deco {
+    position: absolute;
+    opacity: 0.07;
+    will-change: transform;
+  }
+
+  @media (max-width: 900px) { .deco { opacity: 0.05; } }
+  @media (max-width: 600px) { .deco { display: none; } }
 
   /* Buttons */
   .btn {
@@ -484,11 +683,11 @@ const path = Astro.url.pathname;
   .btn-accent:hover { background: var(--accent-lt); transform: translateY(-2px); box-shadow: 0 8px 30px var(--accent-glow); text-decoration: none; }
 
   .btn-ghost {
-    background: rgba(255,255,255,0.06);
+    background: rgba(117,104,240,0.08);
     color: var(--text);
     border: 1px solid var(--border-md);
   }
-  .btn-ghost:hover { background: rgba(255,255,255,0.1); transform: translateY(-2px); text-decoration: none; }
+  .btn-ghost:hover { background: rgba(117,104,240,0.14); transform: translateY(-2px); text-decoration: none; }
 
   .btn-outline {
     background: transparent;
@@ -506,39 +705,37 @@ const path = Astro.url.pathname;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    color: #c4bfff;
-    background: rgba(128,117,255,0.18);
-    border: 1px solid rgba(128,117,255,0.35);
+    color: var(--primary-dk);
+    background: rgba(117,104,240,0.12);
+    border: 1px solid rgba(117,104,240,0.28);
     padding: 0.3rem 0.85rem;
     border-radius: 999px;
     margin-bottom: 1.25rem;
   }
 
   .label-accent {
-    color: #ffbe96;
-    background: rgba(255,140,66,0.18);
-    border-color: rgba(255,140,66,0.35);
+    color: #c45c18;
+    background: rgba(240,120,48,0.1);
+    border-color: rgba(240,120,48,0.28);
   }
 
-  /* Gradient text */
-  .grad {
-    background: linear-gradient(130deg, var(--primary-lt) 0%, var(--accent) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
+  /* Accent text */
+  .grad { color: var(--accent); }
 
   /* ── Scroll reveal system ────────────────────────────── */
-  .reveal {
+  /* Base state: always visible (progressive enhancement baseline) */
+  .reveal { will-change: opacity, transform; }
+
+  /* JS-enhanced: start hidden and animate in */
+  .js .reveal {
     opacity: 0;
     transform: translateY(28px);
-    will-change: opacity, transform;
     transition: opacity 0.65s cubic-bezier(0.16,1,0.3,1),
                 transform 0.65s cubic-bezier(0.16,1,0.3,1);
   }
-  .reveal.from-left  { transform: translateX(-32px); }
-  .reveal.from-right { transform: translateX(32px); }
-  .reveal.scale-in   { transform: scale(0.94) translateY(12px); }
+  .js .reveal.from-left  { transform: translateX(-32px); }
+  .js .reveal.from-right { transform: translateX(32px); }
+  .js .reveal.scale-in   { transform: scale(0.94) translateY(12px); }
 
   .reveal.in-view { opacity: 1; transform: none; }
 
@@ -548,9 +745,23 @@ const path = Astro.url.pathname;
   .d4 { transition-delay: 0.26s; }
   .d5 { transition-delay: 0.33s; }
 
+  /* Page-hero reveals auto-play immediately — no scroll trigger needed */
+  .page-hero-inner .reveal {
+    animation: heroIn 0.6s cubic-bezier(0.16,1,0.3,1) both;
+  }
+  .page-hero-inner .reveal.d1 { animation-delay: 0.08s; }
+  .page-hero-inner .reveal.d2 { animation-delay: 0.2s;  }
+  .page-hero-inner .reveal.d3 { animation-delay: 0.34s; }
+
+  @keyframes heroIn {
+    from { opacity: 0; transform: translateY(22px); }
+    to   { opacity: 1; transform: none; }
+  }
+
   /* Kill all motion for users who prefer it */
   @media (prefers-reduced-motion: reduce) {
-    .reveal { opacity: 1; transform: none; transition: none; }
+    .js .reveal { opacity: 1; transform: none; transition: none; }
+    .page-hero-inner .reveal { animation: none; }
     * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
   }
 
@@ -559,11 +770,15 @@ const path = Astro.url.pathname;
     min-height: 52vh;
     display: flex;
     align-items: center;
-    background: var(--bg);
+    background: #08080f !important;
     padding: 7rem 0 5.5rem;
     position: relative;
     overflow: hidden;
     border-bottom: 1px solid var(--border);
+  }
+
+  @media (max-width: 600px) {
+    .page-hero { min-height: unset; padding: 5rem 0 3.5rem; }
   }
 
   .page-hero::before {
@@ -576,6 +791,25 @@ const path = Astro.url.pathname;
   }
 
   .page-hero-bg { position: absolute; inset: 0; pointer-events: none; }
+
+  /* Full-bleed darkened photo, matching the home hero treatment */
+  .ph-photo {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 1;
+    filter: blur(1px) brightness(0.7) saturate(0.94);
+    transform: scale(1.08);
+  }
+
+  /* Dark purple scrim over the photo (lighter tint) */
+  .ph-photo::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(8,8,22,0.46) 0%, rgba(40,10,60,0.24) 50%, rgba(8,8,22,0.44) 100%);
+  }
 
   .ph-orb {
     position: absolute;
@@ -591,7 +825,7 @@ const path = Astro.url.pathname;
 
   .ph-grid {
     position: absolute; inset: 0;
-    background-image: radial-gradient(circle, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-image: radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px);
     background-size: 36px 36px;
     mask-image: radial-gradient(ellipse at center, black 50%, transparent 85%);
   }
@@ -601,15 +835,35 @@ const path = Astro.url.pathname;
     z-index: 1;
   }
 
-  .page-hero-inner h1 { margin-bottom: 1.25rem; }
+  /* White copy over the dark photo hero (matches home) */
+  .page-hero-inner h1 { margin-bottom: 1.25rem; color: #ffffff; }
 
   .page-hero-lead {
     font-size: 1.1rem;
-    color: var(--text-muted);
+    color: rgba(240,236,255,0.82);
     max-width: 540px;
     line-height: 1.8;
     margin-bottom: 2rem;
   }
+
+  .page-hero .label {
+    color: #cfc8ff;
+    background: rgba(117,104,240,0.2);
+    border-color: rgba(117,104,240,0.42);
+  }
+
+  .page-hero .label-accent {
+    color: #ffcba6;
+    background: rgba(240,120,48,0.2);
+    border-color: rgba(240,120,48,0.45);
+  }
+
+  .page-hero .btn-ghost {
+    background: rgba(255,255,255,0.09);
+    color: #f0ecff;
+    border: 1px solid rgba(255,255,255,0.2);
+  }
+  .page-hero .btn-ghost:hover { background: rgba(255,255,255,0.16); }
 
   .page-hero-actions {
     display: flex;

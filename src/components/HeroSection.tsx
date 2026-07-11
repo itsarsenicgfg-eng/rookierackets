@@ -1,4 +1,16 @@
 import { motion, useReducedMotion, type Variants } from 'framer-motion';
+import { useState, useEffect } from 'react';
+
+/* ── Slideshow images (swap for real photos later) ── */
+const SLIDES = [
+  '/images/IMG_7427.jpeg',
+  '/images/Screenshot%202026-06-18%20180228.png',
+  '/images/IMG_7505.jpeg',
+  '/images/Screenshot%202026-06-18%20180241.png',
+  '/images/Screenshot%202026-06-18%20180320.png',
+  '/images/Screenshot%202026-06-18%20180200.png',
+  '/images/TMSA-1.JPG',
+];
 
 /* ── Spring / easing presets ───────────────────────── */
 const soft   = { type: 'spring' as const, damping: 28, stiffness: 180 };
@@ -8,11 +20,6 @@ const snappy = { type: 'spring' as const, damping: 22, stiffness: 260 };
 const slideUp = (delay = 0): Variants => ({
   hidden: { opacity: 0, y: 32 },
   show:   { opacity: 1, y: 0, transition: { ...soft, delay } },
-});
-
-const slideDown = (delay = 0): Variants => ({
-  hidden: { opacity: 0, y: -20 },
-  show:   { opacity: 1, y: 0,  transition: { ...soft, delay } },
 });
 
 const lineReveal = (delay = 0): Variants => ({
@@ -46,9 +53,9 @@ function Orb({ style }: { style: React.CSSProperties }) {
 /* ── Session card (right panel) ─────────────────────── */
 function SessionCard({ reduced }: { reduced: boolean | null }) {
   const details = [
-    { icon: '📍', text: 'Cary, NC' },
+    { icon: '📍', text: 'NC' },
     { icon: '👦', text: 'All skill levels welcome' },
-    { icon: '🏆', text: 'US National Coach trained' },
+    { icon: '🏆', text: 'Expert coaching included' },
   ];
 
   return (
@@ -58,27 +65,26 @@ function SessionCard({ reduced }: { reduced: boolean | null }) {
       initial="hidden"
       animate="show"
     >
-      {/* ── Main card ── */}
       <div style={{
-        background:      'rgba(13,13,26,0.88)',
-        border:          '1px solid rgba(128,117,255,0.22)',
-        borderRadius:    '1.25rem',
-        padding:         '1.75rem',
-        backdropFilter:  'blur(20px)',
-        boxShadow:       '0 32px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(128,117,255,0.08)',
-        position:        'relative',
-        zIndex:          1,
+        background:     'rgba(13,13,26,0.82)',
+        border:         '1px solid rgba(128,117,255,0.28)',
+        borderRadius:   '1.25rem',
+        padding:        '1.75rem',
+        backdropFilter: 'blur(24px)',
+        boxShadow:      '0 32px 80px rgba(0,0,0,0.55), 0 0 0 1px rgba(128,117,255,0.1)',
+        position:       'relative',
+        zIndex:         1,
       }}>
 
         {/* Card header */}
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.25rem' }}>
-          <span style={{ fontSize: '0.7rem', fontWeight: 700, textTransform: 'uppercase' as const, letterSpacing: '0.09em', color: 'rgba(128,117,255,0.85)' }}>
+          <span style={{ fontSize: '0.7rem', fontWeight: 700, textTransform: 'uppercase' as const, letterSpacing: '0.09em', color: 'rgba(128,117,255,0.9)' }}>
             Upcoming Session
           </span>
           <span style={{
             fontSize: '0.7rem', fontWeight: 700,
-            background: 'rgba(52,211,153,0.15)', color: '#34d399',
-            border: '1px solid rgba(52,211,153,0.28)', borderRadius: '999px', padding: '0.2rem 0.65rem',
+            background: 'rgba(52,211,153,0.18)', color: '#34d399',
+            border: '1px solid rgba(52,211,153,0.32)', borderRadius: '999px', padding: '0.2rem 0.65rem',
           }}>
             Always Free
           </span>
@@ -100,7 +106,7 @@ function SessionCard({ reduced }: { reduced: boolean | null }) {
             />
           ))}
           <motion.span
-            style={{ fontSize: '3.5rem', position: 'relative', zIndex: 2, filter: 'drop-shadow(0 0 22px rgba(128,117,255,0.55))' }}
+            style={{ fontSize: '3.5rem', position: 'relative', zIndex: 2, filter: 'drop-shadow(0 0 22px rgba(128,117,255,0.6))' }}
             animate={reduced ? {} : { y: [-7, 7, -7], rotate: [-4, 4, -4] }}
             transition={{ duration: 3.2, repeat: Infinity, ease: 'easeInOut' }}
           >
@@ -116,7 +122,7 @@ function SessionCard({ reduced }: { reduced: boolean | null }) {
               variants={fadeIn(0.85 + i * 0.12)}
               initial="hidden"
               animate="show"
-              style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', fontSize: '0.8rem', color: 'rgba(240,236,255,0.7)' }}
+              style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', fontSize: '0.8rem', color: 'rgba(240,236,255,0.75)' }}
             >
               <span style={{ fontSize: '1rem', flexShrink: 0 }}>{item.icon}</span>
               {item.text}
@@ -137,65 +143,20 @@ function SessionCard({ reduced }: { reduced: boolean | null }) {
             display:        'block',
             textAlign:      'center' as const,
             padding:        '0.7rem 1rem',
-            background:     'var(--primary)',
+            background:     'linear-gradient(135deg, #7568f0, #f07830)',
             color:          '#fff',
             borderRadius:   '0.5rem',
             fontWeight:     700,
             fontSize:       '0.875rem',
             textDecoration: 'none',
-            boxShadow:      '0 4px 20px rgba(128,117,255,0.4)',
+            boxShadow:      '0 4px 20px rgba(128,117,255,0.45)',
             fontFamily:     "'Syne', system-ui, sans-serif",
             cursor:         'pointer',
           }}
         >
-          Join Waitlist →
+          View Events →
         </motion.a>
       </div>
-
-      {/* ── Floating badge: coach credential ── */}
-      <motion.div
-        initial={{ opacity: 0, x: -16 }}
-        animate={reduced ? {} : { opacity: 1, x: 0, y: [0, -6, 0] }}
-        transition={{
-          opacity: { delay: 1.5, duration: 0.5 },
-          x:       { delay: 1.5, duration: 0.5, type: 'spring', damping: 20 },
-          y:       { duration: 3.8, repeat: Infinity, ease: 'easeInOut', delay: 2.1 },
-        }}
-        style={{
-          position:       'absolute', top: '-1.1rem', left: '-1.75rem',
-          background:     'rgba(13,13,26,0.92)', backdropFilter: 'blur(12px)',
-          border:         '1px solid rgba(255,140,66,0.28)',
-          borderRadius:   '0.75rem', padding: '0.5rem 0.875rem',
-          display:        'flex', alignItems: 'center', gap: '0.45rem',
-          fontSize:       '0.75rem', color: '#ffbe96', fontWeight: 600,
-          whiteSpace:     'nowrap' as const, boxShadow: '0 8px 24px rgba(0,0,0,0.45)',
-          zIndex:         2,
-        }}
-      >
-        <span>🏅</span> US National Coach
-      </motion.div>
-
-      {/* ── Floating badge: always free ── */}
-      <motion.div
-        initial={{ opacity: 0, x: 16 }}
-        animate={reduced ? {} : { opacity: 1, x: 0, y: [0, -8, 0] }}
-        transition={{
-          opacity: { delay: 1.8, duration: 0.5 },
-          x:       { delay: 1.8, duration: 0.5, type: 'spring', damping: 18 },
-          y:       { duration: 4.2, repeat: Infinity, ease: 'easeInOut', delay: 2.6 },
-        }}
-        style={{
-          position:     'absolute', bottom: '1.5rem', right: '-1.5rem',
-          background:   'rgba(13,13,26,0.92)', backdropFilter: 'blur(12px)',
-          border:       '1px solid rgba(52,211,153,0.22)',
-          borderRadius: '0.75rem', padding: '0.5rem 0.875rem',
-          fontSize:     '0.75rem', color: '#6ee7b7', fontWeight: 600,
-          whiteSpace:   'nowrap' as const, boxShadow: '0 8px 24px rgba(0,0,0,0.45)',
-          zIndex:       2,
-        }}
-      >
-        ✓ No fees. Ever.
-      </motion.div>
     </motion.div>
   );
 }
@@ -203,6 +164,12 @@ function SessionCard({ reduced }: { reduced: boolean | null }) {
 /* ── Main component ─────────────────────────────────── */
 export default function HeroSection() {
   const reduced = useReducedMotion();
+  const [slide, setSlide] = useState(0);
+
+  useEffect(() => {
+    const id = setInterval(() => setSlide(s => (s + 1) % SLIDES.length), 4500);
+    return () => clearInterval(id);
+  }, []);
 
   return (
     <>
@@ -223,6 +190,37 @@ export default function HeroSection() {
           width: 290px;
           flex-shrink: 0;
         }
+        .hero-slide {
+          position: absolute;
+          inset: 0;
+          background-size: cover;
+          background-position: center;
+          filter: blur(1px) brightness(0.52) saturate(0.88);
+          transform: scale(1.08);
+          transition: opacity 1.8s ease-in-out;
+          will-change: opacity;
+        }
+        .hero-slide-dots {
+          position: absolute;
+          bottom: 3.5rem;
+          left: 50%;
+          transform: translateX(-50%);
+          display: flex;
+          gap: 0.5rem;
+          z-index: 2;
+        }
+        .hero-dot {
+          width: 6px; height: 6px;
+          border-radius: 50%;
+          background: rgba(255,255,255,0.35);
+          border: 1px solid rgba(255,255,255,0.2);
+          transition: background 0.4s, transform 0.4s;
+          cursor: pointer;
+        }
+        .hero-dot.active {
+          background: rgba(255,255,255,0.85);
+          transform: scale(1.4);
+        }
         @media (max-width: 840px) {
           .hero-inner-grid {
             grid-template-columns: 1fr;
@@ -237,24 +235,44 @@ export default function HeroSection() {
       `}</style>
 
       <section style={{
-        position:        'relative',
-        minHeight:       '100svh',
-        display:         'flex',
-        flexDirection:   'column' as const,
-        justifyContent:  'center',
-        overflow:        'hidden',
-        padding:         '6rem 1.5rem 5rem',
-        background: `
-          linear-gradient(135deg, rgba(8,8,15,0.94) 0%, rgba(8,8,15,0.62) 55%, rgba(8,8,15,0.90) 100%),
-          url('/images/hero-bg.jpg') center 35% / cover no-repeat
-        `,
+        position:       'relative',
+        minHeight:      '100svh',
+        display:        'flex',
+        flexDirection:  'column' as const,
+        justifyContent: 'center',
+        overflow:       'hidden',
+        padding:        '6rem 1.5rem 5rem',
+        background:     '#08080f',
       }}>
 
-        {/* Grid overlay */}
+        {/* ── Slideshow layers ── */}
+        {SLIDES.map((src, i) => (
+          <div
+            key={i}
+            aria-hidden
+            className="hero-slide"
+            style={{
+              backgroundImage: `url(${src})`,
+              opacity: i === slide ? 1 : 0,
+            }}
+          />
+        ))}
+
+        {/* Frosted color gradient overlay */}
+        <div aria-hidden style={{
+          position:   'absolute',
+          inset:      0,
+          background: 'linear-gradient(135deg, rgba(8,8,22,0.75) 0%, rgba(40,10,60,0.45) 50%, rgba(8,8,22,0.72) 100%)',
+          zIndex:     1,
+          pointerEvents: 'none',
+        }} />
+
+        {/* Grid dot overlay */}
         <div aria-hidden style={{
           position:        'absolute',
           inset:           0,
-          backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.045) 1px, transparent 1px)',
+          zIndex:          1,
+          backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px)',
           backgroundSize:  '36px 36px',
           maskImage:       'radial-gradient(ellipse at center, black 40%, transparent 80%)',
           pointerEvents:   'none',
@@ -262,80 +280,30 @@ export default function HeroSection() {
 
         {/* Ambient orbs */}
         <Orb style={{
-          width: 800, height: 800,
-          background: 'radial-gradient(ellipse, rgba(128,117,255,0.22) 0%, rgba(128,117,255,0.05) 45%, transparent 70%)',
+          width: 800, height: 800, zIndex: 1,
+          background: 'radial-gradient(ellipse, rgba(117,104,240,0.28) 0%, rgba(117,104,240,0.06) 45%, transparent 70%)',
           top: '-25%', right: '-12%',
         }} />
         <Orb style={{
-          width: 520, height: 520,
-          background: 'radial-gradient(ellipse, rgba(255,140,66,0.18) 0%, transparent 65%)',
+          width: 520, height: 520, zIndex: 1,
+          background: 'radial-gradient(ellipse, rgba(255,140,66,0.22) 0%, transparent 65%)',
           bottom: '-15%', left: '-5%',
         }} />
 
         {/* Content grid */}
-        <div className="hero-inner-grid">
+        <div className="hero-inner-grid" style={{ zIndex: 2 }}>
 
           {/* ── Left: copy ── */}
           <div>
-
-            {/* Status pill */}
-            <motion.div
-              variants={slideDown(0.2)}
-              initial="hidden"
-              animate="show"
-              style={{
-                display:       'inline-flex',
-                alignItems:    'center',
-                gap:           '0.55rem',
-                fontSize:      '0.75rem',
-                fontWeight:    700,
-                textTransform: 'uppercase' as const,
-                letterSpacing: '0.1em',
-                color:         '#e0deff',
-                background:    'rgba(128,117,255,0.18)',
-                border:        '1px solid rgba(128,117,255,0.38)',
-                padding:       '0.4rem 1rem',
-                borderRadius:  '999px',
-                marginBottom:  '1.75rem',
-              }}
-            >
-              <motion.span
-                style={{ width: 7, height: 7, borderRadius: '50%', background: 'var(--accent)', flexShrink: 0 }}
-                animate={{ scale: [1, 1.6, 1], opacity: [1, 0.4, 1] }}
-                transition={{ duration: 2.4, repeat: Infinity }}
-              />
-              Free &amp; Inclusive &bull; Cary, NC
-            </motion.div>
-
-            {/* Heading */}
-            <h1 style={{ marginBottom: '1.5rem', fontFamily: "'Syne', system-ui, sans-serif", fontWeight: 800, letterSpacing: '-0.02em', lineHeight: 1.08, fontSize: 'clamp(2.5rem, 6vw, 4.5rem)' }}>
-              <span style={{ display: 'block', overflow: 'hidden' }}>
-                <motion.span
-                  style={{ display: 'block', color: '#f0ecff' }}
-                  variants={lineReveal(0.38)}
-                  initial="hidden"
-                  animate="show"
-                >
-                  Where Birdies
-                </motion.span>
-              </span>
-              <span style={{ display: 'block', overflow: 'hidden' }}>
-                <motion.span
-                  style={{
-                    display:              'block',
-                    background:           'linear-gradient(130deg, #a89fff 0%, #ff8c42 100%)',
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor:  'transparent',
-                    backgroundClip:       'text',
-                  }}
-                  variants={lineReveal(0.54)}
-                  initial="hidden"
-                  animate="show"
-                >
-                  Take Flight
-                </motion.span>
-              </span>
+            {/* Brand name — dominant */}
+            <h1 style={{ fontFamily: "'Syne', system-ui, sans-serif", fontWeight: 900, fontSize: 'clamp(3rem, 6.5vw, 5.5rem)', color: '#ffffff', letterSpacing: '-0.03em', lineHeight: 0.95, marginBottom: '0.6rem' }}>
+              Rookie Rackets
             </h1>
+            {/* Tagline — secondary */}
+            <p style={{ fontFamily: "'Syne', system-ui, sans-serif", fontWeight: 600, fontSize: 'clamp(1rem, 1.8vw, 1.4rem)', letterSpacing: '0.01em', lineHeight: 1.3, marginBottom: '1.5rem' }}>
+              <span style={{ color: 'rgba(255,255,255,0.75)' }}>Where Birdies </span>
+              <span style={{ color: '#f07830' }}>Take Flight</span>
+            </p>
 
             {/* Subtext */}
             <motion.p
@@ -344,7 +312,7 @@ export default function HeroSection() {
               animate="show"
               style={{ fontSize: '1.1rem', color: 'rgba(240,236,255,0.78)', maxWidth: '480px', lineHeight: 1.8, marginBottom: '2rem' }}
             >
-              Complimentary badminton workshops for youth — coached by players trained
+              Free, all-inclusive badminton workshops — coached by players trained
               under the US National Head Coach. No experience or equipment needed.
             </motion.p>
 
@@ -366,12 +334,12 @@ export default function HeroSection() {
                   gap:            '0.4rem',
                   padding:        '0.85rem 1.8rem',
                   borderRadius:   '0.375rem',
-                  background:     'var(--primary)',
+                  background:     'linear-gradient(135deg, #7568f0, #f07830)',
                   color:          '#fff',
                   fontWeight:     700,
                   fontSize:       '0.925rem',
                   textDecoration: 'none',
-                  boxShadow:      '0 4px 20px rgba(128,117,255,0.4)',
+                  boxShadow:      '0 4px 24px rgba(128,117,255,0.5)',
                   fontFamily:     "'Syne', system-ui, sans-serif",
                   letterSpacing:  '-0.01em',
                   cursor:         'pointer',
@@ -380,7 +348,7 @@ export default function HeroSection() {
                 Join Waitlist →
               </motion.a>
               <motion.a
-                href="/events"
+                href="/history"
                 whileHover={reduced ? {} : { scale: 1.04, y: -2 }}
                 whileTap={reduced ? {} : { scale: 0.97 }}
                 transition={snappy}
@@ -389,18 +357,18 @@ export default function HeroSection() {
                   alignItems:     'center',
                   padding:        '0.85rem 1.8rem',
                   borderRadius:   '0.375rem',
-                  background:     'rgba(255,255,255,0.07)',
+                  background:     'rgba(255,255,255,0.09)',
                   color:          '#f0ecff',
                   fontWeight:     700,
                   fontSize:       '0.925rem',
                   textDecoration: 'none',
-                  border:         '1px solid rgba(255,255,255,0.14)',
+                  border:         '1px solid rgba(255,255,255,0.18)',
                   fontFamily:     "'Syne', system-ui, sans-serif",
                   letterSpacing:  '-0.01em',
                   cursor:         'pointer',
                 }}
               >
-                View Events
+                View Past Events
               </motion.a>
             </motion.div>
 
@@ -411,25 +379,17 @@ export default function HeroSection() {
               animate="show"
               style={{ display: 'flex', alignItems: 'center', gap: '0.875rem' }}
             >
-              {/* Avatar stack */}
               <div style={{ display: 'flex' }}>
                 {['ST', 'PN', 'KC'].map((initials, i) => (
                   <div
                     key={i}
                     style={{
-                      width:          32,
-                      height:         32,
-                      borderRadius:   '50%',
-                      background:     'linear-gradient(135deg, #8075ff 0%, #ff8c42 100%)',
-                      border:         '2px solid rgba(8,8,15,0.9)',
-                      display:        'flex',
-                      alignItems:     'center',
-                      justifyContent: 'center',
-                      fontSize:       '0.6rem',
-                      fontWeight:     700,
-                      color:          '#fff',
-                      marginLeft:     i > 0 ? -9 : 0,
-                      flexShrink:     0,
+                      width: 32, height: 32, borderRadius: '50%',
+                      background: 'linear-gradient(135deg, #8075ff 0%, #ff8c42 100%)',
+                      border: '2px solid rgba(8,8,15,0.9)',
+                      display: 'flex', alignItems: 'center', justifyContent: 'center',
+                      fontSize: '0.6rem', fontWeight: 700, color: '#fff',
+                      marginLeft: i > 0 ? -9 : 0, flexShrink: 0,
                     }}
                   >
                     {initials}
@@ -438,15 +398,25 @@ export default function HeroSection() {
               </div>
               <p style={{ fontSize: '0.82rem', color: 'rgba(240,236,255,0.6)', lineHeight: 1.45, margin: 0 }}>
                 <span style={{ color: '#f0ecff', fontWeight: 700 }}>Families love it.</span>
-                {' '}Join youth from across Cary, NC.
+                {' '}Join players from across NC.
               </p>
             </motion.div>
-
           </div>
 
           {/* ── Right: session card ── */}
           <SessionCard reduced={reduced} />
+        </div>
 
+        {/* Slideshow dots */}
+        <div className="hero-slide-dots" style={{ zIndex: 2 }}>
+          {SLIDES.map((_, i) => (
+            <button
+              key={i}
+              className={`hero-dot${i === slide ? ' active' : ''}`}
+              onClick={() => setSlide(i)}
+              aria-label={`Go to slide ${i + 1}`}
+            />
+          ))}
         </div>
 
         {/* Scroll cue */}
@@ -466,7 +436,7 @@ export default function HeroSection() {
             alignItems:     'center',
             textDecoration: 'none',
             cursor:         'pointer',
-            zIndex:         1,
+            zIndex:         2,
           }}
         >
           <motion.span
