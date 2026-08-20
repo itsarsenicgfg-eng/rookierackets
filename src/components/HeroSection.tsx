@@ -154,7 +154,7 @@ function SessionCard({ reduced }: { reduced: boolean | null }) {
             cursor:         'pointer',
           }}
         >
-          View Events →
+          Register →
         </motion.a>
       </div>
     </motion.div>
@@ -195,7 +195,7 @@ export default function HeroSection() {
           inset: 0;
           background-size: cover;
           background-position: center;
-          filter: blur(1px) brightness(0.52) saturate(0.88);
+          filter: blur(1px) brightness(0.72) saturate(0.95);
           transform: scale(1.08);
           transition: opacity 1.8s ease-in-out;
           will-change: opacity;
@@ -262,7 +262,7 @@ export default function HeroSection() {
         <div aria-hidden style={{
           position:   'absolute',
           inset:      0,
-          background: 'linear-gradient(135deg, rgba(8,8,22,0.75) 0%, rgba(40,10,60,0.45) 50%, rgba(8,8,22,0.72) 100%)',
+          background: 'linear-gradient(135deg, rgba(8,8,22,0.58) 0%, rgba(40,10,60,0.32) 50%, rgba(8,8,22,0.55) 100%)',
           zIndex:     1,
           pointerEvents: 'none',
         }} />
@@ -348,7 +348,7 @@ export default function HeroSection() {
                 Join Waitlist →
               </motion.a>
               <motion.a
-                href="/history"
+                href="/events"
                 whileHover={reduced ? {} : { scale: 1.04, y: -2 }}
                 whileTap={reduced ? {} : { scale: 0.97 }}
                 transition={snappy}
@@ -368,7 +368,7 @@ export default function HeroSection() {
                   cursor:         'pointer',
                 }}
               >
-                View Past Events
+                View Events
               </motion.a>
             </motion.div>
 
@@ -380,7 +380,7 @@ export default function HeroSection() {
               style={{ display: 'flex', alignItems: 'center', gap: '0.875rem' }}
             >
               <div style={{ display: 'flex' }}>
-                {['ST', 'PN', 'KC'].map((initials, i) => (
+                {['MG', 'KB', 'SB'].map((initials, i) => (
                   <div
                     key={i}
                     style={{

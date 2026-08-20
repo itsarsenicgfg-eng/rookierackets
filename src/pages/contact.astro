@@ -13,7 +13,6 @@ import Layout from '../layouts/Layout.astro';
       <div class="ph-grid"></div>
     </div>
     <div class="container page-hero-inner">
-      <span class="label reveal">Sign Up</span>
       <h1 class="reveal d1">Get notified when<br /><span class="grad">spots open up.</span></h1>
       <p class="page-hero-lead reveal d2">Fill out the form and we'll reach out when new sessions are announced. Free, no commitment.</p>
     </div>
@@ -98,28 +97,28 @@ import Layout from '../layouts/Layout.astro';
           <div class="form-row">
             <div class="form-group">
               <label for="parent-name">Parent / Guardian Name <span class="req">*</span></label>
-              <input type="text" id="parent-name" name="Parent Name" required placeholder="Jane Smith" />
+              <input type="text" id="parent-name" name="Parent Name" required />
             </div>
             <div class="form-group">
               <label for="phone">Phone Number <span class="req">*</span></label>
-              <input type="tel" id="phone" name="Phone Number" required placeholder="(919) 555-0123" />
+              <input type="tel" id="phone" name="Phone Number" required />
             </div>
           </div>
 
           <div class="form-group">
             <label for="email">Email Address <span class="req">*</span></label>
-            <input type="email" id="email" name="Email Address" required placeholder="jane@example.com" />
+            <input type="email" id="email" name="Email Address" required />
           </div>
 
           <div class="form-row">
             <div class="form-group">
               <label for="child-name">Child's Name <span class="req">*</span></label>
-              <input type="text" id="child-name" name="Child's Name" required placeholder="Alex Smith" />
+              <input type="text" id="child-name" name="Child's Name" required />
             </div>
             <div class="form-group">
-              <label for="grade">Grade <span class="opt">(optional)</span></label>
-              <select id="grade" name="Grade">
-                <option value="">Select grade…</option>
+              <label for="grade">Age / Grade <span class="req">*</span></label>
+              <select id="grade" name="Age / Grade" required>
+                <option value="">Select…</option>
                 <option>Kindergarten</option>
                 <option>1st Grade</option>
                 <option>2nd Grade</option>
@@ -133,30 +132,30 @@ import Layout from '../layouts/Layout.astro';
                 <option>10th Grade</option>
                 <option>11th Grade</option>
                 <option>12th Grade</option>
+                <option>17+</option>
               </select>
             </div>
           </div>
 
           <div class="form-group">
             <label for="school">School <span class="req">*</span></label>
-            <input type="text" id="school" name="School" required placeholder="Carpenter Elementary" />
+            <input type="text" id="school" name="School" required />
           </div>
 
           <div class="form-group">
-            <label for="workshops">Which workshops is your child interested in? <span class="opt">(optional)</span></label>
-            <select id="workshops" name="Workshop Interest">
+            <label for="workshops">Which workshops are you interested in? <span class="req">*</span></label>
+            <select id="workshops" name="Workshop Interest" required>
               <option value="">Select a workshop type…</option>
               <option>Beginner Fundamentals</option>
               <option>Intermediate Skills</option>
-              <option>Advanced Training</option>
               <option>Open Play / Practice</option>
               <option>Not sure yet</option>
             </select>
           </div>
 
           <div class="form-group">
-            <label for="how-heard">How did you hear about us? <span class="opt">(optional)</span></label>
-            <input type="text" id="how-heard" name="How Heard" placeholder="Friend, social media, school, etc." />
+            <label for="how-heard">How did you hear about us? <span class="req">*</span></label>
+            <input type="text" id="how-heard" name="How Heard" required placeholder="Friend, social media, school, etc." />
           </div>
 
           <div class="form-group">
@@ -485,8 +484,29 @@ import Layout from '../layouts/Layout.astro';
 
     if (!form) return;
 
+    const DAILY_LIMIT = 3;
+    const limitKey = () => 'rr-signups-' + new Date().toISOString().slice(0, 10);
+    const getCount = () => parseInt(localStorage.getItem(limitKey()) || '0', 10);
+    const bumpCount = () => localStorage.setItem(limitKey(), String(getCount() + 1));
+
+    // Restore the button to its ready state (never leave it stuck on "Sending…")
+    const resetButton = () => {
+      if (submitBtn) submitBtn.disabled = false;
+      if (btnText) btnText.style.display = 'inline';
+      if (btnLoading) btnLoading.style.display = 'none';
+    };
+
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
+
+      // Daily submission cap
+      if (getCount() >= DAILY_LIMIT) {
+        if (errorDiv) {
+          errorDiv.textContent = `You've reached today's limit of ${DAILY_LIMIT} sign-ups. Please email us if you need to add more.`;
+          errorDiv.classList.add('visible');
+        }
+        return;
+      }
 
       // Basic required field check
       const required = form.querySelectorAll('[required]') as NodeListOf<HTMLInputElement>;
@@ -517,17 +537,23 @@ import Layout from '../layouts/Layout.astro';
         const json = await res.json();
 
         if (json.success) {
+          bumpCount();
           form.style.display = 'none';
-          if (successDiv) successDiv.classList.add('visible');
+          resetButton(); // ready again for a future submission
+          if (successDiv) {
+            successDiv.classList.add('visible');
+            // Bring the confirmation into view so it isn't scrolled past
+            successDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+          // Hide "submit another" once the daily cap is reached
+          if (resetBtn) resetBtn.style.display = getCount() >= DAILY_LIMIT ? 'none' : '';
         } else {
           throw new Error(json.message || 'Submission failed');
         }
       } catch (err: unknown) {
         const msg = err instanceof Error ? err.message : 'Something went wrong. Please email us directly.';
         if (errorDiv) { errorDiv.textContent = msg; errorDiv.classList.add('visible'); }
-        if (submitBtn) submitBtn.disabled = false;
-        if (btnText) btnText.style.display = 'inline';
-        if (btnLoading) btnLoading.style.display = 'none';
+        resetButton();
       }
     });
 
@@ -535,6 +561,11 @@ import Layout from '../layouts/Layout.astro';
       form.reset();
       form.style.display = '';
       if (successDiv) successDiv.classList.remove('visible');
+      if (errorDiv) errorDiv.classList.remove('visible');
+      form.querySelectorAll('[required]').forEach(f => { (f as HTMLElement).style.borderColor = ''; });
+      resetButton();
+      const first = form.querySelector('input, select') as HTMLElement | null;
+      if (first) { first.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
     });
   }
 

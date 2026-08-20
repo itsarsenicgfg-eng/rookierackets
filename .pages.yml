@@ -1,0 +1,95 @@
+# Admin panel config for Pages CMS (https://pagescms.org)
+# Sign in at app.pagescms.org with GitHub, open this repo, and edit content
+# through friendly forms. Saving commits to the repo and auto-deploys via Vercel.
+
+media:
+  input: public/images   # uploaded images are saved here
+  output: /images        # ...and referenced by this public path
+
+content:
+  - name: events
+    label: Upcoming Events
+    type: collection
+    path: src/content/events
+    filename: '{primary}.md'
+    view:
+      fields:
+        - title
+        - displayDate
+        - location
+    fields:
+      - name: title
+        label: Event name
+        type: string
+        required: true
+      - name: order
+        label: Sort order (1 = first)
+        type: number
+        default: 1
+      - name: displayDate
+        label: Date (as shown on the card)
+        type: string
+        description: 'e.g. "June 29, 2026" or "Date TBD"'
+        required: true
+      - name: time
+        label: Time
+        type: string
+        description: 'e.g. "4:00 – 5:00 PM" or "Time TBD"'
+      - name: location
+        label: Location
+        type: string
+      - name: body
+        label: Description
+        type: text
+      - name: pills
+        label: Highlight chips (the "✓" tags)
+        type: string
+        list: true
+      - name: shortCode
+        label: Logo initials
+        type: string
+        description: 'Short letters shown in the colored circle, e.g. "BCR"'
+      - name: badge
+        label: Badge text
+        type: select
+        options:
+          values:
+            - Next Up
+            - Upcoming
+        default: Upcoming
+      - name: badgeHighlight
+        label: Green highlighted badge?
+        type: boolean
+        default: false
+      - name: ctaText
+        label: Button text
+        type: string
+        default: 'Get Notified →'
+      - name: ctaAccent
+        label: Orange button? (off = purple)
+        type: boolean
+        default: false
+      - name: featured
+        label: Feature this event (highlighted tile)?
+        type: boolean
+        default: false
+      - name: photo
+        label: Photo
+        type: image
+      - name: logoFrom
+        label: Logo color — start
+        type: string
+        default: '#7568f0'
+      - name: logoTo
+        label: Logo color — end
+        type: string
+        default: '#5a4fd8'
+      - name: calDates
+        label: Session dates (add one per date; leave empty if TBD)
+        type: date
+        list: true
+        options:
+          format: yyyy-MM-dd
+      - name: calLabel
+        label: Calendar label (defaults to the event name)
+        type: string

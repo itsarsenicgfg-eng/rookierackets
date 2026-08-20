@@ -56,7 +56,7 @@ import HeroSection from '../components/HeroSection';
         </div>
         <div class="stat-card stat-card-blue reveal d4">
           <span class="stat-num">100%</span>
-          <span class="stat-label">Free for all participants</span>
+          <span class="stat-label">Free workshops for all</span>
           <div class="stat-bar"><div class="stat-fill" style="width:100%"></div></div>
         </div>
       </div>
@@ -89,7 +89,7 @@ import HeroSection from '../components/HeroSection';
         <div class="wwd-card wwd-card-green reveal d3">
           <div class="wwd-photo" style="background-image:url('/images/IMG_8790.jpeg')"></div>
           <div class="wwd-icon" style="--c:#34d399;--cd:rgba(52,211,153,0.15)">🆓</div>
-          <h3>Always Free</h3>
+          <h3>Always Free Workshops</h3>
           <p>No fees. No hidden costs. Equipment is provided.</p>
           <span class="wwd-tag">Equipment Included</span>
         </div>
@@ -149,24 +149,24 @@ import HeroSection from '../components/HeroSection';
       <div class="testi-grid">
         <blockquote class="tq tq-purple reveal d1">
           <div class="tq-quote">"</div>
-          <p>The coaches have an amazing ability to connect with children and make learning fun. My daughter can't stop talking about it.</p>
+          <p>Darsh liked participating in Rookie Rackets camp. He said he practiced very well during the camp, he always looked forward to coming to the camp every day. Happy to say we loved it.</p>
           <div class="tq-footer">
-            <div class="tq-av" style="background:linear-gradient(135deg,#7568f0,#a89fff)">ST</div>
+            <div class="tq-av" style="background:linear-gradient(135deg,#7568f0,#a89fff)">MG</div>
             <div>
-              <cite>Sarah Thompson</cite>
-              <span>Parent</span>
+              <cite>Megh Gali</cite>
+              <span>Darsh's dad</span>
             </div>
           </div>
         </blockquote>
 
         <blockquote class="tq tq-hero reveal d2">
           <div class="tq-quote">"</div>
-          <p>The quality of coaching, the organization, and the confidence my son has built are incredible. Highly recommend to anyone.</p>
+          <p>Dhruva liked the camp so much. He loves to continue playing - great camp!</p>
           <div class="tq-footer">
-            <div class="tq-av" style="background:linear-gradient(135deg,#f07830,#ff8c42)">PN</div>
+            <div class="tq-av" style="background:linear-gradient(135deg,#f07830,#ff8c42)">KB</div>
             <div>
-              <cite>Priya Nair</cite>
-              <span>Parent</span>
+              <cite>Kamalakannan Babuji</cite>
+              <span>Dhruva's dad</span>
             </div>
           </div>
         </blockquote>
@@ -182,6 +182,30 @@ import HeroSection from '../components/HeroSection';
             </div>
           </div>
         </blockquote>
+
+        <blockquote class="tq tq-official reveal d4">
+          <div class="tq-quote">"</div>
+          <p>Liked the activities, schedule. She also liked the games.</p>
+          <div class="tq-footer">
+            <div class="tq-av" style="background:linear-gradient(135deg,#1e7a4a,#34c778)">SB</div>
+            <div>
+              <cite>Shanmuga Balasubrama</cite>
+              <span>Aathira's dad</span>
+            </div>
+          </div>
+        </blockquote>
+
+        <blockquote class="tq tq-wide reveal d5">
+          <div class="tq-quote">"</div>
+          <p>The high school students did an outstanding job leading our badminton workshops. They came prepared, were committed throughout the sessions, and did a wonderful job engaging with our students. Everything was well organized and ran smoothly. We truly appreciate their initiative, time, and willingness to give back to our school community!</p>
+          <div class="tq-footer">
+            <div class="tq-av" style="background:linear-gradient(135deg,#5a4fd8,#9b59b6)">ZC</div>
+            <div>
+              <cite>Zeliha Celiker</cite>
+              <span>Assistant Principal, TMSA Elementary</span>
+            </div>
+          </div>
+        </blockquote>
       </div>
     </div>
   </section>
@@ -191,7 +215,7 @@ import HeroSection from '../components/HeroSection';
     <div class="container">
       <div class="reveal" style="text-align:center;margin-bottom:2.5rem">
         <h2>Our <span class="grad">growing</span> network</h2>
-        <p class="partners-sub">We work with schools and community organizations across the Triangle to bring badminton to kids who'd never otherwise try it.</p>
+        <p class="partners-sub">We work with schools and community organizations across the Triangle to bring badminton to folks who'd never otherwise try it.</p>
       </div>
       <div class="network-wrap reveal">
         <canvas id="partner-network" aria-label="Partner network visualization"></canvas>
@@ -540,10 +564,12 @@ import HeroSection from '../components/HeroSection';
 
   .testi-grid {
     display: grid;
-    grid-template-columns: repeat(3,1fr);
+    grid-template-columns: repeat(2,1fr);
     gap: 1.25rem;
     margin-top: 3rem;
   }
+
+  .tq-wide { grid-column: 1 / -1; }
 
   .tq {
     background: var(--s2);
@@ -730,13 +756,13 @@ import HeroSection from '../components/HeroSection';
 (function () {
   // Organic positions as % of canvas, radii in px, larger = more prominent
   const NODES = [
-    { label: 'Carpenter\nElementary',   xp: 0.36, yp: 0.60, r: 72,  link: '/history#workshop-carpenter' },
-    { label: 'TMSA\nApex',              xp: 0.17, yp: 0.43, r: 56,  link: '/history#workshop-tmsa' },
-    { label: 'Vibha\nFoundation',       xp: 0.53, yp: 0.27, r: 46,  link: '/events#tile-vibha' },
+    { label: 'Carpenter\nElementary',   xp: 0.36, yp: 0.60, r: 72,  link: '/events#tile-carpenter-workshop' },
+    { label: 'TMSA\nApex',              xp: 0.17, yp: 0.43, r: 56,  link: '/events#tile-tmsa-workshop' },
+    { label: 'Vibha\nFoundation',       xp: 0.53, yp: 0.27, r: 46,  link: '/completed-events#camp-vibha' },
     { label: 'Anuraag\nFoundation',     xp: 0.73, yp: 0.40, r: 56,  link: null },
     { label: 'Boys Club\nof Raleigh',   xp: 0.86, yp: 0.58, r: 48,  link: '/events#tile-boys-club' },
-    { label: 'We Rock\nthe Spectrum',   xp: 0.62, yp: 0.65, r: 36,  link: '/events#tile-wrts' },
-    { label: 'Passmore\nSenior Center', xp: 0.25, yp: 0.72, r: 40,  link: '/events#tile-passmore' },
+    { label: 'RJourney',                xp: 0.62, yp: 0.65, r: 40,  link: '/completed-events#camp-rjourney' },
+    { label: 'Passmore\nSenior Center', xp: 0.25, yp: 0.72, r: 40,  link: null },
   ];
 
   const MAX_R = 72, MIN_R = 30;

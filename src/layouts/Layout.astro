@@ -49,8 +49,8 @@ const path = Astro.url.pathname;
         <ul class="nav-links">
           <li><a href="/" class={path === '/' ? 'active' : ''}>Home</a></li>
           <li><a href="/about" class={path === '/about' ? 'active' : ''}>About</a></li>
-          <li><a href="/events" class={path === '/events' ? 'active' : ''}>Events</a></li>
-          <li><a href="/history" class={path === '/history' ? 'active' : ''}>History</a></li>
+          <li><a href="/events" class={path === '/events' ? 'active' : ''}>Upcoming Events</a></li>
+          <li><a href="/completed-events" class={path === '/completed-events' ? 'active' : ''}>Completed Events</a></li>
           <li><a href="/faq" class={path === '/faq' ? 'active' : ''}>FAQ</a></li>
           <li><a href="/contact" class="nav-cta">Sign Up</a></li>
         </ul>
@@ -66,8 +66,8 @@ const path = Astro.url.pathname;
         <ul>
           <li><a href="/">Home</a></li>
           <li><a href="/about">About</a></li>
-          <li><a href="/events">Events</a></li>
-          <li><a href="/history">History</a></li>
+          <li><a href="/events">Upcoming Events</a></li>
+          <li><a href="/completed-events">Completed Events</a></li>
           <li><a href="/faq">FAQ</a></li>
           <li><a href="/contact" class="mobile-cta">Sign Up →</a></li>
         </ul>
@@ -100,9 +100,6 @@ const path = Astro.url.pathname;
     <footer>
       <div class="footer-grid">
         <div class="footer-brand">
-          <span class="footer-logo">
-            <img src="/images/logo.png" alt="Rookie Rackets" class="footer-logo-img" />
-          </span>
           <p>Free, inclusive badminton workshops for all ages in NC. Building skills, confidence, and community.</p>
           <div class="footer-social">
             <a href="https://www.instagram.com/rookie_rackets" target="_blank" rel="noopener" aria-label="Instagram" class="social-link">
@@ -117,8 +114,8 @@ const path = Astro.url.pathname;
           <h4>Pages</h4>
           <a href="/">Home</a>
           <a href="/about">About</a>
-          <a href="/events">Events</a>
-          <a href="/history">History</a>
+          <a href="/events">Upcoming Events</a>
+          <a href="/completed-events">Completed Events</a>
           <a href="/faq">FAQ</a>
           <a href="/contact">Contact</a>
         </div>

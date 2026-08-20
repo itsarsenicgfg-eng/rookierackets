@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
 
 const details = [
   { icon: '⏱', label: 'Duration', desc: 'Sessions typically run 1–2 hours.' },
@@ -7,9 +8,30 @@ const details = [
   { icon: '🏸', label: 'Equipment', desc: 'All equipment provided. Wear athletic shoes and comfortable clothes.' },
   { icon: '🧑', label: 'Age & Skill', desc: 'Open to all ages and experience levels. Beginners especially welcome.' },
 ];
+
+// Events come from the editable content collection (src/content/events/*.md),
+// which the admin panel edits.
+const eventEntries = (await getCollection('events')).sort(
+  (a, b) => (a.data.order ?? 0) - (b.data.order ?? 0)
+);
+
+// Data the calendar widget (client script) needs, built from the same source.
+// Each event can have several session dates.
+const calendarEvents = eventEntries.map((e) => {
+  const dates = (e.data.calDates ?? []).map((s) => {
+    const [y, m, d] = s.split('-').map(Number);
+    return { year: y, month: m - 1, day: d }; // month back to JS 0-indexed
+  });
+  return {
+    id: `tile-${e.id}`,
+    label: e.data.calLabel || e.data.title,
+    dates,
+    tbd: dates.length === 0,
+  };
+});
 ---
 
-<Layout title="Events" description="Upcoming Rookie Rackets badminton workshops in NC — free for all ages.">
+<Layout title="Upcoming Events" description="Upcoming Rookie Rackets badminton workshops in NC — free for all ages.">
 
   <!-- Page Hero -->
   <section class="page-hero">
@@ -23,11 +45,6 @@ const details = [
       <span class="label label-accent reveal">NC Workshops</span>
       <h1 class="reveal d1">Upcoming<br /><span class="grad">Events</span></h1>
       <p class="page-hero-lead reveal d2">Free badminton workshops open to all ages. No experience or equipment needed.</p>
-      <div class="page-hero-actions reveal d3">
-        <a href="/contact" class="btn btn-accent">Sign Up for Updates →</a>
-        <a href="#what-to-expect" class="btn btn-ghost">What to Expect</a>
-        <a href="/history" class="btn btn-ghost">View Past Events →</a>
-      </div>
     </div>
   </section>
 
@@ -55,8 +72,11 @@ const details = [
   <section class="schedule" id="schedule">
     <div class="container">
       <div class="reveal" style="margin-bottom:2.5rem">
-        <h2>Upcoming Sessions</h2>
+        <h2>Event Calendar</h2>
       </div>
+
+      <!-- Calendar data, generated from the events collection -->
+      <script type="application/json" id="calendar-data" set:html={JSON.stringify(calendarEvents)}></script>
 
       <!-- Mini Calendar -->
       <div class="cal-outer reveal d1">
@@ -73,97 +93,35 @@ const details = [
         <p class="cal-legend">Click an event chip to jump to details below.</p>
       </div>
 
-      <!-- Side-by-side event tiles -->
+      <!-- Side-by-side event tiles (rendered from src/content/events) -->
       <div class="event-tiles">
-
-        <div class="event-tile reveal d1" id="tile-boys-club">
-          <div class="tile-photo" style="background-image:url('/images/IMG_8788.jpeg')" aria-hidden="true"></div>
-          <div class="event-tile-body">
-            <div class="tile-top">
-              <div class="tile-logo tile-logo-bcr">BCR</div>
-              <span class="tile-badge tile-badge-green">Next Up</span>
+        {eventEntries.map((e, i) => (
+          <div
+            class:list={['event-tile', 'reveal', `d${Math.min(i + 1, 4)}`, { 'tile-featured': e.data.featured }]}
+            id={`tile-${e.id}`}
+          >
+            <div class="tile-photo" style={`background-image:url('${e.data.photo}')`} aria-hidden="true"></div>
+            <div class="event-tile-body">
+              <div class="tile-top">
+                <div class="tile-logo" style={`background:linear-gradient(135deg, ${e.data.logoFrom}, ${e.data.logoTo})`}>{e.data.shortCode}</div>
+                <span class:list={['tile-badge', { 'tile-badge-green': e.data.badgeHighlight }]}>{e.data.badge}</span>
+              </div>
+              <h3>{e.data.title}</h3>
+              <div class="tile-meta">
+                <span>📅 {e.data.displayDate}</span>
+                {e.data.time && <span>⏰ {e.data.time}</span>}
+                {e.data.location && <span>📍 {e.data.location}</span>}
+              </div>
+              <p class="tile-desc">{e.body?.trim()}</p>
+              {e.data.pills.length > 0 && (
+                <div class="tile-pills">
+                  {e.data.pills.map((p) => <span class="event-pill">✓ {p}</span>)}
+                </div>
+              )}
+              <a href="/contact" class:list={['btn', e.data.ctaAccent ? 'btn-accent' : 'btn-primary', 'tile-cta']}>{e.data.ctaText}</a>
             </div>
-            <h3>Boys Club of Raleigh</h3>
-            <div class="tile-meta">
-              <span>📅 Date TBD</span>
-              <span>⏰ 4:00 – 5:00 PM</span>
-              <span>📍 Boys Club of Raleigh</span>
-            </div>
-            <p class="tile-desc">An intro session at the Boys Club of Raleigh. Drop in and give badminton a try.</p>
-            <div class="tile-pills">
-              <span class="event-pill">✓ Free</span>
-              <span class="event-pill">✓ Equipment provided</span>
-            </div>
-            <a href="/contact" class="btn btn-accent tile-cta">Sign Up for Updates →</a>
           </div>
-        </div>
-
-        <div class="event-tile reveal d2" id="tile-wrts">
-          <div class="tile-photo" style="background-image:url('/images/IMG_8788.jpeg')" aria-hidden="true"></div>
-          <div class="event-tile-body">
-            <div class="tile-top">
-              <div class="tile-logo tile-logo-wrts">WR</div>
-              <span class="tile-badge tile-badge-green">Next Up</span>
-            </div>
-            <h3>Grand Opening — We Rock the Spectrum</h3>
-            <div class="tile-meta">
-              <span>📅 June 29, 2026</span>
-              <span>⏰ Time TBD</span>
-              <span>📍 Durham, NC</span>
-            </div>
-            <p class="tile-desc">Celebrate the grand opening of We Rock the Spectrum Durham with an intro badminton session for all ages.</p>
-            <div class="tile-pills">
-              <span class="event-pill">✓ Free</span>
-              <span class="event-pill">✓ Equipment provided</span>
-            </div>
-            <a href="/contact" class="btn btn-accent tile-cta">Sign Up for Updates →</a>
-          </div>
-        </div>
-
-        <div class="event-tile reveal d3" id="tile-passmore">
-          <div class="tile-photo" style="background-image:url('/images/workshop-session.png')" aria-hidden="true"></div>
-          <div class="event-tile-body">
-            <div class="tile-top">
-              <div class="tile-logo tile-logo-psc">PSC</div>
-              <span class="tile-badge">Upcoming</span>
-            </div>
-            <h3>Family Workshop — Passmore Senior Center</h3>
-            <div class="tile-meta">
-              <span>📅 July 29, 2026</span>
-              <span>⏰ 3:00 – 5:00 PM</span>
-              <span>📍 Passmore Senior Center</span>
-            </div>
-            <p class="tile-desc">A family badminton workshop at Passmore Senior Center. Bring the whole family; beginners of all ages welcome.</p>
-            <div class="tile-pills">
-              <span class="event-pill">✓ Free</span>
-              <span class="event-pill">✓ All ages</span>
-            </div>
-            <a href="/contact" class="btn btn-primary tile-cta">Get Notified →</a>
-          </div>
-        </div>
-
-        <div class="event-tile reveal d4" id="tile-vibha">
-          <div class="tile-photo" style="background-image:url('/images/Screenshot%202026-06-18%20180200.png')" aria-hidden="true"></div>
-          <div class="event-tile-body">
-            <div class="tile-top">
-              <div class="tile-logo tile-logo-vibha">V</div>
-              <span class="tile-badge">Upcoming</span>
-            </div>
-            <h3>Summer Camp — Vibha Partnership</h3>
-            <div class="tile-meta">
-              <span>📅 Summer 2026</span>
-              <span>⏰ 3 hrs/day</span>
-              <span>📍 Location TBD</span>
-            </div>
-            <p class="tile-desc">A full week of 3-hour sessions in partnership with Vibha. We'll focus on full game strategy, advanced drills, and competitive scrimmages. Location to be announced.</p>
-            <div class="tile-pills">
-              <span class="event-pill">✓ Free</span>
-              <span class="event-pill">✓ 12–15 spots</span>
-            </div>
-            <a href="/contact" class="btn btn-primary tile-cta">Get Notified →</a>
-          </div>
-        </div>
-
+        ))}
       </div>
     </div>
   </section>
@@ -224,7 +182,6 @@ const details = [
           <p>We'll email you when new sessions are announced. Free, no commitment.</p>
           <div class="bottom-cta-btns">
             <a href="/contact" class="btn btn-accent">Sign Up →</a>
-            <a href="/about" class="btn btn-ghost">About Us</a>
           </div>
         </div>
       </div>
@@ -461,12 +418,12 @@ const details = [
 
   .event-tile:hover { transform: translateY(-4px); box-shadow: var(--sh); border-color: var(--border-md); }
 
-  #tile-boys-club {
+  .tile-featured {
     border-color: rgba(52,211,153,0.28);
     box-shadow: 0 0 0 1px rgba(52,211,153,0.1), var(--sh);
   }
 
-  #tile-boys-club .event-tile-body {
+  .tile-featured .event-tile-body {
     background: linear-gradient(140deg, var(--s2), var(--s3));
   }
 
@@ -489,10 +446,6 @@ const details = [
     flex-shrink: 0;
   }
 
-  .tile-logo-bcr { background: linear-gradient(135deg, #e67e22, #d35400); }
-  .tile-logo-wrts { background: linear-gradient(135deg, #7568f0, #9b59b6); font-size: 0.7rem; }
-  .tile-logo-psc { background: linear-gradient(135deg, #27ae60, #1e8449); font-size: 0.7rem; }
-  .tile-logo-vibha { background: linear-gradient(135deg, #6b5fe8, #5a4fd8); font-size: 1rem; }
 
   .tile-badge {
     display: inline-block;
@@ -633,19 +586,16 @@ const details = [
 
   .detail strong { display: block; font-size: 0.95rem; font-weight: 700; color: var(--text); margin-bottom: 0.35rem; }
   .detail p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.65; margin: 0; }
+
 </style>
 
 <script>
   // Calendar state
-  const events = [
-    { id: 'tile-boys-club', label: 'Boys Club of Raleigh', month: null, day: null, tbd: true },
-    { id: 'tile-wrts', label: 'We Rock the Spectrum', month: 5, day: 29, tbd: false },
-    { id: 'tile-passmore', label: 'Family Workshop — Passmore', month: 6, day: 29, tbd: false },
-    { id: 'tile-vibha', label: 'Vibha Summer Camp', month: 7, day: null, tbd: true },
-  ];
+  const dataEl = document.getElementById('calendar-data');
+  const events = dataEl ? JSON.parse(dataEl.textContent || '[]') : [];
 
   let viewYear = 2026;
-  let viewMonth = 5; // 0-indexed: 5 = June
+  let viewMonth = 7; // 0-indexed: 7 = August
 
   function renderCalendar() {
     const label = document.getElementById('cal-month-label');
@@ -682,8 +632,10 @@ const details = [
         el.classList.add('today');
       }
 
-      // Mark event days (if specific day known)
-      const dayEvents = events.filter(e => e.month === viewMonth && e.day === d && !e.tbd);
+      // Mark event days (any session on this day)
+      const dayEvents = events.filter(e =>
+        e.dates.some(dt => dt.year === viewYear && dt.month === viewMonth && dt.day === d)
+      );
       if (dayEvents.length) {
         el.classList.add('has-event');
         el.addEventListener('click', () => {
@@ -695,12 +647,11 @@ const details = [
       grid.appendChild(el);
     }
 
-    // Event chips for this month (TBD events or month-matched)
+    // Event chips for this month (TBD events, or events with a session this month)
     chips.innerHTML = '';
     const monthEvents = events.filter(e => {
-      if (e.tbd && e.month === null) return true; // show always
-      if (e.month === viewMonth) return true;
-      return false;
+      if (e.tbd) return true; // date not set yet — always show
+      return e.dates.some(dt => dt.year === viewYear && dt.month === viewMonth);
     });
 
     monthEvents.forEach(ev => {

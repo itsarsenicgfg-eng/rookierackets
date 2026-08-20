@@ -65,6 +65,15 @@ const coaches = [
     color: '#8b5cf6',
     photo: 'https://picsum.photos/seed/coach-ishan/400/320',
   },
+  {
+    name: 'Tanay Kankanala',
+    role: 'Coach',
+    initials: 'TK',
+    bio: 'Coming soon.',
+    extra: 'Coming soon.',
+    color: '#14b8a6',
+    photo: 'https://picsum.photos/seed/coach-tanay/400/320',
+  },
 ];
 
 ---
@@ -81,7 +90,7 @@ const coaches = [
     </div>
     <div class="container page-hero-inner">
       <span class="label reveal">Our Story</span>
-      <h1 class="reveal d1">Built by a student.<br /><span class="grad">Free for everyone.</span></h1>
+      <h1 class="reveal d1">Built by high school students.<br /><span class="grad">Free for everyone.</span></h1>
       <p class="page-hero-lead reveal d2">We're a badminton nonprofit based in NC. Elite coaching, no cost, all ages.</p>
       <div class="page-hero-actions reveal d3">
         <a href="/events" class="btn btn-primary">View Events →</a>
@@ -167,9 +176,9 @@ const coaches = [
     <div class="container">
       <div class="reveal" style="margin-bottom:2.5rem">
         <h2>Meet the coaches</h2>
-        <p class="team-sub">Seven coaches, all volunteers, all here because they love the sport.</p>
+        <p class="team-sub">Eight coaches, all volunteers, all here because they love the sport.</p>
       </div>
-      <p class="flip-hint">Click any card to flip it</p>
+      <p class="flip-hint">Tap any card to learn more</p>
       <div class="team-grid">
         {coaches.map(({ name, role, initials, bio, extra, color, photo }, i) => (
           <div class={`coach-outer reveal d${(i % 3) + 1}`} onclick="this.classList.toggle('flipped')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">

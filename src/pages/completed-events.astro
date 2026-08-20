@@ -47,6 +47,36 @@ const tournaments = [
   },
 ];
 
+const camps = [
+  {
+    id: 'camp-vibha',
+    name: 'Summer Camp — Vibha Partnership',
+    date: 'Summer 2026',
+    partner: 'Vibha',
+    desc: 'A full week of 3-hour sessions in partnership with Vibha, focused on full game strategy, advanced drills, and competitive scrimmages.',
+    color: 'rgba(107,95,232,0.12)',
+    border: 'rgba(107,95,232,0.28)',
+  },
+  {
+    id: 'camp-rr-2',
+    name: 'Rookie Rackets Summer Camp 2',
+    date: 'Summer 2026',
+    partner: 'Rookie Rackets',
+    desc: 'Our second Rookie Rackets summer camp, building on fundamentals with more game play and technique work.',
+    color: 'rgba(240,120,48,0.1)',
+    border: 'rgba(240,120,48,0.28)',
+  },
+  {
+    id: 'camp-rjourney',
+    name: 'RJourney Summer Camp',
+    date: 'Summer 2026',
+    partner: 'RJourney',
+    desc: 'A summer camp run in partnership with RJourney, introducing more kids to the sport.',
+    color: 'rgba(52,199,120,0.1)',
+    border: 'rgba(52,199,120,0.28)',
+  },
+];
+
 const scheduleItems = [
   { label: 'Frequency', value: 'Every 6–8 weeks', icon: '📅' },
   { label: 'Day', value: 'Typically weekends', icon: '🗓️' },
@@ -57,7 +87,7 @@ const scheduleItems = [
 ];
 ---
 
-<Layout title="History & Schedule" description="Past Rookie Rackets workshops, fundraising tournaments, and our recurring event schedule in Cary, NC.">
+<Layout title="Completed Events" description="Past Rookie Rackets workshops, camps, and fundraising tournaments in Cary, NC — everything we've run since 2025.">
 
   <!-- Page Hero -->
   <section class="page-hero">
@@ -69,7 +99,7 @@ const scheduleItems = [
     </div>
     <div class="container page-hero-inner">
       <span class="label reveal">Our Journey</span>
-      <h1 class="reveal d1">Sessions, tournaments,<br /><span class="grad">and everything since.</span></h1>
+      <h1 class="reveal d1">Sessions, tournaments,<br /><span class="grad">and everything since 2025.</span></h1>
       <p class="page-hero-lead reveal d2">
         Two workshops, one tournament, and a program that keeps growing. Plus when to expect the next session.
       </p>
@@ -84,10 +114,11 @@ const scheduleItems = [
   <div class="stats-bar">
     <div class="container stats-bar-inner">
       {[
-        { num: '2', label: 'Workshops run' },
-        { num: '30+', label: 'Players coached' },
-        { num: '1', label: 'Fundraising tournament' },
-        { num: '$4,500+', label: 'Dollars raised' },
+        { num: '60', label: 'Kids coached' },
+        { num: '2', label: 'Workshops' },
+        { num: '3', label: 'Camps' },
+        { num: '1', label: 'Tournament' },
+        { num: '$5,500', label: 'Raised' },
       ].map(s => (
         <div class="sbar-item reveal">
           <span class="sbar-num">{s.num}</span>
@@ -101,8 +132,8 @@ const scheduleItems = [
   <section class="workshops-section">
     <div class="container">
       <div class="reveal" style="margin-bottom:3rem">
-        <h2>Every session, documented</h2>
-        <p class="section-lead">10 beginners at Carpenter Elementary, 12 at TMSA Elementary. Both documented below.</p>
+        <h2>Workshops</h2>
+        <p class="section-lead">10 beginners at Carpenter Elementary, 12 at TMSA Elementary. Every session, documented below.</p>
       </div>
 
       <div class="workshop-list">
@@ -138,12 +169,38 @@ const scheduleItems = [
     </div>
   </section>
 
+  <!-- Camps -->
+  <section class="camps-section">
+    <div class="container">
+      <div class="reveal" style="margin-bottom:3rem">
+        <h2>Camps</h2>
+        <p class="section-lead">Multi-day summer camps run with our partners, going deeper on strategy, drills, and game play.</p>
+      </div>
+
+      <div class="camp-grid">
+        {camps.map((c, i) => (
+          <div id={c.id} class={`camp-card reveal d${i + 1}`} style={`--cc:${c.color};--cb:${c.border}`}>
+            <div class="camp-icon">🏕️</div>
+            <div class="camp-main">
+              <h3>{c.name}</h3>
+              <div class="camp-meta">
+                <span>📅 {c.date}</span>
+                <span>🤝 w/ {c.partner}</span>
+              </div>
+              <p class="camp-desc">{c.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
   <!-- Fundraising Tournaments -->
   <section class="tournaments-section">
     <div class="container">
       <div class="reveal" style="margin-bottom:3rem">
-        <h2>Tournaments that fund the mission</h2>
-        <p class="section-lead">We run competitive badminton tournaments open to the community. All proceeds keep the workshops free.</p>
+        <h2>How we fund the mission</h2>
+        <p class="section-lead">Our camps and community tournaments do double duty: they teach the sport and raise the funds that keep every workshop free.</p>
       </div>
 
       <div class="tournament-grid">
@@ -169,10 +226,6 @@ const scheduleItems = [
               <div class="t-stat">
                 <span class="t-stat-num">{t.players}</span>
                 <span class="t-stat-label">participants</span>
-              </div>
-              <div class="t-stat">
-                <span class="t-stat-num">100%</span>
-                <span class="t-stat-label">to mission</span>
               </div>
             </div>
           </div>
@@ -208,11 +261,10 @@ const scheduleItems = [
           </div>
           <ol class="tl-list">
             {[
-              { step: 'Announce', desc: 'Email sent to waitlist 1–2 weeks before.' },
-              { step: 'Warm-up', desc: 'Light footwork and dynamic stretching.' },
-              { step: 'Drills', desc: '45–60 min structured skill drills by level.' },
-              { step: 'Scrimmage', desc: 'Open play with coach feedback on the fly.' },
-              { step: 'Wrap-up', desc: 'Q&A, recap, next steps.' },
+              { step: 'Warm-up · Get moving', desc: 'Light footwork and dynamic stretching to loosen up.' },
+              { step: 'Drills · Skills & technique', desc: '45–60 min of structured skill work, grouped by level.' },
+              { step: 'Scrimmage · Real play', desc: 'Open games with coach feedback on the fly.' },
+              { step: 'Wrap-up · Recap', desc: 'Q&A, recap, and what to work on next.' },
             ].map((tl, i) => (
               <li class="tl-item">
                 <div class="tl-dot">{i + 1}</div>
@@ -240,7 +292,7 @@ const scheduleItems = [
           <p>We'll email you when the next session is announced. No spam.</p>
           <div class="bottom-cta-btns">
             <a href="/contact" class="btn btn-accent">Sign Up for Updates →</a>
-            <a href="/events" class="btn btn-ghost">View Events Page</a>
+            <a href="/events" class="btn btn-ghost">View Upcoming Events</a>
           </div>
         </div>
       </div>
@@ -254,7 +306,7 @@ const scheduleItems = [
     const hash = window.location.hash;
     if (!hash) return;
     const card = document.querySelector(hash);
-    if (!card || !card.classList.contains('workshop-card')) return;
+    if (!card || !(card.classList.contains('workshop-card') || card.classList.contains('camp-card'))) return;
 
     setTimeout(() => {
       card.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -443,6 +495,45 @@ const scheduleItems = [
     .workshop-card { grid-template-columns: 1fr; gap: 0.75rem; }
     .wcard-num { font-size: 1.1rem; }
   }
+
+  /* Camps */
+  .camps-section { background: var(--s1); border-top: 1px solid var(--border); }
+
+  .camp-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.25rem;
+  }
+
+  .camp-card {
+    background: var(--s2);
+    border: 1px solid var(--cb, var(--border));
+    border-radius: var(--r-xl);
+    padding: 1.75rem;
+    display: flex;
+    gap: 1.25rem;
+    align-items: flex-start;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+    scroll-margin-top: 100px;
+  }
+
+  .camp-card::before { content: ''; position: absolute; inset: 0; background: var(--cc, transparent); pointer-events: none; }
+  .camp-card:hover { transform: translateY(-4px); box-shadow: var(--sh); }
+
+  .camp-card.card-highlighted {
+    border-color: rgba(117,104,240,0.55) !important;
+    box-shadow: 0 0 0 3px rgba(117,104,240,0.18), 0 0 40px rgba(117,104,240,0.22), var(--sh) !important;
+    transform: translateY(-4px) !important;
+    animation: cardFlash 0.6s ease-out;
+  }
+
+  .camp-icon { font-size: 1.6rem; flex-shrink: 0; position: relative; }
+  .camp-main { position: relative; }
+  .camp-card h3 { font-size: 1.05rem; margin-bottom: 0.5rem; }
+  .camp-meta { display: flex; flex-wrap: wrap; gap: 0.4rem 1.1rem; font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.75rem; }
+  .camp-desc { font-size: 0.9rem; color: var(--text-muted); line-height: 1.7; margin: 0; }
 
   /* Fundraising Tournaments */
   .tournaments-section {
