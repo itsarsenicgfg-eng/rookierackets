@@ -811,8 +811,12 @@ import HeroSection from '../components/HeroSection';
     }
 
     function buildNodes() {
+      // Shrink the partner bubbles on narrow (mobile) canvases so they don't overlap.
+      const rScale = Math.min(1, W / 680);
       nodes = NODES.map((n, i) => ({
         ...n,
+        origR: n.r,
+        r: n.r * rScale,
         ox: n.xp * W, oy: n.yp * H,
         x: n.xp * W,  y: n.yp * H,
         phase: i * 1.1,
@@ -904,8 +908,8 @@ import HeroSection from '../components/HeroSection';
         const scale = isHl ? 1.06 : 1;
         const r = n.r * scale;
 
-        // Alpha: larger bubbles are more saturated/opaque
-        const frac = (n.r - MIN_R) / (MAX_R - MIN_R);
+        // Alpha: larger bubbles are more saturated/opaque (based on original size)
+        const frac = (n.origR - MIN_R) / (MAX_R - MIN_R);
         const alpha = 0.38 + frac * 0.62;
 
         // Hover glow
