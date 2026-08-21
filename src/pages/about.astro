@@ -89,7 +89,6 @@ const coaches = [
       <div class="ph-grid"></div>
     </div>
     <div class="container page-hero-inner">
-      <span class="label reveal">Our Story</span>
       <h1 class="reveal d1">Built by high school students.<br /><span class="grad">Free for everyone.</span></h1>
       <p class="page-hero-lead reveal d2">We're a badminton nonprofit based in NC. Elite coaching, no cost, all ages.</p>
       <div class="page-hero-actions reveal d3">
@@ -105,7 +104,7 @@ const coaches = [
       <div class="origin-text reveal from-left">
         <div class="origin-eyebrow">Our Story</div>
         <h2>A student's idea<br /><span class="grad">became a nonprofit.</span></h2>
-        <p>A Green Hope High School student who is passionate about badminton wanted to make the sport more accessible in a community where most people don't get the chance to try it. What began as one person's effort has grown into a team of 7 passionate high schoolers and a registered 501(c)(3) nonprofit, built on the belief that everyone should have the option to pick up a racket and see how fun the sport can be.</p>
+        <p>A Green Hope High School student who is passionate about badminton wanted to make the sport more accessible in a community where most people don't get the chance to try it. What began in fall 2024 as one person's effort has grown into a team of 8 passionate high schoolers and a registered 501(c)(3) nonprofit, built on the belief that everyone should have the option to pick up a racket and see how fun the sport can be.</p>
         <p>Our goal is to keep widening that door, reaching more kids across NC every season.</p>
         <a href="/events" class="btn btn-primary" style="margin-top:1rem">View Upcoming Events →</a>
       </div>
@@ -127,8 +126,8 @@ const coaches = [
         <div class="op-card">
           <span class="op-icon">🔥</span>
           <div>
-            <strong>Inspire kids to pursue the sport</strong>
-            <p>Kids leave the court excited about badminton.</p>
+            <strong>Inspire kids and adults to pursue the sport</strong>
+            <p>Players of all ages leave the court excited about badminton.</p>
           </div>
         </div>
         <div class="op-card">
@@ -145,6 +144,22 @@ const coaches = [
             <p>Coach Mark, a practicing psychologist, shapes how we teach so kids stay engaged and keep learning.</p>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mission & Vision -->
+  <section class="mv-section">
+    <div class="container mv-grid">
+      <div class="mv-card mv-mission reveal from-left">
+        <span class="mv-eyebrow">Mission</span>
+        <h3>Make badminton something anyone can try.</h3>
+        <p>Run free, well-coached workshops across NC and remove every barrier (cost, equipment, experience) that keeps kids and families from picking up a racket.</p>
+      </div>
+      <div class="mv-card mv-vision reveal">
+        <span class="mv-eyebrow">Vision</span>
+        <h3>A community where every young person can grow through the sport.</h3>
+        <p>A Triangle where any kid, whatever their background or ability, can find confidence, focus, and a lasting love for the game.</p>
       </div>
     </div>
   </section>
@@ -229,18 +244,23 @@ const coaches = [
         <div class="val val-dark reveal d2">
           <div class="val-icon">🌍</div>
           <h3>Inclusion</h3>
-          <p>Beginners are our specialty.</p>
+          <p>Open to players of all ages and all abilities, including kids on the spectrum.</p>
         </div>
         <div class="val reveal d3">
           <div class="val-icon">⭐</div>
           <h3>Excellence</h3>
-          <p>We bring the same focus to workshops that we bring to competition.</p>
+          <p>We bring the same focus to our workshops and camps that we bring to competition.</p>
         </div>
         <div class="val val-dark reveal d4">
           <div class="val-icon">🤝</div>
           <h3>Community</h3>
           <p>We're building a badminton community in Cary.</p>
         </div>
+      </div>
+
+      <div class="wellbeing-note reveal">
+        <span class="wb-icon">🧠</span>
+        <p><strong>More than a sport.</strong> Getting on the court builds more than fitness. Staying physically active is one of the most reliable ways to support mental health, and the game grows confidence, focus, and resilience along the way. We coach the whole player, not just the shot.</p>
       </div>
     </div>
   </section>
@@ -297,6 +317,69 @@ const coaches = [
     filter: brightness(0.72) contrast(1.06) saturate(1.05);
     transform: scale(1.04);
   }
+
+  /* Push hero copy toward the bottom so faces in the photo stay visible */
+  .page-hero { align-items: flex-end; }
+  /* Keep the intro sentence on one line on desktop */
+  .page-hero-lead { max-width: none; }
+
+  /* ── Mission & Vision ────────────────────────── */
+  .mv-section { background: var(--bg); border-top: 1px solid var(--border); }
+
+  .mv-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+  }
+
+  @media (max-width: 760px) { .mv-grid { grid-template-columns: 1fr; } }
+
+  .mv-card {
+    border-radius: var(--r-xl);
+    padding: 2.25rem 2rem;
+    border: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .mv-mission {
+    background: linear-gradient(150deg, rgba(117,104,240,0.12), rgba(117,104,240,0.04));
+    border-color: rgba(117,104,240,0.25);
+  }
+  .mv-vision {
+    background: linear-gradient(150deg, rgba(240,120,48,0.1), rgba(240,120,48,0.03));
+    border-color: rgba(240,120,48,0.25);
+  }
+
+  .mv-eyebrow {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--primary);
+  }
+  .mv-vision .mv-eyebrow { color: #c45c18; }
+  .mv-card h3 { font-size: 1.2rem; line-height: 1.3; }
+  .mv-card p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.75; margin: 0; }
+
+  /* ── Well-being note (values section) ────────── */
+  .wellbeing-note {
+    margin-top: 1.25rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 1.1rem;
+    background: linear-gradient(135deg, rgba(52,199,120,0.1), rgba(52,199,120,0.03));
+    border: 1px solid rgba(52,199,120,0.25);
+    border-radius: var(--r-lg);
+    padding: 1.5rem 1.75rem;
+  }
+  .wb-icon { font-size: 1.6rem; flex-shrink: 0; }
+  .wellbeing-note p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.75; margin: 0; }
+  .wellbeing-note strong { color: var(--text); }
+
+  /* Keep the bottom-CTA sentence on one line on desktop */
+  .bottom-cta-body p { max-width: 620px; }
 
   /* ── Our Story / Origin ──────────────────────── */
   .origin { background: var(--s1); border-top: 1px solid var(--border); }

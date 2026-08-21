@@ -100,7 +100,7 @@ import HeroSection from '../components/HeroSection';
   <!-- GALLERY -->
   <section class="gallery">
     <div class="container">
-      <div class="section-intro reveal" style="text-align:center;align-items:center">
+      <div class="section-intro reveal">
         <h2>Badminton in action</h2>
         <p>Snapshots from our workshops and community events.</p>
       </div>
@@ -116,9 +116,9 @@ import HeroSection from '../components/HeroSection';
           <div class="photo-label">TMSA Elementary</div>
         </div>
         <div class="photo-cell reveal d3">
-          <img src="/images/TMSA-3.JPG" alt="Coach and student at the net at TMSA Elementary" loading="lazy" />
+          <img src="/images/camp2-2.jpg" alt="Campers practicing at a Rookie Rackets summer camp" loading="lazy" />
           <div class="photo-overlay"></div>
-          <div class="photo-label">TMSA Elementary</div>
+          <div class="photo-label">Summer Camp</div>
         </div>
         <div class="photo-cell photo-wide reveal d4">
           <img src="/images/workshop-session.png" alt="Group session at Carpenter Elementary" loading="lazy" />
@@ -131,9 +131,9 @@ import HeroSection from '../components/HeroSection';
           <div class="photo-label">Our Team</div>
         </div>
         <div class="photo-cell photo-wide reveal d3">
-          <img src="/images/IMG_8788.jpeg" alt="Players rallying across the net at TMSA Elementary" loading="lazy" />
+          <img src="/images/rjourney-2.jpg" alt="Group at a Rookie Rackets summer camp" loading="lazy" />
           <div class="photo-overlay"></div>
-          <div class="photo-label">TMSA Elementary</div>
+          <div class="photo-label">Summer Camp</div>
         </div>
       </div>
     </div>
@@ -399,6 +399,13 @@ import HeroSection from '../components/HeroSection';
 
   .section-intro h2 { margin-bottom: 0.875rem; }
   .section-intro p { color: var(--text-muted); font-size: 1.05rem; line-height: 1.75; }
+
+  /* "What we do" intro spans full width so its sentence stays on one line */
+  .wwd .section-intro { max-width: none; }
+  .wwd .section-intro p { max-width: none; }
+
+  /* Truly center the testimonials heading across the page */
+  .testi .section-intro { max-width: none; align-items: center; }
 
   .wwd-grid {
     display: grid;
