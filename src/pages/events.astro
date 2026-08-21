@@ -100,7 +100,10 @@ const calendarEvents = eventEntries.map((e) => {
             class:list={['event-tile', 'reveal', `d${Math.min(i + 1, 4)}`, { 'tile-featured': e.data.featured }]}
             id={`tile-${e.id}`}
           >
-            <div class="tile-photo" style={`background-image:url('${e.data.photo}')`} aria-hidden="true"></div>
+            {e.data.photo
+              ? <div class="tile-photo" style={`background-image:url('${e.data.photo}')`} aria-hidden="true"></div>
+              : <div class="tile-photo" style={`background:${e.data.logoFrom}`} aria-hidden="true"></div>
+            }
             <div class="event-tile-body">
               <div class="tile-top">
                 <div class="tile-logo" style={`background:linear-gradient(135deg, ${e.data.logoFrom}, ${e.data.logoTo})`}>{e.data.shortCode}</div>

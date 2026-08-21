@@ -14,7 +14,7 @@ pills:
   - Equipment provided
 ctaText: Sign Up for Updates →
 ctaAccent: true
-photo: /images/IMG_8788.jpeg
+photo: ""
 featured: true
 calDates:
   - "2026-08-28"
