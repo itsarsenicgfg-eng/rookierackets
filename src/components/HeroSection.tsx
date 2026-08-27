@@ -184,8 +184,9 @@ export default function HeroSection() {
               animate="show"
               style={{ fontSize: '1.1rem', color: 'rgba(240,236,255,0.78)', maxWidth: '480px', lineHeight: 1.8, marginBottom: '2rem' }}
             >
-              Free, all-inclusive badminton workshops — coached by players trained
-              under the US National Head Coach. No experience or equipment needed.
+              Free, all-inclusive badminton workshops — coached by a team of Wake
+              County high schoolers trained under the US National Head Coach. No
+              experience or equipment needed.
             </motion.p>
 
             {/* Buttons */}
