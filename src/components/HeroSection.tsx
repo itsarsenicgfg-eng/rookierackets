@@ -50,117 +50,6 @@ function Orb({ style }: { style: React.CSSProperties }) {
   );
 }
 
-/* ── Session card (right panel) ─────────────────────── */
-function SessionCard({ reduced }: { reduced: boolean | null }) {
-  const details = [
-    { icon: '📍', text: 'NC' },
-    { icon: '👦', text: 'All skill levels welcome' },
-    { icon: '🏆', text: 'Expert coaching included' },
-  ];
-
-  return (
-    <motion.div
-      className="hero-card-wrap"
-      variants={slideUp(0.5)}
-      initial="hidden"
-      animate="show"
-    >
-      <div style={{
-        background:     'rgba(13,13,26,0.82)',
-        border:         '1px solid rgba(128,117,255,0.28)',
-        borderRadius:   '1.25rem',
-        padding:        '1.75rem',
-        backdropFilter: 'blur(24px)',
-        boxShadow:      '0 32px 80px rgba(0,0,0,0.55), 0 0 0 1px rgba(128,117,255,0.1)',
-        position:       'relative',
-        zIndex:         1,
-      }}>
-
-        {/* Card header */}
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.25rem' }}>
-          <span style={{ fontSize: '0.7rem', fontWeight: 700, textTransform: 'uppercase' as const, letterSpacing: '0.09em', color: 'rgba(128,117,255,0.9)' }}>
-            Upcoming Session
-          </span>
-          <span style={{
-            fontSize: '0.7rem', fontWeight: 700,
-            background: 'rgba(52,211,153,0.18)', color: '#34d399',
-            border: '1px solid rgba(52,211,153,0.32)', borderRadius: '999px', padding: '0.2rem 0.65rem',
-          }}>
-            Always Free
-          </span>
-        </div>
-
-        {/* Shuttlecock + pulse rings */}
-        <div style={{ position: 'relative', height: 120, display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0.5rem 0 1.5rem' }}>
-          {[100, 70, 42].map((size, i) => (
-            <motion.div
-              key={i}
-              style={{
-                position:     'absolute',
-                width:        size, height: size,
-                borderRadius: '50%',
-                border:       `1px solid rgba(128,117,255,${0.14 + i * 0.1})`,
-              }}
-              animate={reduced ? {} : { scale: [1, 1.05, 1], opacity: [0.5, 1, 0.5] }}
-              transition={{ duration: 3 + i * 0.8, repeat: Infinity, ease: 'easeInOut', delay: i * -0.9 }}
-            />
-          ))}
-          <motion.span
-            style={{ fontSize: '3.5rem', position: 'relative', zIndex: 2, filter: 'drop-shadow(0 0 22px rgba(128,117,255,0.6))' }}
-            animate={reduced ? {} : { y: [-7, 7, -7], rotate: [-4, 4, -4] }}
-            transition={{ duration: 3.2, repeat: Infinity, ease: 'easeInOut' }}
-          >
-            🏸
-          </motion.span>
-        </div>
-
-        {/* Detail rows */}
-        <div style={{ display: 'flex', flexDirection: 'column' as const, gap: '0.7rem', marginBottom: '1.25rem' }}>
-          {details.map((item, i) => (
-            <motion.div
-              key={i}
-              variants={fadeIn(0.85 + i * 0.12)}
-              initial="hidden"
-              animate="show"
-              style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', fontSize: '0.8rem', color: 'rgba(240,236,255,0.75)' }}
-            >
-              <span style={{ fontSize: '1rem', flexShrink: 0 }}>{item.icon}</span>
-              {item.text}
-            </motion.div>
-          ))}
-        </div>
-
-        {/* CTA */}
-        <motion.a
-          href="/contact"
-          variants={fadeIn(1.15)}
-          initial="hidden"
-          animate="show"
-          whileHover={reduced ? {} : { scale: 1.03 }}
-          whileTap={reduced ? {} : { scale: 0.97 }}
-          transition={snappy}
-          style={{
-            display:        'block',
-            textAlign:      'center' as const,
-            padding:        '0.7rem 1rem',
-            background:     'linear-gradient(135deg, #7568f0, #f07830)',
-            color:          '#fff',
-            borderRadius:   '0.5rem',
-            fontWeight:     700,
-            fontSize:       '0.875rem',
-            textDecoration: 'none',
-            boxShadow:      '0 4px 20px rgba(128,117,255,0.45)',
-            fontFamily:     "'Syne', system-ui, sans-serif",
-            cursor:         'pointer',
-          }}
-        >
-          Register →
-        </motion.a>
-      </div>
-    </motion.div>
-  );
-}
-
 /* ── Main component ─────────────────────────────────── */
 export default function HeroSection() {
   const reduced = useReducedMotion();
@@ -179,16 +68,10 @@ export default function HeroSection() {
           margin: 0 auto;
           width: 100%;
           display: grid;
-          grid-template-columns: 1fr auto;
+          grid-template-columns: 1fr;
           align-items: center;
-          gap: 4rem;
           position: relative;
           z-index: 1;
-        }
-        .hero-card-wrap {
-          position: relative;
-          width: 290px;
-          flex-shrink: 0;
         }
         .hero-slide {
           position: absolute;
@@ -220,17 +103,6 @@ export default function HeroSection() {
         .hero-dot.active {
           background: rgba(255,255,255,0.85);
           transform: scale(1.4);
-        }
-        @media (max-width: 840px) {
-          .hero-inner-grid {
-            grid-template-columns: 1fr;
-            gap: 2.5rem;
-          }
-          .hero-card-wrap {
-            width: 100%;
-            max-width: 340px;
-            margin: 0 auto;
-          }
         }
       `}</style>
 
@@ -402,9 +274,6 @@ export default function HeroSection() {
               </p>
             </motion.div>
           </div>
-
-          {/* ── Right: session card ── */}
-          <SessionCard reduced={reduced} />
         </div>
 
         {/* Slideshow dots */}
