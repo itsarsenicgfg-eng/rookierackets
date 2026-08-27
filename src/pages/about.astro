@@ -83,7 +83,7 @@ const coaches = [
   <!-- Page Hero -->
   <section class="page-hero">
     <div class="page-hero-bg" aria-hidden="true">
-      <div class="ph-photo" style="background-image:url('/images/workshop-team-hq.jpg')"></div>
+      <div class="ph-photo" style="background-image:url('/images/our-team.jpg')"></div>
       <div class="ph-orb" style="width:700px;height:700px;top:-30%;right:-8%;background:radial-gradient(ellipse at center,rgba(107,95,232,0.14) 0%,rgba(107,95,232,0.04) 45%,transparent 70%);animation-delay:0s"></div>
       <div class="ph-orb" style="width:450px;height:450px;bottom:-15%;left:-5%;background:radial-gradient(ellipse at center,rgba(240,120,48,0.12) 0%,transparent 65%);animation-delay:-6s"></div>
       <div class="ph-grid"></div>
@@ -91,10 +91,6 @@ const coaches = [
     <div class="container page-hero-inner">
       <h1 class="reveal d1">Built by high school students.<br /><span class="grad">Free for everyone.</span></h1>
       <p class="page-hero-lead reveal d2">We're a badminton nonprofit based in NC. Elite coaching, no cost, all ages.</p>
-      <div class="page-hero-actions reveal d3">
-        <a href="/events" class="btn btn-primary">View Events →</a>
-        <a href="/contact" class="btn btn-ghost">Sign Up</a>
-      </div>
     </div>
   </section>
 
@@ -104,8 +100,8 @@ const coaches = [
       <div class="origin-text reveal from-left">
         <div class="origin-eyebrow">Our Story</div>
         <h2>A student's idea<br /><span class="grad">became a nonprofit.</span></h2>
-        <p>A Green Hope High School student who is passionate about badminton wanted to make the sport more accessible in a community where most people don't get the chance to try it. What began in fall 2024 as one person's effort has grown into a team of 8 passionate high schoolers and a registered 501(c)(3) nonprofit, built on the belief that everyone should have the option to pick up a racket and see how fun the sport can be.</p>
-        <p>Our goal is to keep widening that door, reaching more kids across NC every season.</p>
+        <p>A Green Hope High School student who is passionate about badminton wanted to make the sport more accessible in a community where several people either don't know it or do not get a chance to try it. What began in summer 2024 as one person's effort has grown into a team of 8 passionate high schoolers and a registered 501(c)(3) nonprofit, built on the belief that everyone should have the option to pick up a racket and see how fun the sport can be.</p>
+        <p>Our goal is to keep widening that door, reaching more folks — all ages and abilities — across NC.</p>
         <a href="/events" class="btn btn-primary" style="margin-top:1rem">View Upcoming Events →</a>
       </div>
       <div class="origin-right reveal">
@@ -154,7 +150,7 @@ const coaches = [
       <div class="mv-card mv-mission reveal from-left">
         <span class="mv-eyebrow">Mission</span>
         <h3>Share our love of badminton with the community.</h3>
-        <p>We provide free, all-inclusive workshops and demonstration sessions for players of every age and skill level, welcoming anyone who wants to pick up a racket for the first time.</p>
+        <p>We provide free, all-inclusive workshops and demonstration sessions for players of every age, any ability, and any skill level, welcoming anyone who wants to pick up a racket for the first time.</p>
       </div>
       <div class="mv-card mv-vision reveal">
         <span class="mv-eyebrow">Vision</span>
@@ -172,8 +168,13 @@ const coaches = [
           <h2>Coaching Background</h2>
         </div>
         <div class="coaches-body reveal">
-          <p>Our coaches bring serious competitive experience and a love for teaching. We've trained under <strong>Coach Hendry</strong>, US National Head Coach (2023–2024), and won $1,000+ in open competitions.</p>
-          <p>Elite training paired with six years of beginner-first coaching. That combination is rare, and it shows in how quickly kids pick up the game.</p>
+          <p>Our coaches bring serious competitive experience and a love for teaching. We have won $1,000+ in open competitions.</p>
+          <p>Elite training paired with six years of beginner-first coaching. That combination is rare and comes in handy while coaching.</p>
+          <p class="mentors-heading">Our Coaches and Mentors include:</p>
+          <ol class="mentors-list">
+            <li><strong>Coach Hendry</strong>, US National Head Coach (2023–2024)</li>
+            <li><strong>Coach and Psychiatrist Mark Chandler</strong></li>
+          </ol>
           <div class="badge-row">
             <span class="badge">🏆 US National Coach trained</span>
             <span class="badge">🏸 6+ yrs beginner coaching</span>
@@ -244,7 +245,7 @@ const coaches = [
         <div class="val val-dark reveal d2">
           <div class="val-icon">🌍</div>
           <h3>Inclusion</h3>
-          <p>Open to players of all ages and all abilities, including kids on the spectrum.</p>
+          <p>Open to players of all ages and all abilities.</p>
         </div>
         <div class="val reveal d3">
           <div class="val-icon">⭐</div>
@@ -261,31 +262,6 @@ const coaches = [
       <div class="wellbeing-note reveal">
         <span class="wb-icon">🧠</span>
         <p><strong>More than a sport.</strong> Getting on the court builds more than fitness. Staying physically active is one of the most reliable ways to support mental health, and the game grows confidence, focus, and resilience along the way. We coach the whole player, not just the shot.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Photo Gallery -->
-  <section class="about-gallery">
-    <div class="container">
-      <div class="reveal" style="margin-bottom:2.5rem;text-align:center">
-        <h2>Badminton in action</h2>
-      </div>
-      <div class="ag-grid">
-        <div class="ag-cell ag-tall reveal d1">
-          <img src="/images/TMSA-4.JPG" alt="Participants holding certificates at the end of a Rookie Rackets workshop" loading="lazy" />
-          <div class="ag-overlay"></div>
-        </div>
-        <div class="ag-right">
-          <div class="ag-cell reveal d2">
-            <img src="/images/TMSA-3.JPG" alt="Coach and student at the net" loading="lazy" />
-            <div class="ag-overlay"></div>
-          </div>
-          <div class="ag-cell reveal d3">
-            <img src="/images/workshop-team.jpg" alt="Rookie Rackets coaches with school principal" loading="lazy" />
-            <div class="ag-overlay"></div>
-          </div>
-        </div>
       </div>
     </div>
   </section>
@@ -316,6 +292,7 @@ const coaches = [
   .page-hero .ph-photo {
     filter: brightness(0.72) contrast(1.06) saturate(1.05);
     transform: scale(1.04);
+    background-position: center 22%;
   }
 
   /* Push hero copy toward the bottom so faces in the photo stay visible */
@@ -523,6 +500,15 @@ const coaches = [
   }
 
   .badge:hover { border-color: var(--primary); color: var(--text); transform: translateY(-1px); }
+
+  .mentors-heading { margin-top: 0.25rem !important; margin-bottom: 0.5rem !important; }
+  .mentors-list {
+    margin: 0 0 0.5rem;
+    padding-left: 1.3rem;
+    color: var(--text-muted);
+  }
+  .mentors-list li { font-size: 1rem; line-height: 1.7; margin-bottom: 0.35rem; }
+  .mentors-list strong { color: var(--text); font-weight: 700; }
 
   /* ── Team ────────────────────────────────────── */
   .team { background: var(--bg); border-top: 1px solid var(--border); }
