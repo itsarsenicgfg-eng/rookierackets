@@ -89,7 +89,10 @@ const coaches = [
       <div class="ph-grid"></div>
     </div>
     <div class="container page-hero-inner">
-      <h1 class="reveal d1">Built by high school students.<br /><span class="grad">Free for everyone.</span></h1>
+      <h1 class="reveal d1 ph-heading">
+        <span class="ph-line-top">Built by high school students.</span>
+        <span class="grad ph-line-bottom">Free for everyone.</span>
+      </h1>
       <p class="page-hero-lead reveal d2">We're a badminton nonprofit based in NC. Elite coaching, no cost, all ages.</p>
     </div>
   </section>
@@ -171,10 +174,22 @@ const coaches = [
           <p>Our coaches bring serious competitive experience and a love for teaching. We have won $1,000+ in open competitions.</p>
           <p>Elite training paired with six years of beginner-first coaching. That combination is rare and comes in handy while coaching.</p>
           <p class="mentors-heading">Our Coaches and Mentors include:</p>
-          <ol class="mentors-list">
-            <li><strong>Coach Hendry</strong>, US National Head Coach (2023–2024)</li>
-            <li><strong>Coach and Psychiatrist Mark Chandler</strong></li>
-          </ol>
+          <div class="mentor-tiles">
+            <div class="mentor-tile">
+              <img src="/images/coach-hendry.avif" alt="Coach Hendry, US National Head Coach" class="mentor-photo" loading="lazy" />
+              <div class="mentor-info">
+                <strong>Coach Hendry</strong>
+                <span>US National Head Coach (2023–2024)</span>
+              </div>
+            </div>
+            <div class="mentor-tile">
+              <img src="/images/coach-mark.avif" alt="Coach Mark Chandler, Coach and Psychiatrist" class="mentor-photo" loading="lazy" />
+              <div class="mentor-info">
+                <strong>Coach Mark Chandler</strong>
+                <span>Coach &amp; Psychiatrist</span>
+              </div>
+            </div>
+          </div>
           <div class="badge-row">
             <span class="badge">🏆 US National Coach trained</span>
             <span class="badge">🏸 6+ yrs beginner coaching</span>
@@ -299,6 +314,11 @@ const coaches = [
   .page-hero { align-items: flex-end; }
   /* Keep the intro sentence on one line on desktop */
   .page-hero-lead { max-width: none; }
+
+  /* Split the hero headline: lift the first line, drop "Free for everyone." */
+  .ph-line-top, .ph-line-bottom { display: block; }
+  .ph-line-bottom { margin-top: clamp(3rem, 24vh, 230px); }
+  @media (max-width: 600px) { .ph-line-bottom { margin-top: 2rem; } }
 
   /* ── Mission & Vision ────────────────────────── */
   .mv-section { background: var(--bg); border-top: 1px solid var(--border); }
@@ -509,6 +529,32 @@ const coaches = [
   }
   .mentors-list li { font-size: 1rem; line-height: 1.7; margin-bottom: 0.35rem; }
   .mentors-list strong { color: var(--text); font-weight: 700; }
+
+  .mentor-tiles {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin: 0.5rem 0 0.25rem;
+  }
+  .mentor-tile {
+    background: var(--s2);
+    border: 1px solid var(--border);
+    border-radius: var(--r-lg);
+    overflow: hidden;
+    transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+  }
+  .mentor-tile:hover { border-color: var(--border-md); transform: translateY(-3px); box-shadow: var(--sh); }
+  .mentor-photo {
+    width: 100%;
+    height: 190px;
+    object-fit: cover;
+    object-position: center 20%;
+    display: block;
+  }
+  .mentor-info { padding: 0.8rem 1rem; }
+  .mentor-info strong { display: block; color: var(--text); font-size: 0.95rem; }
+  .mentor-info span { display: block; color: var(--text-muted); font-size: 0.8rem; margin-top: 0.2rem; }
+  @media (max-width: 480px) { .mentor-tiles { grid-template-columns: 1fr; } }
 
   /* ── Team ────────────────────────────────────── */
   .team { background: var(--bg); border-top: 1px solid var(--border); }
