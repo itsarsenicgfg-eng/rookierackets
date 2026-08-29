@@ -80,6 +80,19 @@ const camps = [
   },
 ];
 
+const eventTimeline = [
+  { date: 'Sep – Oct 2025', name: 'Carpenter Elementary' },
+  { date: 'Feb 21, 2026',   name: 'Community Smash' },
+  { date: 'Mar – Apr 2026', name: 'TMSA Elem.' },
+  { date: 'Apr 25, 2026', name: 'Vibha Pickleball Tournament' },
+  { date: 'May 3, 2026',  name: 'Anurag Spring Walk/Run' },
+  { date: 'Jul 20, 2026', name: 'VIBHA RR Camp' },
+  { date: 'Aug 3, 2026',  name: 'RR Camp' },
+  { date: 'Aug 10, 2026', name: 'RR & RJourney at Peak Sports' },
+  { date: 'Aug 23, 2026', name: 'Vibha DreamMile' },
+  { date: 'Aug 28, 2026', name: 'Raleigh Boys Club' },
+];
+
 const scheduleItems = [
   { label: 'Frequency', value: 'Every 6–8 weeks', icon: '📅' },
   { label: 'Day', value: 'Typically weekends', icon: '🗓️' },
@@ -130,6 +143,30 @@ const scheduleItems = [
       ))}
     </div>
   </div>
+
+  <!-- Event Timeline -->
+  <section class="etl-section">
+    <div class="container">
+      <div class="reveal" style="margin-bottom:2.5rem">
+        <h2>Event Timeline</h2>
+        <p class="section-lead">Every workshop, camp, and tournament we&rsquo;ve run &mdash; in the order they happened.</p>
+      </div>
+    </div>
+
+    <div class="etl-scroll reveal d1">
+      <div class="etl-track">
+        {eventTimeline.map((e, i) => (
+          <div class={`etl-col ${i % 2 === 0 ? 'up' : 'down'}`}>
+            <span class="etl-dot"></span>
+            <div class="etl-lbl">
+              <div class="etl-date">{e.date}</div>
+              <div class="etl-name">{e.name}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
 
   <!-- Past Workshops -->
   <section class="workshops-section">
@@ -378,6 +415,93 @@ const scheduleItems = [
     line-height: 1.75;
     max-width: 540px;
     margin-top: 0.75rem;
+  }
+
+  /* Event Timeline */
+  .etl-section { background: var(--bg); border-top: 1px solid var(--border); }
+
+  .etl-scroll {
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-inline: max(1.5rem, calc((100vw - var(--max)) / 2));
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .etl-track {
+    position: relative;
+    display: flex;
+    min-width: 1480px;
+    height: 236px;
+  }
+
+  .etl-track::before {
+    content: '';
+    position: absolute;
+    left: 0; right: 0;
+    top: 116px;
+    height: 3px;
+    border-radius: 2px;
+    background: var(--border-md);
+  }
+
+  .etl-col { flex: 1; position: relative; }
+
+  .etl-dot {
+    position: absolute;
+    left: 50%;
+    top: 117px;
+    transform: translate(-50%, -50%);
+    width: 16px; height: 16px;
+    border-radius: 50%;
+    background: var(--primary);
+    box-shadow: 0 0 0 5px var(--primary-dim);
+    z-index: 1;
+  }
+
+  .etl-lbl { position: absolute; left: 6px; right: 6px; text-align: center; }
+  .etl-col.up   .etl-lbl { bottom: 134px; }
+  .etl-col.down .etl-lbl { top: 134px; }
+
+  .etl-lbl::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px; height: 12px;
+    background: var(--border-md);
+  }
+  .etl-col.up   .etl-lbl::after { top: 100%; margin-top: 4px; }
+  .etl-col.down .etl-lbl::after { bottom: 100%; margin-bottom: 4px; }
+
+  .etl-date {
+    font-family: var(--font-body);
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    color: var(--primary);
+    margin-bottom: 0.4rem;
+    white-space: nowrap;
+  }
+
+  .etl-name {
+    font-family: var(--font-body);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    line-height: 1.4;
+    color: var(--text);
+  }
+
+  @media (max-width: 860px) {
+    .etl-scroll { overflow: visible; padding-inline: 1.5rem; }
+    .etl-track { min-width: 0; flex-direction: column; height: auto; }
+    .etl-track::before { top: 6px; bottom: 6px; left: 8px; right: auto; width: 2px; height: auto; }
+    .etl-col { flex: none; padding: 0 0 1.75rem 2.25rem; }
+    .etl-dot { left: 9px; top: 9px; }
+    .etl-lbl { position: static; text-align: left; }
+    .etl-col.up .etl-lbl, .etl-col.down .etl-lbl { top: auto; bottom: auto; }
+    .etl-lbl::after { display: none; }
+    .etl-date { font-size: 0.875rem; }
+    .etl-name { font-size: 1rem; }
   }
 
   /* Past Workshops */
