@@ -52,6 +52,7 @@ const path = Astro.url.pathname;
           <li><a href="/events" class={path === '/events' ? 'active' : ''}>Upcoming Events</a></li>
           <li><a href="/completed-events" class={path === '/completed-events' ? 'active' : ''}>Completed Events</a></li>
           <li><a href="/faq" class={path === '/faq' ? 'active' : ''}>FAQ</a></li>
+          <li><a href="/contact-us" class={path === '/contact-us' ? 'active' : ''}>Contact Us</a></li>
           <li><a href="/contact" class="nav-cta">Sign Up</a></li>
         </ul>
 
@@ -69,6 +70,7 @@ const path = Astro.url.pathname;
           <li><a href="/events">Upcoming Events</a></li>
           <li><a href="/completed-events">Completed Events</a></li>
           <li><a href="/faq">FAQ</a></li>
+          <li><a href="/contact-us">Contact Us</a></li>
           <li><a href="/contact" class="mobile-cta">Sign Up →</a></li>
         </ul>
       </div>
@@ -102,6 +104,10 @@ const path = Astro.url.pathname;
         <div class="footer-contact">
           <h4>Get in touch</h4>
           <div class="footer-links">
+            <a href="/contact-us" class="footer-link">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+              <span>Send us a message</span>
+            </a>
             <a href="https://www.instagram.com/rookie_rackets" target="_blank" rel="noopener" class="footer-link">
               <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
               <span>@rookie_rackets</span>
@@ -386,6 +392,7 @@ const path = Astro.url.pathname;
     font-weight: 500;
     padding: 0.45rem 0.9rem;
     border-radius: var(--r-sm);
+    white-space: nowrap;
     transition: color 0.15s, background 0.15s;
   }
 
@@ -473,7 +480,7 @@ const path = Astro.url.pathname;
     font-weight: 700 !important;
   }
 
-  @media (max-width: 720px) {
+  @media (max-width: 900px) {
     .nav-links { display: none; }
     .hamburger { display: flex; }
     .mobile-menu { display: block; }

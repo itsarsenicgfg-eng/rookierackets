@@ -1,0 +1,477 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Contact Us" description="Send Rookie Rackets a message about workshops, partnerships, donations, or press.">
+
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="page-hero-bg" aria-hidden="true">
+      <div class="ph-photo" style="background-image:url('/images/our-team.jpg')"></div>
+      <div class="ph-orb" style="width:650px;height:650px;top:-25%;right:-8%;background:radial-gradient(ellipse at center,rgba(107,95,232,0.14) 0%,rgba(107,95,232,0.04) 45%,transparent 70%);animation-delay:0s"></div>
+      <div class="ph-orb" style="width:380px;height:380px;bottom:-15%;left:5%;background:radial-gradient(ellipse at center,rgba(240,120,48,0.12) 0%,transparent 65%);animation-delay:-6s"></div>
+      <div class="ph-grid"></div>
+    </div>
+    <div class="container page-hero-inner">
+      <h1 class="reveal d1">We'd love to<br /><span class="grad">hear from you.</span></h1>
+      <p class="page-hero-lead reveal d2">Questions about our workshops, ideas for a partnership, or want to support the team? Send us a message and we'll reply by email.</p>
+    </div>
+  </section>
+
+  <!-- Contact section -->
+  <section class="contact-section">
+    <div class="container contact-grid">
+
+      <!-- Left: other ways to reach us -->
+      <div class="contact-info reveal from-left">
+        <h2>Other ways to reach us</h2>
+        <ul class="info-list">
+          <li class="info-email">
+            <div class="info-icon">📧</div>
+            <div>
+              <strong>Email</strong>
+              <a href="mailto:teamrookierackets@gmail.com">teamrookierackets@gmail.com</a>
+            </div>
+          </li>
+          <li class="info-phone">
+            <div class="info-icon">📞</div>
+            <div>
+              <strong>Phone</strong>
+              <a href="tel:+14142462382">414-246-2382</a>
+            </div>
+          </li>
+          <li class="info-location">
+            <div class="info-icon">📍</div>
+            <div>
+              <strong>Location</strong>
+              <span>Cary, North Carolina 27519</span>
+            </div>
+          </li>
+        </ul>
+
+        <p class="signup-pointer">Looking to join a workshop? <a href="/contact">Sign up for session updates →</a></p>
+      </div>
+
+      <!-- Right: message form -->
+      <div class="message-card reveal">
+        <div class="message-top">
+          <div class="message-emoji-wrap">💬</div>
+          <div>
+            <h2>Send Us a Message</h2>
+            <p>We usually reply within a few days.</p>
+          </div>
+        </div>
+
+        <!-- Success state (hidden by default) -->
+        <div class="form-success" id="contact-success" aria-live="polite">
+          <div class="success-icon">✅</div>
+          <h3>Message sent!</h3>
+          <p>Thanks for reaching out. A member of the Rookie Rackets team will reply to the email address you gave us.</p>
+          <button class="btn btn-ghost" id="contact-reset-btn" type="button">Send another message</button>
+        </div>
+
+        <!-- The form -->
+        <form id="contact-form" class="message-form" novalidate>
+          <!-- Web3Forms hidden fields (same access key as the Sign Up form) -->
+          <input type="hidden" name="access_key" value="4dadfc44-7e4a-44e7-b323-e98832336206" />
+          <input type="hidden" name="subject" value="New Rookie Rackets Message" />
+          <input type="hidden" name="from_name" value="Rookie Rackets Website" />
+          <!-- Honeypot anti-spam -->
+          <input type="checkbox" name="botcheck" style="display:none" />
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="contact-name">Your Name <span class="req">*</span></label>
+              <input type="text" id="contact-name" name="name" autocomplete="name" maxlength="160" required />
+            </div>
+            <div class="form-group">
+              <label for="contact-email">Email Address <span class="req">*</span></label>
+              <input type="email" id="contact-email" name="email" autocomplete="email" maxlength="254" required />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="contact-topic">Topic <span class="req">*</span></label>
+            <select id="contact-topic" name="Topic" required>
+              <option value="">Choose a topic…</option>
+              <option>General question</option>
+              <option>Events &amp; workshops</option>
+              <option>Partnerships &amp; hosting</option>
+              <option>Donations &amp; sponsorship</option>
+              <option>Media &amp; press</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="contact-message">Message <span class="req">*</span></label>
+            <textarea id="contact-message" name="message" rows="6" maxlength="4000" required placeholder="How can we help?"></textarea>
+          </div>
+
+          <!-- Error message -->
+          <div class="form-error" id="contact-error" aria-live="polite"></div>
+
+          <button type="submit" class="btn btn-accent submit-btn" id="contact-submit-btn">
+            <span id="contact-btn-text">Send Message →</span>
+            <span id="contact-btn-loading" style="display:none">Sending…</span>
+          </button>
+
+          <p class="form-note">We only use your details to reply to your message.</p>
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  /* ── Contact layout ──────────────────────────── */
+  .contact-section {
+    background: var(--s1);
+    border-top: 1px solid var(--border);
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  @media (max-width: 860px) { .contact-grid { grid-template-columns: 1fr; gap: 3rem; } }
+
+  /* ── Contact info ────────────────────────────── */
+  .contact-info h2 { margin-bottom: 2rem; }
+
+  .info-list { list-style: none; display: flex; flex-direction: column; gap: 0.875rem; }
+
+  .info-list li {
+    border-radius: var(--r-lg);
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 1.25rem;
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+
+  .info-list li:hover { box-shadow: var(--sh); transform: translateX(5px); }
+
+  .info-email {
+    background: linear-gradient(135deg, rgba(240,120,48,0.1), rgba(240,120,48,0.04));
+    border: 1px solid rgba(240,120,48,0.3);
+  }
+  .info-email .info-icon { background: rgba(240,120,48,0.15); border-color: rgba(240,120,48,0.25); }
+  .info-email strong, .info-email a { color: #c45c18; }
+  .info-email a:hover { color: var(--accent); }
+
+  .info-phone {
+    background: linear-gradient(135deg, rgba(117,104,240,0.1), rgba(117,104,240,0.04));
+    border: 1px solid rgba(117,104,240,0.3);
+  }
+  .info-phone .info-icon { background: rgba(117,104,240,0.15); border-color: rgba(117,104,240,0.25); }
+  .info-phone strong, .info-phone a { color: var(--primary-dk); }
+  .info-phone a:hover { color: var(--primary); }
+
+  .info-location {
+    background: linear-gradient(135deg, rgba(52,199,120,0.1), rgba(52,199,120,0.04));
+    border: 1px solid rgba(52,199,120,0.3);
+  }
+  .info-location .info-icon { background: rgba(52,199,120,0.15); border-color: rgba(52,199,120,0.25); }
+  .info-location strong, .info-location span { color: #1e7a4a; }
+
+  .info-icon {
+    font-size: 1.4rem;
+    flex-shrink: 0;
+    width: 46px;
+    height: 46px;
+    border-radius: var(--r);
+    border: 1px solid transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .info-list strong {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.3rem;
+  }
+
+  .info-list a, .info-list span { font-size: 0.95rem; font-weight: 600; }
+
+  .signup-pointer {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+    font-size: 0.9rem;
+    color: var(--text-muted);
+  }
+  .signup-pointer a { font-weight: 700; }
+
+  /* ── Message card ────────────────────────────── */
+  .message-card {
+    background: #ffffff;
+    border: 1px solid rgba(117,104,240,0.2);
+    border-radius: var(--r-xl);
+    overflow: hidden;
+    box-shadow: var(--sh-glow-p), var(--sh-lg);
+  }
+
+  .message-top {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 1.75rem 2.25rem;
+    border-bottom: 1px solid rgba(117,104,240,0.12);
+    background: linear-gradient(135deg, #7568f0 0%, #9a8fff 50%, #f07830 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .message-top::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.14), transparent);
+    pointer-events: none;
+  }
+
+  .message-emoji-wrap {
+    font-size: 1.8rem;
+    flex-shrink: 0;
+    width: 52px;
+    height: 52px;
+    background: rgba(255,255,255,0.2);
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: var(--r);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .message-top h2 { font-size: 1.15rem; margin-bottom: 0.2rem; color: #fff; position: relative; z-index: 1; }
+  .message-top p { color: rgba(255,255,255,0.8); font-size: 0.84rem; position: relative; z-index: 1; }
+
+  /* ── Form ────────────────────────────────────── */
+  .message-form {
+    padding: 2rem 2.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+    background: linear-gradient(180deg, rgba(117,104,240,0.03) 0%, transparent 30%);
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  @media (max-width: 560px) { .form-row { grid-template-columns: 1fr; } }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .form-group label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+
+  .req { color: var(--accent); font-size: 0.85rem; }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    background: #fff;
+    border: 1.5px solid rgba(117,104,240,0.18);
+    border-radius: var(--r);
+    padding: 0.65rem 0.875rem;
+    font-size: 0.9rem;
+    color: var(--text);
+    font-family: var(--font-body);
+    transition: border-color 0.15s, box-shadow 0.15s, background 0.15s;
+    width: 100%;
+  }
+
+  .form-group textarea::placeholder { color: var(--text-subtle); }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(117,104,240,0.18);
+    background: rgba(117,104,240,0.02);
+  }
+
+  .form-group textarea { resize: vertical; min-height: 140px; }
+
+  .form-group select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%238880b0' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 0.75rem center; padding-right: 2.25rem; }
+
+  .form-error {
+    font-size: 0.84rem;
+    color: #dc2626;
+    display: none;
+    padding: 0.6rem 0.875rem;
+    background: rgba(220,38,38,0.06);
+    border: 1px solid rgba(220,38,38,0.2);
+    border-radius: var(--r-sm);
+  }
+
+  .form-error.visible { display: block; }
+
+  .submit-btn {
+    width: 100%;
+    justify-content: center;
+    font-size: 0.975rem;
+    padding: 0.95rem;
+    background: linear-gradient(135deg, var(--accent), #ff9048);
+    box-shadow: 0 6px 24px rgba(240,120,48,0.35);
+    border-radius: var(--r);
+  }
+  .submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 32px rgba(240,120,48,0.45);
+    text-decoration: none;
+  }
+  .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+  .form-note {
+    font-size: 0.75rem;
+    color: var(--text-subtle);
+    text-align: center;
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  /* ── Success state ───────────────────────────── */
+  .form-success {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.75rem;
+    padding: 3rem 2.25rem;
+  }
+
+  .form-success.visible { display: flex; }
+
+  .success-icon { font-size: 3rem; }
+
+  .form-success h3 { font-size: 1.25rem; margin: 0; }
+  .form-success p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.75; max-width: 340px; }
+
+  @media (max-width: 500px) {
+    .message-form { padding: 1.5rem; }
+    .message-top { padding: 1.5rem; }
+  }
+</style>
+
+<script>
+  function initContactForm() {
+    const form = document.getElementById('contact-form') as HTMLFormElement | null;
+    const successDiv = document.getElementById('contact-success');
+    const errorDiv = document.getElementById('contact-error');
+    const submitBtn = document.getElementById('contact-submit-btn') as HTMLButtonElement | null;
+    const btnText = document.getElementById('contact-btn-text');
+    const btnLoading = document.getElementById('contact-btn-loading');
+    const resetBtn = document.getElementById('contact-reset-btn');
+
+    if (!form) return;
+
+    const DAILY_LIMIT = 5;
+    const limitKey = () => 'rr-messages-' + new Date().toISOString().slice(0, 10);
+    const getCount = () => parseInt(localStorage.getItem(limitKey()) || '0', 10);
+    const bumpCount = () => localStorage.setItem(limitKey(), String(getCount() + 1));
+
+    const showError = (message: string) => {
+      if (errorDiv) { errorDiv.textContent = message; errorDiv.classList.add('visible'); }
+    };
+
+    const resetButton = () => {
+      if (submitBtn) submitBtn.disabled = false;
+      if (btnText) btnText.style.display = 'inline';
+      if (btnLoading) btnLoading.style.display = 'none';
+    };
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      if (getCount() >= DAILY_LIMIT) {
+        showError(`You've reached today's limit of ${DAILY_LIMIT} messages. Please email us directly at teamrookierackets@gmail.com.`);
+        return;
+      }
+
+      const required = form.querySelectorAll('[required]') as NodeListOf<HTMLInputElement>;
+      let valid = true;
+      required.forEach(field => {
+        if (!field.value.trim()) { field.style.borderColor = '#dc2626'; valid = false; }
+        else { field.style.borderColor = ''; }
+      });
+      if (!valid) { showError('Please fill in all required fields.'); return; }
+
+      const emailField = form.querySelector('#contact-email') as HTMLInputElement;
+      if (!emailField.checkValidity()) {
+        emailField.style.borderColor = '#dc2626';
+        showError('Please enter a valid email address.');
+        return;
+      }
+
+      if (errorDiv) errorDiv.classList.remove('visible');
+
+      if (submitBtn) submitBtn.disabled = true;
+      if (btnText) btnText.style.display = 'none';
+      if (btnLoading) btnLoading.style.display = 'inline';
+
+      try {
+        const data = new FormData(form);
+        data.set('subject', `New Rookie Rackets Message: ${data.get('Topic')}`);
+        const res = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          body: data,
+        });
+        const json = await res.json();
+
+        if (json.success) {
+          bumpCount();
+          form.style.display = 'none';
+          resetButton();
+          if (successDiv) {
+            successDiv.classList.add('visible');
+            successDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+          if (resetBtn) resetBtn.style.display = getCount() >= DAILY_LIMIT ? 'none' : '';
+        } else {
+          throw new Error(json.message || 'Submission failed');
+        }
+      } catch (err: unknown) {
+        showError(err instanceof Error ? err.message : 'Something went wrong. Please email us directly.');
+        resetButton();
+      }
+    });
+
+    resetBtn?.addEventListener('click', () => {
+      form.reset();
+      form.style.display = '';
+      if (successDiv) successDiv.classList.remove('visible');
+      if (errorDiv) errorDiv.classList.remove('visible');
+      form.querySelectorAll('[required]').forEach(f => { (f as HTMLElement).style.borderColor = ''; });
+      resetButton();
+      (form.querySelector('input:not([type=hidden]):not([type=checkbox])') as HTMLElement | null)?.focus();
+    });
+  }
+
+  document.addEventListener('astro:page-load', initContactForm);
+</script>
